@@ -67,37 +67,51 @@
           {{ block.shopify_attributes }}
         >
           <div class="multicolumn-card content-container">
-            {%- if block.settings.image != blank -%}
+            {%- if block.settings.image != blank or block.settings.asset_image != blank -%}
               {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                 {% assign spaced_image = true %}
               {% endif %}
               <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width {% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing {% if section.settings.column_padding == "none" %} no--spacing {% endif %}{% endif %}">
                 <div
                   class="media media--transparent media--{{ section.settings.image_ratio }}"
-                  {% if section.settings.image_ratio == 'adapt' %}
+                  {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank and highest_ratio > 0 %}
                     style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                  {% elsif section.settings.image_ratio == 'adapt' and block.settings.asset_image != blank %}
+                    style="padding-bottom: 100%;"
                   {% endif %}
                 >
-                  <img
-                    class="multicolumn-card__image"
-                    srcset="
-                      {%- if block.settings.image.width >= 275 -%}{{ block.settings.image | image_url: width: 275 }} 275w,{%- endif -%}
-                      {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
-                      {%- if block.settings.image.width >= 710 -%}{{ block.settings.image | image_url: width: 710 }} 710w,{%- endif -%}
-                      {%- if block.settings.image.width >= 1420 -%}{{ block.settings.image | image_url: width: 1420 }} 1420w,{%- endif -%}
-                      {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
-                    "
-                    src="{{ block.settings.image | image_url: width: 550 }}"
-                    sizes="
-                      (min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %},
-                      (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %},
-                      calc(100vw - 30px)
-                    "
-                    alt="{{ block.settings.image.alt }}"
-                    height="{{ block.settings.image.height }}"
-                    width="{{ block.settings.image.width }}"
-                    loading="lazy"
-                  >
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      class="multicolumn-card__image"
+                      srcset="
+                        {%- if block.settings.image.width >= 275 -%}{{ block.settings.image | image_url: width: 275 }} 275w,{%- endif -%}
+                        {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                        {%- if block.settings.image.width >= 710 -%}{{ block.settings.image | image_url: width: 710 }} 710w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1420 -%}{{ block.settings.image | image_url: width: 1420 }} 1420w,{%- endif -%}
+                        {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                      "
+                      src="{{ block.settings.image | image_url: width: 550 }}"
+                      sizes="
+                        (min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %},
+                        (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %},
+                        calc(100vw - 30px)
+                      "
+                      alt="{{ block.settings.image.alt }}"
+                      height="{{ block.settings.image.height }}"
+                      width="{{ block.settings.image.width }}"
+                      loading="lazy"
+                    >
+                  {%- else -%}
+                    <img
+                      class="multicolumn-card__image"
+                      src="{{ block.settings.asset_image | asset_url }}"
+                      alt="{{ block.settings.title | escape }}"
+                      width="550"
+                      height="550"
+                      loading="lazy"
+                      style="object-fit: cover;"
+                    >
+                  {%- endif -%}
                 </div>
               </div>
             {%- endif -%}
@@ -424,6 +438,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Theme asset image filename",
+          "info": "Optional fallback when no uploaded image is set (e.g. hr-icon-breakup.png)"
         },
         {
           "type": "text",

@@ -11,15 +11,19 @@
           }
         }
       },
-      "block_order": ["heading"],
+      "block_order": [
+        "heading"
+      ],
       "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "small",
+        "asset_image": "hr-about-story.jpg",
+        "asset_image_alt": "Woman reflecting by a window \u2014 Our Story",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "show_filter_box": false,
+        "color_scheme": "inverse",
+        "show_filter_box": true,
         "corner_radius": 0,
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -27,30 +31,46 @@
       }
     },
     "observation": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The Observation",
+            "heading": "<p>The Observation</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Something is off.</p><p>Women are more educated, more financially independent, and more outwardly empowered than at any point in history. And they are also more anxious, more depressed, and more lost than the data suggests they should be.</p><p>The self-help industry has an answer for this. Hundreds of millions of answers, actually. On TikTok. On Instagram. In the AI-generated journals filling Amazon's bestseller lists. Sound bites that feel good for a moment and change nothing. Content designed to perform, not to transform.</p><p>Social media has become the new religion. And the most devout practitioners are women. I watched it happen in real time. Women basing their entire sense of self-worth on a curated feed. Their beauty standards dictated by an algorithm. Their emotional well-being measured against strangers they will never meet. It is a constant barometer of comparison. And it is destroying them from the inside out.</p><p>Men engage with social media differently. They scroll, they move on. Women internalize it. They carry it. They let it reshape how they see themselves.</p><p>And here is the paradox: women today are more empowered by society than at any point in history. More educated. More financially independent. More outwardly free. But empowerment without internal principle is just noise. And women have never been in this position before. There is no historical playbook for navigating empowerment in a world designed to exploit insecurity for engagement.</p><p>And I saw women looking for answers in the worst possible place: the same platforms that created the problem.</p>"
+            "text": "<p>Something is off.</p><p>Women are more educated, more financially independent, and more outwardly empowered than at any point in history. And they are also more anxious, more depressed, and more lost than the data suggests they should be.</p><p>The self-help industry has an answer for this. Hundreds of millions of answers, actually. On TikTok. On Instagram. In the AI-generated journals filling Amazon's bestseller lists. Sound bites that feel good for a moment and change nothing. Content designed to perform, not to transform.</p><p>Social media has become the new religion. And the most devout practitioners are women. I watched it happen in real time. Women basing their entire sense of self-worth on a curated feed. Their beauty standards dictated by an algorithm. Their emotional well-being measured against strangers they will never meet. It is a constant barometer of comparison. And it is destroying them from the inside out.</p><p>Men engage with social media differently. They scroll, they move on. Women internalize it. They carry it. They let it reshape how they see themselves.</p><p>And here is the paradox: women today are more empowered by society than at any point in history. More educated. More financially independent. More outwardly free. But empowerment without internal principle is just noise. And women have never been in this position before. There is no historical playbook for navigating empowerment in a world designed to exploit insecurity for engagement.</p><p>And I saw women looking for answers in the worst possible place: the same platforms that created the problem.</p>",
+            "nav_check_list": false
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
+        "asset_image": "hr-about-observation.jpg",
+        "asset_image_alt": "Woman reflecting on social media overwhelm",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
         "padding_top": 50,
-        "padding_bottom": 40,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 30
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "decision": {
@@ -66,13 +86,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>I decided to do something different.</p><p>Before I wrote a single prompt, I spent over a year in academic research. Not reading the popular books. Reading the source papers. Bowlby on attachment. Beck on CBT. Jung on the shadow. Seligman on positive psychology. Merzenich on neuroplasticity. I wanted to understand what actually produces change at the psychological level — and build from there.</p><p>The result is seven journals. Each one built on evidence-based frameworks. Each one structured as a system, not a collection of prompts. Each one designed to do one thing: produce a real, measurable shift in the woman who works through it.</p><p>What surprised me in the research: the power to change is within arm's reach. But we are never taught how to use it. We are never taught how to form habits that serve us. We are never taught how to break the ones that do not. Society has become so permissive of socially acceptable addictions — overeating, overindulging, pornography, video game addiction — that most people do not even realize they have a problem. If you are not smoking crack or doing something extreme, there is no social judgment. No intervention. No wake-up call.</p><p>The research showed me that the frameworks for real change exist. Cognitive Behavioral Therapy. Neuroplasticity. Attachment Theory. Shadow Work. These are not theoretical. They are proven. They are the tools therapists use every day to help people rewire their lives.</p><p>But therapy is expensive. It is inaccessible for most people. And even when it is accessible, it requires you to show up in a room and admit you need help — which is a barrier most people never cross.</p><p>So I asked a different question: what are the frameworks that people can implement on their own? What are the psychological principles that do not require a therapist in the room to work?</p><p>That is what I spent a year building. Not content. A system. One that uses the same evidence-based tools therapists rely on, structured into a 30 or 45-day process that a woman can work through on her own terms.</p><p>What the research contradicted: I thought motivation was the key. It is not. Motivation is fleeting. What produces real change is structured repetition over time. The brain does not care how inspired you feel. It cares about what you do consistently.</p>"
+            "text": "<p>I decided to do something different.</p><p>Before I wrote a single prompt, I spent over a year in academic research. Not reading the popular books. Reading the source papers. Bowlby on attachment. Beck on CBT. Jung on the shadow. Seligman on positive psychology. Merzenich on neuroplasticity. I wanted to understand what actually produces change at the psychological level \u2014 and build from there.</p><p>The result is seven journals. Each one built on evidence-based frameworks. Each one structured as a system, not a collection of prompts. Each one designed to do one thing: produce a real, measurable shift in the woman who works through it.</p><p>What surprised me in the research: the power to change is within arm's reach. But we are never taught how to use it. We are never taught how to form habits that serve us. We are never taught how to break the ones that do not. Society has become so permissive of socially acceptable addictions \u2014 overeating, overindulging, pornography, video game addiction \u2014 that most people do not even realize they have a problem. If you are not smoking crack or doing something extreme, there is no social judgment. No intervention. No wake-up call.</p><p>The research showed me that the frameworks for real change exist. Cognitive Behavioral Therapy. Neuroplasticity. Attachment Theory. Shadow Work. These are not theoretical. They are proven. They are the tools therapists use every day to help people rewire their lives.</p><p>But therapy is expensive. It is inaccessible for most people. And even when it is accessible, it requires you to show up in a room and admit you need help \u2014 which is a barrier most people never cross.</p><p>So I asked a different question: what are the frameworks that people can implement on their own? What are the psychological principles that do not require a therapist in the room to work?</p><p>That is what I spent a year building. Not content. A system. One that uses the same evidence-based tools therapists rely on, structured into a 30 or 45-day process that a woman can work through on her own terms.</p><p>What the research contradicted: I thought motivation was the key. It is not. Motivation is fleeting. What produces real change is structured repetition over time. The brain does not care how inspired you feel. It cares about what you do consistently.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -81,39 +104,56 @@
       }
     },
     "genesis": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Genesis House",
+            "heading": "<p>Genesis House</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>This work is connected to something larger.</p><p>5% of every Happily Read journal sold goes directly to Genesis Women's Shelter &amp; Support in Dallas. They have been providing safety, shelter, and support to women and children escaping domestic violence since 1985. Over 42,000 women and children served.</p><p>We serve women before the crisis. They serve women in the crisis. Together, we represent a full continuum of care.</p><p>This is not a marketing strategy. It is who we are.</p><p>Both of my parents came from broken homes. I did not realize how much of their pain I inherited until I became an adult and moved out of their house. I had to start my own journey of self-development and rediscovery. I was taught narratives that did not serve me. Narratives that did not serve the highest and best version of myself.</p><p>It took me 15 years to rebuild myself. To work through the emotions and thoughts that did not serve me. To become the version of myself I was always supposed to be.</p><p>I built Happily Read because I know what it feels like to inherit someone else's brokenness. And I know what it takes to choose yourself anyway.</p>"
+            "text": "<p>This work is connected to something larger.</p><p>5% of every Happily Read journal sold goes directly to Genesis Women's Shelter &amp; Support in Dallas. They have been providing safety, shelter, and support to women and children escaping domestic violence since 1985. Over 42,000 women and children served.</p><p>We serve women before the crisis. They serve women in the crisis. Together, we represent a full continuum of care.</p><p>This is not a marketing strategy. It is who we are.</p><p>Both of my parents came from broken homes. I did not realize how much of their pain I inherited until I became an adult and moved out of their house. I had to start my own journey of self-development and rediscovery. I was taught narratives that did not serve me. Narratives that did not serve the highest and best version of myself.</p><p>It took me 15 years to rebuild myself. To work through the emotions and thoughts that did not serve me. To become the version of myself I was always supposed to be.</p><p>I built Happily Read because I know what it feels like to inherit someone else's brokenness. And I know what it takes to choose yourself anyway.</p>",
+            "nav_check_list": false
           }
         },
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Learn about Genesis →",
+            "button_label": "Learn about Genesis \u2192",
             "button_link": "/pages/genesis",
             "button_style": "secondary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30
+        "asset_image": "hr-mission-genesis.jpg",
+        "asset_image_alt": "Women supporting each other \u2014 Genesis partnership",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "vision": {
@@ -129,13 +169,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>This is only the beginning.</p><p>The journals are Phase 1. What I am building is bigger than a product. It is a movement. A community where women doing this work find each other. Live events and conferences where transformation is not a hashtag but a lived experience. A global network of women who refused to stay stuck and chose to do the work.</p><p>Five years from now, Happily Read will be a name women trust the way they trust the women who raised them. Not because we marketed well. Because we built something that actually works — and the women who used it became the proof.</p>"
+            "text": "<p>This is only the beginning.</p><p>The journals are Phase 1. What I am building is bigger than a product. It is a movement. A community where women doing this work find each other. Live events and conferences where transformation is not a hashtag but a lived experience. A global network of women who refused to stay stuck and chose to do the work.</p><p>Five years from now, Happily Read will be a name women trust the way they trust the women who raised them. Not because we marketed well. Because we built something that actually works \u2014 and the women who used it became the proof.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 30,
@@ -156,11 +199,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"/#sticking-points\">Find your journal →</a></p><p><a href=\"/pages/science\">Read the research →</a></p>"
+            "text": "<p><a href=\"/#sticking-points\">Find your journal \u2192</a></p><p><a href=\"/pages/science\">Read the research \u2192</a></p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",

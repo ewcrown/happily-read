@@ -3,13 +3,6 @@
     "opening": {
       "type": "rich-text",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "You're not dramatic.",
-            "heading_size": "h0"
-          }
-        },
         "text": {
           "type": "text",
           "settings": {
@@ -17,14 +10,16 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 80,
-        "padding_bottom": 40,
-        "mobile_padding_top": 50,
-        "mobile_padding_bottom": 30
+        "padding_top": 50,
+        "padding_bottom": 30,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 20
       }
     },
     "whats_happening": {
@@ -40,13 +35,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>When you were in that relationship, your brain was producing dopamine and oxytocin at elevated levels — the same chemicals associated with reward, bonding, and safety. When the relationship ended, those levels crashed.</p><p>Your brain is responding the way it would to any withdrawal. The intrusive thoughts. The compulsive checking. The physical ache. The inability to concentrate. These are not signs that you loved too much or that something is wrong with you. They are neurological responses to chemical loss.</p><p>That's the science. And the science also tells us exactly how the brain heals from this — and how to speed up that process.</p><p>This is what the 30-Day Breakup Recovery Journal was built to do.</p>"
+            "text": "<p>When you were in that relationship, your brain was producing dopamine and oxytocin at elevated levels \u2014 the same chemicals associated with reward, bonding, and safety. When the relationship ended, those levels crashed.</p><p>Your brain is responding the way it would to any withdrawal. The intrusive thoughts. The compulsive checking. The physical ache. The inability to concentrate. These are not signs that you loved too much or that something is wrong with you. They are neurological responses to chemical loss.</p><p>That's the science. And the science also tells us exactly how the brain heals from this \u2014 and how to speed up that process.</p><p>This is what the 30-Day Breakup Recovery Journal was built to do.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -61,7 +59,7 @@
           "type": "column",
           "settings": {
             "title": "Cognitive Behavioural Therapy (CBT)",
-            "text": "<p>The most studied approach in psychology for changing thought patterns — helps you identify the narratives your brain is running about the breakup and about yourself, and systematically replace them with ones grounded in reality rather than pain.</p>",
+            "text": "<p>The most studied approach in psychology for changing thought patterns \u2014 helps you identify the narratives your brain is running about the breakup and about yourself, and systematically replace them with ones grounded in reality rather than pain.</p>",
             "link_label": "",
             "link": ""
           }
@@ -70,13 +68,16 @@
           "type": "column",
           "settings": {
             "title": "Attachment Theory",
-            "text": "<p>Developed by John Bowlby and extended by decades of peer-reviewed research — helps you understand why this relationship felt the way it did, what your attachment patterns are, and how they have shaped every relationship you have been in.</p>",
+            "text": "<p>Developed by John Bowlby and extended by decades of peer-reviewed research \u2014 helps you understand why this relationship felt the way it did, what your attachment patterns are, and how they have shaped every relationship you have been in.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["fw_cbt", "fw_attachment"],
+      "block_order": [
+        "fw_cbt",
+        "fw_attachment"
+      ],
       "settings": {
         "title": "Built on CBT and attachment theory. Not advice.",
         "heading_size": "h1",
@@ -114,7 +115,10 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -125,30 +129,46 @@
       }
     },
     "accountability": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "This journal comes with a commitment.",
+            "heading": "<p>This journal comes with a commitment.</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>When you open your Breakup Recovery Journal, you will find a contract. You sign it. You name an accountability partner — someone who knows you are doing this work and will check in with you.</p><p>No other journal does this at the product level. Because real transformation requires real commitment. Not motivation. Commitment.</p>"
+            "text": "<p>When you open your Breakup Recovery Journal, you will find a contract. You sign it. You name an accountability partner \u2014 someone who knows you are doing this work and will check in with you.</p><p>No other journal does this at the product level. Because real transformation requires real commitment. Not motivation. Commitment.</p>",
+            "nav_check_list": false
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30
+        "asset_image": "hr-accountability.jpg",
+        "asset_image_alt": "Women supporting each other through accountability",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "social_proof": {
@@ -165,9 +185,11 @@
           }
         }
       },
-      "block_order": ["story"],
+      "block_order": [
+        "story"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "title": "Real stories",
         "heading_size": "h1",
         "subtitle": "",
@@ -193,14 +215,27 @@
     "purchase": {
       "type": "featured-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {}
+        }
       },
-      "block_order": ["title", "price", "buy_buttons"],
+      "block_order": [
+        "title",
+        "price",
+        "buy_buttons"
+      ],
       "settings": {
         "color_scheme": "background-1",
-        "product": "",
+        "product": "the-30-day-breakup-recovery-journal-from-heartbreak-to-healing-a-daily-guide-to-getting",
         "gallery_layout": "stacked",
         "media_size": "medium",
         "enable_sticky_info": true,
@@ -216,14 +251,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The 30-Day Breakup Recovery Journal — $24.95",
+            "heading": "The 30-Day Breakup Recovery Journal \u2014 $24.97",
             "heading_size": "h2"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"#\">Also available on Amazon →</a></p><p>Women who work through Breakup Recovery often pair it with Never Get Played Again — the journal that addresses the patterns that led to the relationship in the first place.<br>Bundle: Breakup Recovery + Never Get Played Again — $60.00</p>"
+            "text": "<p><a href=\"/products/the-30-day-breakup-recovery-journal-from-heartbreak-to-healing-a-daily-guide-to-getting\">View full product details \u2192</a></p><p><a href=\"#\">Also available on Amazon \u2192</a></p><p>Women who work through Breakup Recovery often pair it with Never Get Played Again \u2014 the journal that addresses the patterns that led to the relationship in the first place.<br>Bundle: Breakup Recovery + Never Get Played Again \u2014 $60.00</p>"
           }
         },
         "button": {
@@ -236,7 +271,11 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -252,11 +291,13 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more →</a></p>"
+            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more \u2192</a></p>"
           }
         }
       },
-      "block_order": ["text"],
+      "block_order": [
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -282,9 +323,16 @@
             "text": "<p>Get the science behind breakup recovery delivered to your inbox. No pitch. Just the research.</p>"
           }
         },
-        "email_form": { "type": "email_form", "settings": {} }
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
       },
-      "block_order": ["heading", "paragraph", "email_form"],
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "height": "small",
@@ -302,9 +350,40 @@
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 60
       }
+    },
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You're not dramatic.",
+            "heading_size": "h0"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "asset_image": "hr-journal-breakup.jpg",
+        "asset_image_alt": "Woman reflecting by a window \u2014 Breakup Recovery",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "inverse",
+        "show_filter_box": true,
+        "corner_radius": 0,
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
+    "hero",
     "opening",
     "whats_happening",
     "framework",

@@ -87,9 +87,11 @@
     <div class="image-with-text__grid {% if section.settings.layout == "text_first" %}desktop-row-reverse {% endif %} d-flex flex-wrap {{ column_class_reverse }} {% if section.settings.make_section_full_width != true %}image-with-text__inner--space image-with-text-container_box_corner color-{{ section.settings.color_scheme }} gradient{% endif %}">
       <div class="{{ column_class }} flex-grow-{{ flex_image_grow }} image-with-text__media-item">
         <div
-          class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings {% if section.settings.image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}"
+          class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings {% if section.settings.image != blank or section.settings.asset_image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}"
           {% if section.settings.height == 'adapt' and section.settings.image != blank %}
             style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+          {% elsif section.settings.height == 'adapt' and section.settings.asset_image != blank %}
+            style="padding-bottom: 75%;"
           {% endif %}
         >
           {%- if section.settings.image != blank -%}
@@ -113,6 +115,15 @@
               loading="lazy"
               width="{{ section.settings.image.width }}"
               height="{{ section.settings.image.height }}"
+            >
+          {%- elsif section.settings.asset_image != blank -%}
+            <img
+              src="{{ section.settings.asset_image | asset_url }}"
+              alt="{{ section.settings.asset_image_alt | escape }}"
+              loading="lazy"
+              width="1200"
+              height="900"
+              style="width: 100%; height: 100%; object-fit: cover;"
             >
           {%- else -%}
             {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -260,6 +271,18 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "text",
+      "id": "asset_image",
+      "label": "Theme asset image filename",
+      "info": "Optional fallback when no uploaded image is set (e.g. hr-mission-genesis.jpg)"
+    },
+    {
+      "type": "text",
+      "id": "asset_image_alt",
+      "label": "Asset image alt text",
+      "default": "Happily Read"
     },
     {
       "type": "range",

@@ -31,13 +31,15 @@
       },
       "block_order": ["heading", "text", "buttons"],
       "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
+        "asset_image": "hr-hero-journal.jpg",
+        "asset_image_alt": "Woman journaling in soft morning light",
+        "image_overlay_opacity": 50,
+        "image_height": "large",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "show_filter_box": false,
+        "color_scheme": "inverse",
+        "show_filter_box": true,
         "corner_radius": 0,
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -61,6 +63,7 @@
         "card_breakup": {
           "type": "column",
           "settings": {
+            "asset_image": "hr-icon-breakup.png",
             "title": "I'm getting over a breakup.",
             "text": "<p>Your brain is going through withdrawal. There's a way through it that isn't just time.</p>",
             "link_label": "Find my journal →",
@@ -72,6 +75,7 @@
         "card_pattern": {
           "type": "column",
           "settings": {
+            "asset_image": "hr-icon-pattern.png",
             "title": "I keep choosing the wrong person.",
             "text": "<p>This isn't bad luck. It's a pattern. And patterns can be changed.</p>",
             "link_label": "Find my journal →",
@@ -83,6 +87,7 @@
         "card_growth": {
           "type": "column",
           "settings": {
+            "asset_image": "hr-icon-growth.png",
             "title": "I'm done playing small.",
             "text": "<p>Self-doubt isn't a personality trait. It's a neural pathway. It can be rewritten.</p>",
             "link_label": "Find my journal →",
@@ -94,6 +99,7 @@
         "card_reclaim": {
           "type": "column",
           "settings": {
+            "asset_image": "hr-icon-reclaim.png",
             "title": "I want to reclaim who I really am.",
             "text": "<p>The version of you that got buried is still there. Shadow work brings her back.</p>",
             "link_label": "Find my journal →",
@@ -110,8 +116,8 @@
         "heading_align": "center",
         "color_scheme": "background-1",
         "container_type": "container",
-        "image_width": "third",
-        "image_ratio": "adapt",
+        "image_width": "full",
+        "image_ratio": "square",
         "columns_desktop": 4,
         "column_alignment": "left",
         "background_style": "primary",
@@ -215,6 +221,8 @@
       "block_order": ["heading", "text", "button"],
       "settings": {
         "container_type": "container",
+        "asset_image": "hr-mission-genesis.jpg",
+        "asset_image_alt": "Women supporting each other in solidarity",
         "image_card_corner_radius": 10,
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -326,7 +334,7 @@
           "type": "heading",
           "settings": {
             "heading": "Join women who are choosing real transformation over empty promises.",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "paragraph": {
@@ -346,7 +354,7 @@
         "height": "small",
         "image_overlay_opacity": 0,
         "form_position": "bottom",
-        "content_wrapper_width": "medium",
+        "content_wrapper_width": "small",
         "content_alignment": "center",
         "border_bottom_enabel": false,
         "show_first_name": true,
@@ -354,10 +362,10 @@
         "form_tags": "newsletter",
         "submit_label": "I'm ready",
         "privacy_text": "<p>We respect your inbox. You'll only hear from us when we have something worth saying.</p>",
-        "padding_top": 60,
-        "padding_bottom": 80,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 90,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 70
       }
     }
   },

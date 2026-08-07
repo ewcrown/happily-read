@@ -96,6 +96,18 @@
           fetchpriority: fetch_priority
       }}
     </div>
+  {%- elsif section.settings.asset_image != blank -%}
+    <div class="banner__media media">
+      <img
+        src="{{ section.settings.asset_image | asset_url }}"
+        alt="{{ section.settings.asset_image_alt | escape }}"
+        width="1920"
+        height="1080"
+        loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+        fetchpriority="{{ fetch_priority }}"
+        style="width: 100%; height: 100%; object-fit: cover;"
+      >
+    </div>
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}">
       {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -193,6 +205,18 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-banner.settings.image.label"
+    },
+    {
+      "type": "text",
+      "id": "asset_image",
+      "label": "Theme asset image filename",
+      "info": "Optional fallback when no uploaded image is set (e.g. hr-hero-journal.jpg)"
+    },
+    {
+      "type": "text",
+      "id": "asset_image_alt",
+      "label": "Asset image alt text",
+      "default": "Happily Read"
     },
     {
       "type": "image_picker",

@@ -11,15 +11,19 @@
           }
         }
       },
-      "block_order": ["heading"],
+      "block_order": [
+        "heading"
+      ],
       "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "small",
+        "asset_image": "hr-genesis-shelter.jpg",
+        "asset_image_alt": "Calm safe space representing shelter and dignity",
+        "image_overlay_opacity": 50,
+        "image_height": "large",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "show_filter_box": false,
+        "color_scheme": "inverse",
+        "show_filter_box": true,
         "corner_radius": 0,
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -39,13 +43,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Genesis Women's Shelter &amp; Support has been providing safety, shelter, and support to women and children experiencing domestic violence in Dallas since 1985.</p><p>In forty years, they have served over 42,000 women and children. They operate an emergency shelter at an undisclosed location — where women and children can stay for up to eight weeks with 24/7 staff support, warm meals, clothing, and private living spaces. They run Annie's House, a long-term transitional housing program that allows families to remain in a private apartment for up to twelve months while rebuilding their lives.</p><p>Their services extend to counselling, occupational therapy, legal representation, and children's services — including a sensory room designed specifically for children healing from trauma. All services are free. All services are confidential. All services are available in English and Spanish.</p><p>They opened a facility in the 75216 zip code in South Oak Cliff — one of the highest domestic violence areas in the Dallas metro, where one in three women will experience domestic violence in their lifetime.</p><p>This is not a small organisation doing small work.</p>"
+            "text": "<p>Genesis Women's Shelter &amp; Support has been providing safety, shelter, and support to women and children experiencing domestic violence in Dallas since 1985.</p><p>In forty years, they have served over 42,000 women and children. They operate an emergency shelter at an undisclosed location \u2014 where women and children can stay for up to eight weeks with 24/7 staff support, warm meals, clothing, and private living spaces. They run Annie's House, a long-term transitional housing program that allows families to remain in a private apartment for up to twelve months while rebuilding their lives.</p><p>Their services extend to counselling, occupational therapy, legal representation, and children's services \u2014 including a sensory room designed specifically for children healing from trauma. All services are free. All services are confidential. All services are available in English and Spanish.</p><p>They opened a facility in the 75216 zip code in South Oak Cliff \u2014 one of the highest domestic violence areas in the Dallas metro, where one in three women will experience domestic violence in their lifetime.</p><p>This is not a small organisation doing small work.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 50,
         "padding_bottom": 40,
@@ -54,30 +61,46 @@
       }
     },
     "connection": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The Connection",
+            "heading": "<p>The Connection</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Happily Read was built to help women transform before a crisis becomes necessary.</p><p>Genesis Women's Shelter &amp; Support is there for women when a crisis has arrived.</p><p>One organisation builds strength, self-worth, and resilience through science-backed tools a woman can use on her own terms. The other provides safety when that strength has been stripped away by violence.</p><p>Together, we represent a full continuum of care for women.</p><p>5% of every Happily Read journal sold goes directly to Genesis. Not as a marketing strategy. Not because it looks good on a website. Because it is the right thing to do — and because the women who buy our journals and the women Genesis serves are part of the same story.</p>"
+            "text": "<p>Happily Read was built to help women transform before a crisis becomes necessary.</p><p>Genesis Women's Shelter &amp; Support is there for women when a crisis has arrived.</p><p>One organisation builds strength, self-worth, and resilience through science-backed tools a woman can use on her own terms. The other provides safety when that strength has been stripped away by violence.</p><p>Together, we represent a full continuum of care for women.</p><p>5% of every Happily Read journal sold goes directly to Genesis. Not as a marketing strategy. Not because it looks good on a website. Because it is the right thing to do \u2014 and because the women who buy our journals and the women Genesis serves are part of the same story.</p>",
+            "nav_check_list": false
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30
+        "asset_image": "hr-mission-genesis.jpg",
+        "asset_image_alt": "Partnership continuum of care for women",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "contributions": {
@@ -120,7 +143,12 @@
           }
         }
       },
-      "block_order": ["c1", "c2", "c3", "c4"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
       "settings": {
         "title": "What Your Purchase Contributes",
         "heading_size": "h1",
@@ -154,13 +182,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>To learn more about Genesis Women's Shelter &amp; Support: <a href=\"https://genesisshelter.org\" target=\"_blank\">Visit genesisshelter.org →</a></p><p>October is Domestic Violence Awareness Month — an amplification period for this permanent partnership, not the whole of it.</p><p><strong>Partnership structure:</strong> The Genesis House partnership is ongoing and permanent — embedded in the Happily Read brand identity. This is not seasonal. It is not a one-month activation.</p><p><strong>Planned activations:</strong> Content campaigns across all social channels. Fundraiser initiatives beyond the 5% baseline donation. Direct donation campaigns via social platforms. Co-branded events as revenue scales.</p><p><strong>Brand philosophy:</strong> Help women in need. That is the ongoing focus. Not hype. Not one-twelfth-of-the-year awareness theater. Real, sustained support.</p><p>This page will be updated quarterly with campaign tie-ins, impact reporting as revenue and contributions grow, and event partnerships and sponsorships.</p>"
+            "text": "<p>To learn more about Genesis Women's Shelter &amp; Support: <a href=\"https://genesisshelter.org\" target=\"_blank\">Visit genesisshelter.org \u2192</a></p><p>October is Domestic Violence Awareness Month \u2014 an amplification period for this permanent partnership, not the whole of it.</p><p><strong>Partnership structure:</strong> The Genesis House partnership is ongoing and permanent \u2014 embedded in the Happily Read brand identity. This is not seasonal. It is not a one-month activation.</p><p><strong>Planned activations:</strong> Content campaigns across all social channels. Fundraiser initiatives beyond the 5% baseline donation. Direct donation campaigns via social platforms. Co-branded events as revenue scales.</p><p><strong>Brand philosophy:</strong> Help women in need. That is the ongoing focus. Not hype. Not one-twelfth-of-the-year awareness theater. Real, sustained support.</p><p>This page will be updated quarterly with campaign tie-ins, impact reporting as revenue and contributions grow, and event partnerships and sponsorships.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -181,14 +212,17 @@
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Find your journal →",
+            "button_label": "Find your journal \u2192",
             "button_link": "/#sticking-points",
             "button_style": "primary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "button"],
+      "block_order": [
+        "heading",
+        "button"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",

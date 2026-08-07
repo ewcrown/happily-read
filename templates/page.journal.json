@@ -3,28 +3,23 @@
     "opening": {
       "type": "rich-text",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "You have a type.",
-            "heading_size": "h0"
-          }
-        },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>You already know what he looks like. Charming. Intense. The kind of man who makes your heart race from the first conversation. The kind who texts you at midnight but disappears by morning. The kind who makes you feel chosen — until he makes you feel invisible.</p><p>And every time it ends the same way. The ghosting. The slow fade. The excuses that stopped making sense three situationships ago.</p><p>Your friends tell you to trust your gut. But your gut has been wrong every time. Because this is not a gut problem. It is a pattern. And patterns do not break themselves.</p>"
+            "text": "<p>You already know what he looks like. Charming. Intense. The kind of man who makes your heart race from the first conversation. The kind who texts you at midnight but disappears by morning. The kind who makes you feel chosen \u2014 until he makes you feel invisible.</p><p>And every time it ends the same way. The ghosting. The slow fade. The excuses that stopped making sense three situationships ago.</p><p>Your friends tell you to trust your gut. But your gut has been wrong every time. Because this is not a gut problem. It is a pattern. And patterns do not break themselves.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 80,
-        "padding_bottom": 40,
-        "mobile_padding_top": 50,
-        "mobile_padding_bottom": 30
+        "padding_top": 50,
+        "padding_bottom": 30,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 20
       }
     },
     "whats_happening": {
@@ -40,13 +35,16 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Attachment theory — one of the most researched frameworks in psychology — explains why you keep choosing the same kind of person. The bonds we formed with caregivers in early childhood create internal models of what love feels like. For people with insecure attachment styles, the feelings they associate with love — intensity, anxiety, obsession — are actually their attachment system in distress.</p><p>What you have been calling chemistry might be a trauma bond. It uses the same brain chemicals as genuine connection. That is why leaving feels impossible and going back feels like relief.</p><p>This is not a character flaw. It is a pattern encoded in your nervous system. And the science tells us exactly how to break it.</p><p>This is what the 30-Day POV Never Get Played Again Journal was built to do.</p>"
+            "text": "<p>Attachment theory \u2014 one of the most researched frameworks in psychology \u2014 explains why you keep choosing the same kind of person. The bonds we formed with caregivers in early childhood create internal models of what love feels like. For people with insecure attachment styles, the feelings they associate with love \u2014 intensity, anxiety, obsession \u2014 are actually their attachment system in distress.</p><p>What you have been calling chemistry might be a trauma bond. It uses the same brain chemicals as genuine connection. That is why leaving feels impossible and going back feels like relief.</p><p>This is not a character flaw. It is a pattern encoded in your nervous system. And the science tells us exactly how to break it.</p><p>This is what the 30-Day POV Never Get Played Again Journal was built to do.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -61,7 +59,7 @@
           "type": "column",
           "settings": {
             "title": "Attachment Theory",
-            "text": "<p>Developed by John Bowlby and extended by decades of peer-reviewed research — helps you identify your attachment style, understand how it formed, and recognize how it has been driving every romantic choice you have made. This is not about blaming your past. It is about understanding the invisible pattern so you can finally change it.</p>",
+            "text": "<p>Developed by John Bowlby and extended by decades of peer-reviewed research \u2014 helps you identify your attachment style, understand how it formed, and recognize how it has been driving every romantic choice you have made. This is not about blaming your past. It is about understanding the invisible pattern so you can finally change it.</p>",
             "link_label": "",
             "link": ""
           }
@@ -70,13 +68,16 @@
           "type": "column",
           "settings": {
             "title": "Boundary Psychology",
-            "text": "<p>Drawn from the work of Nedra Tawwab, Henry Cloud, and the broader field of relational psychology — gives you the tools to establish and hold limits that reflect your actual values. Red flag recognition systems. Non-negotiables. The ability to say no without guilt.</p>",
+            "text": "<p>Drawn from the work of Nedra Tawwab, Henry Cloud, and the broader field of relational psychology \u2014 gives you the tools to establish and hold limits that reflect your actual values. Red flag recognition systems. Non-negotiables. The ability to say no without guilt.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["fw_attachment", "fw_boundary"],
+      "block_order": [
+        "fw_attachment",
+        "fw_boundary"
+      ],
       "settings": {
         "title": "Built on attachment theory and boundary psychology. Not dating advice.",
         "heading_size": "h1",
@@ -110,11 +111,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>This is a structured 30-day system. One prompt per day, sequenced intentionally. Week 1 identifies the pattern and its roots. Week 2 maps your attachment style and explains why chaos felt like love. Week 3 builds a red flag recognition system. Week 4 creates your personal Love Manifesto — new relationship criteria built on what you actually deserve, not what your nervous system has been trained to accept.</p><p>10 to 20 minutes per day. No dating advice. No \"just trust yourself.\" A system that works at the root.</p>"
+            "text": "<p>This is a structured 30-day system. One prompt per day, sequenced intentionally. Week 1 identifies the pattern and its roots. Week 2 maps your attachment style and explains why chaos felt like love. Week 3 builds a red flag recognition system. Week 4 creates your personal Love Manifesto \u2014 new relationship criteria built on what you actually deserve, not what your nervous system has been trained to accept.</p><p>10 to 20 minutes per day. No dating advice. No \"just trust yourself.\" A system that works at the root.</p>"
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -125,30 +129,46 @@
       }
     },
     "accountability": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "This journal comes with a commitment.",
+            "heading": "<p>This journal comes with a commitment.</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>When you open your POV Never Get Played Again Journal, you will find a contract. You sign it. You name an accountability partner — someone who knows you are doing this work and will check in with you.</p><p>Because breaking a pattern is harder than recognizing one. And having someone witness your commitment makes it real.</p>"
+            "text": "<p>When you open your POV Never Get Played Again Journal, you will find a contract. You sign it. You name an accountability partner \u2014 someone who knows you are doing this work and will check in with you.</p><p>Because breaking a pattern is harder than recognizing one. And having someone witness your commitment makes it real.</p>",
+            "nav_check_list": false
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30
+        "asset_image": "hr-accountability.jpg",
+        "asset_image_alt": "Women supporting each other through accountability",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "social_proof": {
@@ -165,9 +185,11 @@
           }
         }
       },
-      "block_order": ["story"],
+      "block_order": [
+        "story"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "title": "Real stories",
         "heading_size": "h1",
         "subtitle": "",
@@ -206,10 +228,14 @@
           "settings": {}
         }
       },
-      "block_order": ["title", "price", "buy_buttons"],
+      "block_order": [
+        "title",
+        "price",
+        "buy_buttons"
+      ],
       "settings": {
         "color_scheme": "background-1",
-        "product": "",
+        "product": "pov-you-never-get-played-again-a-30-day-healing-journal-for-women-tired-of-toxic-dating",
         "gallery_layout": "stacked",
         "media_size": "medium",
         "enable_sticky_info": true,
@@ -225,14 +251,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The 30-Day POV Never Get Played Again Journal — $24.95",
+            "heading": "The 30-Day POV Never Get Played Again Journal \u2014 $24.97",
             "heading_size": "h2"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"#\">Also available on Amazon →</a></p><p>Pair it with Reclaiming Her — the shadow work journal that addresses what is driving the pattern from the inside.<br>Bundle: POV Never Get Played Again + Reclaiming Her — $45</p>"
+            "text": "<p><a href=\"/products/pov-you-never-get-played-again-a-30-day-healing-journal-for-women-tired-of-toxic-dating\">View full product details \u2192</a></p><p><a href=\"#\">Also available on Amazon \u2192</a></p><p>Pair it with Reclaiming Her \u2014 the shadow work journal that addresses what is driving the pattern from the inside.<br>Bundle: POV Never Get Played Again + Reclaiming Her \u2014 $45</p>"
           }
         },
         "button": {
@@ -245,7 +271,11 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -261,11 +291,13 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more →</a></p>"
+            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more \u2192</a></p>"
           }
         }
       },
-      "block_order": ["text"],
+      "block_order": [
+        "text"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -296,7 +328,11 @@
           "settings": {}
         }
       },
-      "block_order": ["heading", "paragraph", "email_form"],
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "height": "small",
@@ -314,9 +350,40 @@
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 60
       }
+    },
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You have a type.",
+            "heading_size": "h0"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "asset_image": "hr-journal-pov.jpg",
+        "asset_image_alt": "Woman walking with calm confidence \u2014 Never Get Played Again",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "inverse",
+        "show_filter_box": true,
+        "corner_radius": 0,
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
+    "hero",
     "opening",
     "whats_happening",
     "framework",

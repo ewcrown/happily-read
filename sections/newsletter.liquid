@@ -36,6 +36,88 @@
     left: 0;
     top: 0;
   }
+
+  {%- if section.settings.show_first_name -%}
+    #shopify-section-{{ section.id }} .newsletter__signup {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(51, 79, 180, 0.12), transparent 70%),
+        linear-gradient(180deg, #f4f6fb 0%, #ffffff 100%);
+    }
+    #shopify-section-{{ section.id }} .newsletter__height--small,
+    #shopify-section-{{ section.id }} .newsletter__height--medium,
+    #shopify-section-{{ section.id }} .newsletter__height--large {
+      min-height: 0;
+    }
+    #shopify-section-{{ section.id }} .newsletter__signup--wrapper {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      gap: 1.5rem;
+    }
+    #shopify-section-{{ section.id }} .newsltter__signup--title {
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    #shopify-section-{{ section.id }} .newsletter__subheading {
+      max-width: 26rem;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.78;
+    }
+    #shopify-section-{{ section.id }} .newsletter__form_wrapper--stacked {
+      max-width: 26rem;
+      margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__field-wrapper--stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__field-wrapper--stacked .input__field_form {
+      position: relative;
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__field-wrapper--stacked .input__field {
+      width: 100%;
+      height: 3.25rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(51, 79, 180, 0.18);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 1px 2px rgba(51, 79, 180, 0.04);
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__field-wrapper--stacked .input__field:focus {
+      border-color: #334fb4;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(51, 79, 180, 0.18);
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__submit {
+      width: 100%;
+      margin-top: 0.25rem;
+      border-radius: 10px;
+      min-height: 3.25rem;
+      background: #334fb4;
+      border-color: #334fb4;
+      color: #ffffff;
+    }
+    #shopify-section-{{ section.id }} .newsletter-form__submit:hover {
+      background: #2a4196;
+      border-color: #2a4196;
+      color: #ffffff;
+    }
+    #shopify-section-{{ section.id }} .newsletter__privacy-text {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.45;
+      opacity: 0.7;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .newsletter__privacy-text p {
+      margin: 0;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <div class="newsletter__signup section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
@@ -106,16 +188,16 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'email_form' -%}
-                <div class="newsletter__form_wrapper" {{ block.shopify_attributes }}>
+                <div class="newsletter__form_wrapper{% if section.settings.show_first_name %} newsletter__form_wrapper--stacked{% endif %}" {{ block.shopify_attributes }}>
                   {% form 'customer', class: 'newsletter-form' %}
                     <input
                       type="hidden"
                       name="contact[tags]"
                       value="{{ section.settings.form_tags | default: 'newsletter' | escape }}"
                     >
-                    <div class="newsletter-form__field-wrapper">
+                    <div class="newsletter-form__field-wrapper{% if section.settings.show_first_name %} newsletter-form__field-wrapper--stacked{% endif %}">
                       {%- if section.settings.show_first_name -%}
-                        <div class="input__field_form newsletter-form__name-field mb-2">
+                        <div class="input__field_form newsletter-form__name-field">
                           <label class="field__label visually-hidden" for="NewsletterFirstName--{{ section.id }}">
                             First Name
                           </label>
@@ -133,34 +215,34 @@
                             {% endif %}
                           >
                         </div>
-                      {%- endif -%}
-                      <div class="input__field_form">
-                        <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
-                          {{ 'newsletter.label' | t }}
-                        </label>
-                        <input
-                          id="NewsletterForm--{{ section.id }}"
-                          type="email"
-                          name="contact[email]"
-                          class="input__field"
-                          value="{{ form.email }}"
-                          aria-required="true"
-                          autocorrect="off"
-                          autocapitalize="off"
-                          autocomplete="email"
-                          {% if form.errors %}
-                            autofocus
-                            aria-invalid="true"
-                            aria-describedby="Newsletter-error--{{ section.id }}"
-                          {% elsif form.posted_successfully? %}
-                            aria-describedby="Newsletter-success--{{ section.id }}"
-                          {% endif %}
-                          placeholder="{{ 'newsletter.label' | t }}"
-                          required
-                        >
+                        <div class="input__field_form newsletter-form__email-field">
+                          <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+                            {{ 'newsletter.label' | t }}
+                          </label>
+                          <input
+                            id="NewsletterForm--{{ section.id }}"
+                            type="email"
+                            name="contact[email]"
+                            class="input__field"
+                            value="{{ form.email }}"
+                            aria-required="true"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            autocomplete="email"
+                            {% if form.errors %}
+                              autofocus
+                              aria-invalid="true"
+                              aria-describedby="Newsletter-error--{{ section.id }}"
+                            {% elsif form.posted_successfully? %}
+                              aria-describedby="Newsletter-success--{{ section.id }}"
+                            {% endif %}
+                            placeholder="Email Address"
+                            required
+                          >
+                        </div>
                         <button
                           type="submit"
-                          class="input__field_form_button button button--primary"
+                          class="newsletter-form__submit button button--primary button--large"
                           name="commit"
                           id="Subscribe--{{ section.id }}"
                           aria-label="{% if section.settings.submit_label != blank %}{{ section.settings.submit_label | escape }}{% else %}{{ 'newsletter.button_label' | t }}{% endif %}"
@@ -171,7 +253,46 @@
                             {{ 'newsletter.button_label' | t }}
                           {%- endif -%}
                         </button>
-                      </div>
+                      {%- else -%}
+                        <div class="input__field_form">
+                          <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+                            {{ 'newsletter.label' | t }}
+                          </label>
+                          <input
+                            id="NewsletterForm--{{ section.id }}"
+                            type="email"
+                            name="contact[email]"
+                            class="input__field"
+                            value="{{ form.email }}"
+                            aria-required="true"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            autocomplete="email"
+                            {% if form.errors %}
+                              autofocus
+                              aria-invalid="true"
+                              aria-describedby="Newsletter-error--{{ section.id }}"
+                            {% elsif form.posted_successfully? %}
+                              aria-describedby="Newsletter-success--{{ section.id }}"
+                            {% endif %}
+                            placeholder="{{ 'newsletter.label' | t }}"
+                            required
+                          >
+                          <button
+                            type="submit"
+                            class="input__field_form_button button button--primary"
+                            name="commit"
+                            id="Subscribe--{{ section.id }}"
+                            aria-label="{% if section.settings.submit_label != blank %}{{ section.settings.submit_label | escape }}{% else %}{{ 'newsletter.button_label' | t }}{% endif %}"
+                          >
+                            {%- if section.settings.submit_label != blank -%}
+                              {{ section.settings.submit_label | escape }}
+                            {%- else -%}
+                              {{ 'newsletter.button_label' | t }}
+                            {%- endif -%}
+                          </button>
+                        </div>
+                      {%- endif -%}
 
                       {%- if form.errors -%}
                         <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
@@ -182,7 +303,7 @@
                       {%- endif -%}
                     </div>
                     {%- if section.settings.privacy_text != blank -%}
-                      <div class="newsletter__privacy-text rte mt-2">{{ section.settings.privacy_text }}</div>
+                      <div class="newsletter__privacy-text rte">{{ section.settings.privacy_text }}</div>
                     {%- endif -%}
                     {%- if form.posted_successfully? -%}
                       <h3

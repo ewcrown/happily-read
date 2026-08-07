@@ -1,79 +1,82 @@
 {
   "sections": {
-    "intro": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Find your journal.",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Each one is a structured transformation system built on peer-reviewed psychological research. Not a gratitude journal. A process.</p>"
-          }
-        }
-      },
-      "block_order": ["heading", "text"],
-      "settings": {
-        "color_scheme": "background-1",
-        "container_type": "container",
-        "padding_top": 80,
-        "padding_bottom": 40,
-        "mobile_padding_top": 50,
-        "mobile_padding_bottom": 30
-      }
-    },
     "listing_pov": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The 30-Day POV Never Get Played Again Journal — $24.95",
+            "heading": "<p>The 30-Day POV Never Get Played Again Journal \u2014 $24.97</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>For women ready to break the cycle of choosing the wrong person and mistaking chaos for chemistry.</p><p><strong>Built on:</strong> Attachment Theory + Boundary Psychology</p>"
+            "text": "<p>For women ready to break the cycle of choosing the wrong person and mistaking chaos for chemistry.</p><p><strong>Built on:</strong> Attachment Theory + Boundary Psychology</p>",
+            "nav_check_list": false
           }
         },
         "button": {
           "type": "button",
           "settings": {
             "button_label": "Buy Now",
-            "button_link": "/pages/never-get-played-again",
+            "button_link": "/products/pov-you-never-get-played-again-a-30-day-healing-journal-for-women-tired-of-toxic-dating",
             "button_style": "primary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 30,
-        "padding_bottom": 20,
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 10
+        "asset_image": "hr-icon-pattern.png",
+        "asset_image_alt": "Journal visual",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "product_pov": {
       "type": "featured-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {}
+        }
       },
-      "block_order": ["title", "price", "buy_buttons"],
+      "block_order": [
+        "title",
+        "price",
+        "buy_buttons"
+      ],
       "settings": {
         "color_scheme": "background-1",
-        "product": "",
+        "product": "pov-you-never-get-played-again-a-30-day-healing-journal-for-women-tired-of-toxic-dating",
         "gallery_layout": "stacked",
         "media_size": "small",
         "enable_sticky_info": false,
@@ -84,52 +87,82 @@
       }
     },
     "listing_tgf": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The 30-Day That Girl Frequency Journal — $24.95",
+            "heading": "<p>The 30-Day That Girl Frequency Journal \u2014 $24.97</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>For women ready to stop shrinking and rewrite the neural default that's been keeping them small.</p><p><strong>Built on:</strong> Neuroplasticity + Positive Psychology</p>"
+            "text": "<p>For women ready to stop shrinking and rewrite the neural default that's been keeping them small.</p><p><strong>Built on:</strong> Neuroplasticity + Positive Psychology</p>",
+            "nav_check_list": false
           }
         },
         "button": {
           "type": "button",
           "settings": {
             "button_label": "Buy Now",
-            "button_link": "/pages/that-girl-frequency",
+            "button_link": "/products/that-girl-frequency-the-aura-transformation-journal-30-day-frequency-shift-from-invisible",
             "button_style": "primary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 30,
-        "padding_bottom": 20,
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 10
+        "asset_image": "hr-icon-growth.png",
+        "asset_image_alt": "Journal visual",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "product_tgf": {
       "type": "featured-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {}
+        }
       },
-      "block_order": ["title", "price", "buy_buttons"],
+      "block_order": [
+        "title",
+        "price",
+        "buy_buttons"
+      ],
       "settings": {
         "color_scheme": "background-1",
-        "product": "",
+        "product": "that-girl-frequency-the-aura-transformation-journal-30-day-frequency-shift-from-invisible",
         "gallery_layout": "stacked",
         "media_size": "small",
         "enable_sticky_info": false,
@@ -140,52 +173,82 @@
       }
     },
     "listing_reclaiming": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The 45-Day Reclaiming Her Journal — $29.95",
+            "heading": "<p>The 45-Day Reclaiming Her Journal \u2014 $29.97</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>For women who are ready to excavate, examine, and integrate the parts of themselves they have been hiding.</p><p><strong>Built on:</strong> Jungian Shadow Work + Neuroplasticity</p><p><a href=\"#\">Also on Amazon →</a></p>"
+            "text": "<p>For women who are ready to excavate, examine, and integrate the parts of themselves they have been hiding.</p><p><strong>Built on:</strong> Jungian Shadow Work + Neuroplasticity</p><p><a href=\"#\">Also on Amazon \u2192</a></p>",
+            "nav_check_list": false
           }
         },
         "button": {
           "type": "button",
           "settings": {
             "button_label": "Buy Now",
-            "button_link": "/pages/reclaiming-her",
+            "button_link": "/products/reclaiming-her-45-day-journey-to-unleash-your-forbidden-magic-unabridged-journal-for-women",
             "button_style": "primary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "color_scheme": "background-1",
         "container_type": "container",
-        "padding_top": 30,
-        "padding_bottom": 20,
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 10
+        "asset_image": "hr-icon-reclaim.png",
+        "asset_image_alt": "Journal visual",
+        "image_card_corner_radius": 12,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 12,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 35,
+        "mobile_padding_bottom": 35
       }
     },
     "product_reclaiming": {
       "type": "featured-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {}
+        }
       },
-      "block_order": ["title", "price", "buy_buttons"],
+      "block_order": [
+        "title",
+        "price",
+        "buy_buttons"
+      ],
       "settings": {
         "color_scheme": "background-1",
-        "product": "",
+        "product": "reclaiming-her-45-day-journey-to-unleash-your-forbidden-magic-unabridged-journal-for-women",
         "gallery_layout": "stacked",
         "media_size": "small",
         "enable_sticky_info": false,
@@ -206,9 +269,11 @@
           }
         }
       },
-      "block_order": ["heading"],
+      "block_order": [
+        "heading"
+      ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "padding_top": 40,
         "padding_bottom": 20,
@@ -222,7 +287,7 @@
         "bundle_1": {
           "type": "column",
           "settings": {
-            "title": "POV Never Get Played Again + Reclaiming Her — $45",
+            "title": "POV Never Get Played Again + Reclaiming Her \u2014 $45",
             "text": "<p>The journals that break the pattern and heal what is driving it.</p>",
             "link_label": "Get the Bundle",
             "link": "",
@@ -233,7 +298,7 @@
         "bundle_2": {
           "type": "column",
           "settings": {
-            "title": "That Girl Frequency + Reclaiming Her — $45",
+            "title": "That Girl Frequency + Reclaiming Her \u2014 $45",
             "text": "<p>The journals that clear what is blocking you and build who you are becoming.</p>",
             "link_label": "Get the Bundle",
             "link": "",
@@ -244,7 +309,7 @@
         "bundle_3": {
           "type": "column",
           "settings": {
-            "title": "All Three Journals — $60",
+            "title": "All Three Journals \u2014 $60",
             "text": "<p>The complete Phase 1 transformation library.</p>",
             "link_label": "Get the Bundle",
             "link": "",
@@ -253,12 +318,16 @@
           }
         }
       },
-      "block_order": ["bundle_1", "bundle_2", "bundle_3"],
+      "block_order": [
+        "bundle_1",
+        "bundle_2",
+        "bundle_3"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
         "heading_align": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "container_type": "container",
         "image_width": "full",
         "image_ratio": "adapt",
@@ -293,14 +362,18 @@
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Find My Journal →",
+            "button_label": "Find My Journal \u2192",
             "button_link": "/#sticking-points",
             "button_style": "primary",
             "button_size": "medium"
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "color_scheme": "background-1",
         "container_type": "container",
@@ -309,10 +382,48 @@
         "mobile_padding_top": 30,
         "mobile_padding_bottom": 60
       }
+    },
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Find your journal.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each one is a structured transformation system built on peer-reviewed psychological research. Not a gratitude journal. A process.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "asset_image": "hr-shop-hero.jpg",
+        "asset_image_alt": "Premium Happily Read journals arranged for women ready to transform",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "inverse",
+        "show_filter_box": true,
+        "corner_radius": 0,
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
-    "intro",
+    "hero",
     "listing_pov",
     "product_pov",
     "listing_tgf",
