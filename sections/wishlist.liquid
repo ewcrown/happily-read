@@ -1,0 +1,246 @@
+{% comment %}
+  Shopify Wishlist
+  Usage:
+    - Create a new page in the Shopify admin
+      - Admin > Online store > Pages > Add page
+    - Set the new page's template to: 'page.wishlist' (this template)
+    - Do NOT remove the `grid-wishlist` attribute
+
+  Notes:
+  - The grid will be populated with product cards using Javascript
+  - Any content inside of the `[grid-wishlist]` element will be completely replaced by the product cards
+
+  Tip:
+  - Place a loading element inside the `[grid-wishlist]` element and it will automatically be removed once the product cards have loaded
+  - Add any liquid code before/after the grid element
+{% endcomment %}
+
+{{ 'product-card-item.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .wishlist-default-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  @media screen and (min-width: 750px) {
+    .wishlist-default-padding {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+{%- endstyle -%}
+<section
+  class="wishlist customer-page theme-default-margin wishlist-default-padding color-{{ section.settings.color_scheme }} gradient"
+  id="wishlist"
+>
+  <div class="container">
+    <div class="wishlist-page">
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1" grid-wishlist></div>
+      <div class="row wishlist-grid--empty-list">
+        <div class="col-12">
+          <div class="empty-list--info">
+            <h1 class="empty-list--text black">Empty Wishlist</h1>
+            <p class="lezada-button-link"><a href="{{ routes.all_products_collection_url }}">Continue Browsing</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .wishlist_exists .row.wishlist-grid--empty-list {
+    display: none;
+  }
+</style>
+
+{% schema %}
+ {
+   "name": "Wishlist Listing",
+   "settings": [
+     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+       "type": "header",
+       "content": "Product card"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__4.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "default": true,
+      "label": "Show title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "default": true,
+      "label": "Show price"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_rating",
+      "default": false,
+      "label": "Show product rating"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "default": true,
+      "label": "Show badges"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom_center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "top-left",
+      "label": "Badge position on desktop"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_cart_button",
+      "default": true,
+      "label": "Enable quick shop button"
+    },
+    {
+      "type": "select",
+      "id": "cart_button_positon",
+      "label": "Quick shop position on desktop",
+      "default": "bottom_right",
+      "options": [
+        {
+          "value": "top_center",
+          "label": "Top center"
+        },
+        {
+          "value": "top_left",
+          "label": "Top left"
+        },
+        {
+          "value": "top_right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom_center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "default": true,
+      "label": "Show countdown",
+      "info": "Follow the instructions on how to add a countdown timer to a product. [click here](https://themeadora.com/doc/product-countdown/)"
+    },
+    {
+      "type": "select",
+      "id": "timer_color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.header.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.header.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.header.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.header.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.header.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "accent-2",
+      "label": "Color scheme for countdown"
+    },
+     {
+      "type": "checkbox",
+      "id": "place_timer_on_image",
+      "default": false,
+      "label": "Position the countdown on the image for desktop"
+    }
+  ]
+}
+{% endschema %}

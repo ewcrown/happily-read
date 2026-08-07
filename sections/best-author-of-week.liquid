@@ -1,0 +1,544 @@
+
+{{ 'product-card-item.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'countdown-timer.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-collection.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+{{ 'section-best-author-of-week.css' | asset_url | stylesheet_tag }}
+{{ 'section-slider-button-controls.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .best-author-card--{{ section.id }} {
+    --author-card-radius: {{ section.settings.author_image_corner_radius }}px;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign products_to_show = section.settings.products_to_show | plus: 0
+  assign productShowSm = section.settings.products_mobile
+  assign slider_enable = section.settings.enable_slider
+  assign slideAutoplay = section.settings.auto_rotate
+  assign autoplay_time = section.settings.autoplay_time
+  assign showNavigation = section.settings.show_navigation
+  assign showPagination = section.settings.show_pagination
+-%}
+
+<div
+  class="best-author-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+  data-section-type="product-slider"
+  data-slider-enable="{{ slider_enable }}"
+  {% if slider_enable %}
+    data-show-mobile="{{ productShowSm }}"
+    data-show-extra-large="2"
+    data-autoplay="{{ slideAutoplay }}"
+    data-autoplay-time="{{ autoplay_time }}000"
+  {% endif %}
+>
+  <div class="container">
+    <div class="best-author-card best-author-card--{{ section.id }}">
+      <div class="row align-items-center">
+        <!-- Author Image Left Side -->
+        <div class="col-lg-3 col-md-4 col-12 mb-30 mb-md-0">
+          <div class="author-image-card">
+            {%- if section.settings.author_image != blank -%}
+              <div class="author-image-card__wrapper media media--{{ section.settings.image_ratio }}">
+                <img
+                  src="{{ section.settings.author_image | image_url: width: 600 }}"
+                  alt="{{ section.settings.author_image.alt | escape | default: section.settings.author_name }}"
+                  loading="lazy"
+                  width="{{ section.settings.author_image.width }}"
+                  height="{{ section.settings.author_image.height }}"
+                  class="author-image-card__image"
+                >
+              </div>
+            {%- else -%}
+              <div class="author-image-card__placeholder media media--{{ section.settings.image_ratio }}">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="author-placeholder-svg">
+                  <circle cx="60" cy="60" r="58" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+                  <circle cx="60" cy="45" r="20" fill="currentColor" opacity="0.15"/>
+                  <path d="M60 70c-22 0-40 12-40 27v8h80v-8c0-15-18-27-40-27z" fill="currentColor" opacity="0.15"/>
+                  <circle cx="60" cy="45" r="18" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                  <path d="M60 68c-20 0-36 10-36 23v6h72v-6c0-13-16-23-36-23z" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                </svg>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Author Info Center -->
+        <div class="col-lg-4 col-md-4 col-12 mb-30 mb-md-0">
+          <div class="author-info-content">
+            {%- if section.settings.badge_text != blank -%}
+              <span class="author-info-content__badge">{{ section.settings.badge_text }}</span>
+            {%- endif -%}
+
+            {%- if section.settings.author_name != blank -%}
+              <h2 class="author-info-content__name {{ section.settings.heading_size }}">
+                {%- if section.settings.author_link != blank -%}
+                  <a href="{{ section.settings.author_link }}">{{ section.settings.author_name }}</a>
+                {%- else -%}
+                  {{ section.settings.author_name }}
+                {%- endif -%}
+              </h2>
+            {%- endif -%}
+
+            {%- if section.settings.author_title != blank -%}
+              <span class="author-info-content__title">{{ section.settings.author_title }}</span>
+            {%- endif -%}
+
+            {%- if section.settings.author_description != blank -%}
+              <p class="author-info-content__description">{{ section.settings.author_description }}</p>
+            {%- endif -%}
+
+            {%- if section.settings.button_label != blank -%}
+              <a
+                href="{{ section.settings.author_link | default: collection.url | default: '#' }}"
+                class="author-info-content__button button button--{{ section.settings.button_style }}"
+              >
+                {{ section.settings.button_label }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Products Right Side -->
+        <div class="col-lg-5 col-md-4 col-12">
+          <div class="author-products-section">
+            <!-- Header with title and navigation -->
+            <div class="author-products-header">
+              {%- if section.settings.products_heading != blank -%}
+                <h3 class="author-products-section__heading h2">{{ section.settings.products_heading }}</h3>
+              {%- endif -%}
+              {%- if slider_enable and showNavigation or slider_enable and showPagination -%}
+                <div class="slider--controls--button author-slider-controls">
+                  {%- if showNavigation -%}
+                    <div class="swiper-button-prev"></div>
+                  {%- endif -%}
+                  {%- if showPagination -%}
+                    <div class="swiper-pagination"></div>
+                  {%- endif -%}
+                  {%- if showNavigation -%}
+                    <div class="swiper-button-next"></div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- if slider_enable -%}
+              <!-- Slider Layout -->
+              <div class="productSlider swiper">
+                <div class="swiper-wrapper">
+                  {%- if collection != blank and collection.products.size > 0 -%}
+                    {%- for product in collection.products limit: products_to_show -%}
+                      <div class="swiper-slide">
+                        {% render 'product-card-item',
+                          product_card_product: product,
+                          media_size: section.settings.product_image_ratio,
+                          product_cart_style: section.settings.product_card_style,
+                          show_outline: section.settings.show_outline,
+                          show_secondary_image: section.settings.show_secondary_image,
+                          show_vendor: false,
+                          show_badge: section.settings.show_product_badge,
+                          show_cart_button: section.settings.show_cart_button,
+                          show_title: true,
+                          show_price: true,
+                          show_rating: false
+                        %}
+                      </div>
+                    {%- endfor -%}
+                  {%- else -%}
+                    {%- for i in (1..products_to_show) -%}
+                      <div class="swiper-slide">
+                        {%- render 'product-card-placeholder', product_item: 'product-1' -%}
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- else -%}
+              <!-- Grid Layout -->
+              <div class="row row-cols-2 author-products-grid author-products-grid--mobile-{{ productShowSm }}">
+                {%- if collection != blank and collection.products.size > 0 -%}
+                  {%- for product in collection.products limit: products_to_show -%}
+                    <div class="col mb-20">
+                      {% render 'product-card-item',
+                        product_card_product: product,
+                        media_size: section.settings.product_image_ratio,
+                        product_cart_style: section.settings.product_card_style,
+                        show_outline: section.settings.show_outline,
+                        show_secondary_image: section.settings.show_secondary_image,
+                        show_vendor: false,
+                        show_badge: section.settings.show_product_badge,
+                        show_cart_button: section.settings.show_cart_button,
+                        show_title: true,
+                        show_price: true,
+                        show_rating: false
+                      %}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..products_to_show) -%}
+                    <div class="col mb-20">
+                      {%- render 'product-card-placeholder', product_item: 'product-1' -%}
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Best Author of Week",
+  "tag": "section",
+  "class": "spaced-section best-author-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Author image"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Author image"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "portrait",
+      "label": "Author image ratio"
+    },
+    {
+      "type": "range",
+      "id": "author_image_corner_radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Author image corner radius",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "default": "Author of the Week",
+      "label": "Author badge text"
+    },
+    {
+      "type": "header",
+      "content": "Author information"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "default": "John Doe",
+      "label": "Author name"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h2",
+          "label": "Small"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "author_title",
+      "default": "Bestselling Fiction Author",
+      "label": "Author title/genre"
+    },
+    {
+      "type": "textarea",
+      "id": "author_description",
+      "default": "John Doe is an acclaimed author known for his captivating storytelling and vivid characters. With over 20 bestselling novels worldwide.",
+      "label": "Author description"
+    },
+    {
+      "type": "url",
+      "id": "author_link",
+      "label": "Author link"
+    },
+    {
+      "type": "header",
+      "content": "Author button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "View Author Profile",
+      "label": "Button label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "outline-dark",
+          "label": "Outline"
+        }
+      ],
+      "default": "primary",
+      "label": "Button style"
+    },
+    {
+      "type": "header",
+      "content": "Products (Books)"
+    },
+    {
+      "type": "text",
+      "id": "products_heading",
+      "default": "Popular Books",
+      "label": "Products heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "select",
+      "id": "product_image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "square",
+      "label": "Product image ratio"
+    },
+    {
+      "type": "select",
+      "id": "product_card_style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "card",
+          "label": "Card"
+        }
+      ],
+      "default": "standard",
+      "label": "Product card style"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_outline",
+      "default": false,
+      "label": "Show card outline"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "Show secondary image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_badge",
+      "default": true,
+      "label": "Show product badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_button",
+      "default": false,
+      "label": "Show cart button"
+    },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable slider for books",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_time",
+      "min": 2,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "select",
+      "id": "products_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2",
+      "label": "Products per row (mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Author of Week"
+    }
+  ]
+}
+{% endschema %}

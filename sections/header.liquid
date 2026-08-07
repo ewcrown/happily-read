@@ -1,0 +1,1221 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+<link
+  rel="stylesheet"
+  href="{{ 'component-cart-notification.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link
+    rel="stylesheet"
+    href="{{ 'component-loading-overlay.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+  >
+{%- endif -%}
+
+{%- liquid
+  assign sticky = ''
+  if section.settings.header_sticky
+    assign sticky = 'header__sticky'
+  endif
+
+  if section.settings.transparent_header and request.page_type == 'index'
+    assign transparent = 'transparent--header'
+    assign color_enable = section.settings.transparent_header
+  endif
+
+  if section.settings.logo_2 != blank
+    assign sm_none = 'd-sm-none'
+    assign sm_visible = 'd-sm-only-visible'
+  else
+    assign sm_visible = 'd-none'
+  endif
+
+  unless request.page_type == 'index'
+    if section.settings.logo_2 != blank
+      assign sm_none_other = 'd-sm-none'
+      assign sm_visible_other = 'd-sm-only-visible'
+    else
+      assign sm_visible_other = 'd-none'
+    endif
+  endunless
+
+  assign cart_icon = section.settings.show_cart
+-%}
+
+<noscript>{{ 'header.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+{{ 'header-drawer.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.quick_drawer_button -%}
+  {{ 'quick-drawer-button.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<script src="{{ 'menu-product-slider.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .header__sticky.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgb(var(--color-background));
+    left: 0;
+    z-index: 98;
+    padding: 10px 0;
+    box-shadow: 0 0 7px rgb(0 0 0 / 15%);
+    transition: .5s;
+  }
+  /* Header Inner */
+  .header__inner {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Header Logo */
+  .header__menu {
+    display: flex;
+  }
+  .header__menu_ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .header__menu_li {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .header__menu_li + .header__menu_li {
+      /* margin-left: 2rem; */
+      margin-inline-start: 2rem;
+  }
+  @media only screen and (min-width: 1200px){
+    .header__menu_li + .header__menu_li {
+      /* margin-left: 2.5rem; */
+      margin-inline-start: 2.5rem;
+    }
+  }
+
+  .header__menu_li:hover .header__menu_item {
+    color: rgba(var(--color-foreground), 0.75) !important;
+  }
+  .header__menu_li:hover .header__menu_item::before {
+    right: auto;
+    left: 0;
+    width: 100%;
+  }
+
+  .header__menu_li_child_mega_menu {
+    position: static;
+  }
+  .header__menu_li_child_mega_menu_collection {
+    position: static;
+  }
+  .header__menu_li_child_mega_menu_custom {
+    position: static;
+  }
+  .header__menu_item {
+    line-height: 1;
+    position: relative;
+    display: block;
+    padding: 25px 0;
+    color: rgba(var(--color-foreground));
+    font-size: 1.6rem;
+    word-break: break-word;
+    font-weight: 500;
+  }
+
+  /* Header Actions Buttons */
+  .header__actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .header__actions_btn {
+    position: relative;
+    display: flex;
+    padding: 8px;
+    color: rgba(var(--color-foreground));
+    background: none;
+    border: none;
+  }
+  .header__actions_btn:hover {
+    color: rgba(var(--color-foreground),0.7);
+  }
+  .header__actions:last-child.header__actions_btn {
+    padding-inline-end: 0;
+  }
+  .header__actions_btn svg {
+    width: auto;
+    height: 2.3rem;
+  }
+  .header__actions_btn--cart {
+    padding-right: 10px;
+  }
+  .header__actions_btn_cart_num {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    position: absolute;
+    top: -2px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: rgb(var(--color-button-text));
+    border-radius: 50%;
+    background-color: rgba(var(--color-button), 1);
+    letter-spacing: 0;
+  }
+  /* Off Canvas Mini Cart */
+  #offcanvas__mini_cart {
+    position: fixed;
+    width: 380px;
+    background: #fff;
+    height: 100%;
+    right: 0;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgb(var(--color-background));
+    background: var(--gradient-background);
+    border-color: rgba(var(--color-foreground), 0.2);
+    transform: translateX(100%);
+    transition: all 0.3s ease 0s;
+  }
+  @media only screen and (max-width: 400px){
+     #offcanvas__mini_cart {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 992px){
+    #offcanvas__mini_cart {
+      width: 420px;
+    }
+  }
+  .cart-notification-wrapper {
+    position: relative;
+    z-index: 9;
+  }
+  .cart-notification__header {
+    align-items: flex-start;
+    display: flex;
+  }
+  .cart-notification__heading {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .cart-notification__heading .icon-checkmark {
+    color: rgb(var(--color-foreground));
+    margin-right: 1rem;
+    width: 1.3rem;
+  }
+  .cart-notification__links > * {
+    margin-top: 1rem;
+  }
+
+  /* Offcanvas Search bar css  */
+  .header__actions_btn:is(.d-md-only-block) {
+    display: none;
+  }
+  predictive-search.header-search--box.search-modal__form {
+    margin-inline-end: 10px;
+  }
+  .header-search--box .input__field {
+    height: 40px;
+  }
+  @media only screen and (min-width: 1200px){
+    .header-search--box .input__field {
+      width: 360px;
+    }
+  }
+  .header-search--box .search__button .icon {
+    height: 20px;
+    width: 22px;
+    background: transparent;
+  }
+  #predictive__search_overlay {
+    position: fixed;
+    width: 100%;
+    height: 200px;
+    background: rgba(var(--color-background));
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 998;
+    transition: all 0.3s ease 0s;
+    transform: translateY(-100%);
+    display: flex;
+    justify-content: center;
+  }
+
+  div#predictive__search_overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .search__content_inner {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 600px;
+    padding: 0 20px;
+  }
+  button#search__close_btn {
+    margin-inline-start: 30px;
+  }
+  predictive-search.search-modal__form {
+    position: relative;
+  }
+  search-modal:is(.active) .offcanvas-overlay {
+    opacity: 0.4;
+    visibility: visible;
+  }
+
+  #predictive__search_overlay {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    height: 350px;
+    right: 0;
+    z-index: 99;
+    top: 0;
+    left: auto;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgb(var(--color-background));
+    border-color: rgba(var(--color-foreground), 0.2);
+    transform: translateY(-100%);
+    transition: all 0.3s ease 0s;
+  }
+  search-modal.active #predictive__search_overlay {
+    transform: translate(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  #predictive__search_overlay.active + .offcanvas-overlay, #quick__information_overlay.active + .offcanvas-overlay {
+    visibility: visible;
+    opacity: 0.5;
+  }
+  /* Header Mobile css  */
+  .mobile__menu_bar .icon-hamburger {
+    width: 22px;
+    height: 22px;
+    color: rgba(var(--color-foreground));
+  }
+
+  a.header__logo_link {
+    word-break: break-word;
+    max-width: 300px;
+    padding: 0px 0;
+    display: flex;
+  }
+  @media only screen and (max-width: 991px){
+    a.header__logo_link {
+      text-align: center;
+    }
+    .header__actions a:first-child {
+      padding-left: 0;
+    }
+  }
+  @media only screen and (max-width: 600px){
+    a.header__logo_link {
+      max-width: 230px;
+    }
+  }
+  @media only screen and (max-width: 400px){
+    a.header__logo_link {
+      max-width: 160px;
+    }
+  }
+
+  @media only screen and (min-width: 992px){
+    .quick--drawer-button-color{
+       --color-foreground: {{ section.settings.color_foreground.red }}, {{ section.settings.color_foreground.green }}, {{ section.settings.color_foreground.blue }};
+       --color-background: {{ section.settings.color_background.red }}, {{ section.settings.color_background.green }}, {{ section.settings.color_background.blue }};
+     }
+  }
+  .transparent_header_color:not(.sticky){
+  --color-foreground: {{ section.settings.transparent_color_foreground.red }}, {{ section.settings.transparent_color_foreground.green }}, {{ section.settings.transparent_color_foreground.blue }};
+  }
+  {%- if section.settings.logo_position == "top_center" -%}
+  @media only screen and (min-width: 991px){
+    .header__logo {
+      margin-left: 2.7rem;
+    }
+  }
+  {%- endif -%}
+
+  .header_bottom{
+    position: relative;
+  }
+  .transparent_header_color {
+    --color-background: 18,18,18;
+    --gradient-background: #121212;
+    --color-foreground: 255,255,255;
+    --color-shadow: 18,18,18;
+    --color-secondary-button: 18,18,18;
+    --color-secondary-button-text: 255,255,255;
+    --color-link: 255,255,255;
+    --color-badge-foreground: 255,255,255;
+    --color-badge-background: 18,18,18;
+    --color-badge-border: 255,255,255;
+    --payment-terms-background-color: rgb(18 18 18);
+  }
+  .transparent--header .transparent_header_color {
+      background: transparent;
+  }
+  .header_bottom:not(.transparent_header_color) {
+    box-shadow: 0 1px 5px rgba(var(--color-foreground),.05);
+  }
+  .header_bottom.transparent_header_color:is(.sticky)  {
+     background: rgb(var(--color-background));
+     background: var(--gradient-background);
+  }
+
+  .header_bottom:not(.sticky) .transparent__header--sticky-logo, .header_bottom.sticky .transparent__header--logo {
+    display: none;
+  }
+</style>
+
+{{ 'header-submenu.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-card.css' | asset_url | stylesheet_tag }}
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+  <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
+    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+      </symbol>
+</svg>
+
+<svg style="display: none">
+  <symbol id="icon-caret" viewBox="0 0 10 6">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+  </symbol>
+</svg>
+
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'mainMenu.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'search-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'header-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'mobile-nav.js' | asset_url }}" defer></script>
+{%- if section.settings.header_sticky -%}
+  <script src="{{ 'header-sticky.js' | asset_url }}" defer></script>
+{%- endif -%}
+<script src="{{ 'details-disclosure.js' | asset_url }}" defer></script>
+
+{%- unless template contains 'cart' -%}
+  <script src="{{ 'cart_drawer_action.js' | asset_url }}" defer></script>
+{%- endunless -%}
+
+<header
+  class="header {{ transparent }}"
+  id="shopify__header__section"
+  data-section-id="{{ section.id }}"
+  data-section-type="header"
+>
+  <div class="header_bottom {{ sticky }}  color-{{ section.settings.color_scheme }} gradient {% if color_enable %} transparent_header_color {% endif %} {{ section.settings.logo_position }}">
+    <div class="{{ section.settings.section_inner_container }}">
+      <div class="header__inner row">
+        <div class="col-auto d-none menu--bar-lines d-md-only-block">
+          <div class="mobile__menu_bar header__actions_btn--menu inline-y-center">
+            {% render 'icon-hamburger' %}
+          </div>
+        </div>
+
+        {%- if section.settings.logo_position == 'top_center' -%}
+          <div class="actions_btn--search-wrapper col-auto d-md-none">
+            {% if section.settings.show_search %}
+              <button
+                id="header_search__action"
+                class="header__actions_btn header__actions_btn--search"
+                aria-label="{{ 'general.search.search' | t }}"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.58329 17.625C5.1511 17.625 1.54163 14.0155 1.54163 9.58334C1.54163 5.15115 5.1511 1.54167 9.58329 1.54167C14.0155 1.54167 17.625 5.15115 17.625 9.58334C17.625 14.0155 14.0155 17.625 9.58329 17.625ZM9.58329 1.79167C5.28178 1.79167 1.79163 5.2909 1.79163 9.58334C1.79163 13.8758 5.28178 17.375 9.58329 17.375C13.8848 17.375 17.375 13.8758 17.375 9.58334C17.375 5.2909 13.8848 1.79167 9.58329 1.79167Z" fill="currentColor" stroke="currentColor"/>
+                  <path d="M18.3333 18.4583C18.3156 18.4583 18.3001 18.4551 18.2868 18.4497C18.2739 18.4446 18.2599 18.4361 18.2452 18.4214L16.5785 16.7548C16.557 16.7333 16.5437 16.7025 16.5437 16.6667C16.5437 16.6308 16.557 16.6001 16.5785 16.5786C16.6 16.557 16.6308 16.5437 16.6666 16.5437C16.7025 16.5437 16.7332 16.557 16.7547 16.5786L18.4214 18.2452C18.4429 18.2667 18.4562 18.2975 18.4562 18.3333C18.4562 18.3692 18.4429 18.3999 18.4214 18.4214C18.4067 18.4361 18.3927 18.4446 18.3798 18.4497C18.3665 18.4551 18.351 18.4583 18.3333 18.4583Z" fill="currentColor" stroke="currentColor"/>
+                </svg>
+              </button>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.logo_position != 'middle_center' -%}
+          <!-- Header Logo Start -->
+          <div class="header__logo col-auto">
+            {% if section.settings.transparent_header
+              and section.settings.transparent_logo != blank
+              and request.page_type == 'index'
+            %}
+              {%- if request.page_type == 'index' -%}
+                <h1 class="header__heading mb-0 {{ sm_none }}">
+              {%- endif -%}
+              {%- render 'header-transparent_logo',
+                className: 'header__logo_link transparent_header',
+                none: sm_none_other,
+                logo_inner: section.settings.logo_inner
+              -%}
+              {%- if request.page_type == 'index' -%}
+                </h1>
+              {%- endif -%}
+            {% else %}
+              {%- if request.page_type == 'index' -%}
+                <h1 class="header__heading mb-0 {{ sm_none }}">
+              {%- endif -%}
+              {%- render 'header-logo',
+                className: 'header__logo_link logo_link_reguler',
+                none: sm_none_other,
+                logo_inner: section.settings.logo_inner
+              -%}
+              {%- if request.page_type == 'index' -%}
+                </h1>
+              {%- endif -%}
+            {% endif %}
+          </div>
+          <!-- Header Logo End -->
+        {% endif %}
+
+        <!-- Header Menu Start -->
+        <nav class="header__menu {% if section.settings.logo_position != 'middle_center' %} col {% else %} col-auto col-md-5 {% endif %} d-md-none justify-content-{{ section.settings.menu_position }}">
+          {%- render 'menu-nav' -%}
+        </nav>
+        <!-- Header Menu End -->
+
+        {%- if section.settings.logo_position == 'middle_center' -%}
+          <!-- Header Logo Start -->
+          <div class="header__logo col-auto">
+            {% if section.settings.transparent_header
+              and section.settings.transparent_logo != blank
+              and request.page_type == 'index'
+            %}
+              {%- if request.page_type == 'index' -%}
+                <h1 class="header__heading mb-0 {{ sm_none }}">
+              {%- endif -%}
+              {%- render 'header-transparent_logo',
+                className: 'header__logo_link transparent_header',
+                none: sm_none_other,
+                logo_inner: section.settings.logo_inner
+              -%}
+              {%- if request.page_type == 'index' -%}
+                </h1>
+              {%- endif -%}
+            {% else %}
+              {%- if request.page_type == 'index' -%}
+                <h1 class="header__heading mb-0 {{ sm_none }}">
+              {%- endif -%}
+              {%- render 'header-logo',
+                className: 'header__logo_link logo_link_reguler',
+                none: sm_none_other,
+                logo_inner: section.settings.logo_inner
+              -%}
+              {%- if request.page_type == 'index' -%}
+                </h1>
+              {%- endif -%}
+            {% endif %}
+          </div>
+          <!-- Header Logo End -->
+        {% endif %}
+
+        {%- liquid
+          if section.settings.logo_position == 'top_center'
+            unless section.settings.quick_drawer_button
+              assign search_button_visible = 'd-md-only-visible'
+            endunless
+          endif
+        -%}
+
+        <!-- Header Actions Start -->
+        <div class="header__actions {% if section.settings.logo_position == 'middle_center' %}col-auto col-md-5 {% else %} col-auto {% endif %}">
+          {%- if section.settings.drawer_menu and section.settings.quick_drawer_button -%}
+            <button class="header__actions_btn information--drawer__trigger d-md-none">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M8.25763 2.34393H8.33257H26.4828C28.4328 2.26899 28.4328 5.23147 26.4828 5.15647H8.33257C6.42005 5.23141 6.34505 2.34393 8.25763 2.34393ZM26.4828 13.5941C28.3579 13.5941 28.3579 16.4066 26.4828 16.4066H16.2077C14.2952 16.4066 14.2952 13.5941 16.2077 13.5941H26.4828ZM26.4828 24.8442C28.3579 24.8442 28.3579 27.6567 26.4828 27.6567H3.45756C1.58254 27.6567 1.58254 24.8442 3.45756 24.8442H26.4828Z"/>
+              </svg>
+            </button>
+          {%- endif -%}
+
+          {%- if section.settings.quick_drawer_button -%}
+            {% if section.settings.show_search or cart_icon or section.settings.user_icon %}
+              <div class="quick__drawer--button__list quick--drawer-button-color">
+            {%- endif -%}
+          {%- endif -%}
+
+          {% if section.settings.show_search and section.settings.logo_position != 'middle_left_search_inline_expend' %}
+            <button
+              id="header_search__action"
+              class="header__actions_btn header__actions_btn--search {{ search_button_visible }}"
+              aria-label="{{ 'general.search.search' | t }}"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.58329 17.625C5.1511 17.625 1.54163 14.0155 1.54163 9.58334C1.54163 5.15115 5.1511 1.54167 9.58329 1.54167C14.0155 1.54167 17.625 5.15115 17.625 9.58334C17.625 14.0155 14.0155 17.625 9.58329 17.625ZM9.58329 1.79167C5.28178 1.79167 1.79163 5.2909 1.79163 9.58334C1.79163 13.8758 5.28178 17.375 9.58329 17.375C13.8848 17.375 17.375 13.8758 17.375 9.58334C17.375 5.2909 13.8848 1.79167 9.58329 1.79167Z" fill="currentColor" stroke="currentColor"/>
+                <path d="M18.3333 18.4583C18.3156 18.4583 18.3001 18.4551 18.2868 18.4497C18.2739 18.4446 18.2599 18.4361 18.2452 18.4214L16.5785 16.7548C16.557 16.7333 16.5437 16.7025 16.5437 16.6667C16.5437 16.6308 16.557 16.6001 16.5785 16.5786C16.6 16.557 16.6308 16.5437 16.6666 16.5437C16.7025 16.5437 16.7332 16.557 16.7547 16.5786L18.4214 18.2452C18.4429 18.2667 18.4562 18.2975 18.4562 18.3333C18.4562 18.3692 18.4429 18.3999 18.4214 18.4214C18.4067 18.4361 18.3927 18.4446 18.3798 18.4497C18.3665 18.4551 18.351 18.4583 18.3333 18.4583Z" fill="currentColor" stroke="currentColor"/>
+              </svg>
+            </button>
+          {%- endif -%}
+
+          {% if section.settings.show_search and section.settings.logo_position == 'middle_left_search_inline_expend' %}
+            <button
+              id="header_search__action"
+              class="header__actions_btn header__actions_btn--search {{ search_button_visible }} d-none d-md-only-block"
+              aria-label="{{ 'general.search.search' | t }}"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.58329 17.625C5.1511 17.625 1.54163 14.0155 1.54163 9.58334C1.54163 5.15115 5.1511 1.54167 9.58329 1.54167C14.0155 1.54167 17.625 5.15115 17.625 9.58334C17.625 14.0155 14.0155 17.625 9.58329 17.625ZM9.58329 1.79167C5.28178 1.79167 1.79163 5.2909 1.79163 9.58334C1.79163 13.8758 5.28178 17.375 9.58329 17.375C13.8848 17.375 17.375 13.8758 17.375 9.58334C17.375 5.2909 13.8848 1.79167 9.58329 1.79167Z" fill="currentColor" stroke="currentColor"/>
+                <path d="M18.3333 18.4583C18.3156 18.4583 18.3001 18.4551 18.2868 18.4497C18.2739 18.4446 18.2599 18.4361 18.2452 18.4214L16.5785 16.7548C16.557 16.7333 16.5437 16.7025 16.5437 16.6667C16.5437 16.6308 16.557 16.6001 16.5785 16.5786C16.6 16.557 16.6308 16.5437 16.6666 16.5437C16.7025 16.5437 16.7332 16.557 16.7547 16.5786L18.4214 18.2452C18.4429 18.2667 18.4562 18.2975 18.4562 18.3333C18.4562 18.3692 18.4429 18.3999 18.4214 18.4214C18.4067 18.4361 18.3927 18.4446 18.3798 18.4497C18.3665 18.4551 18.351 18.4583 18.3333 18.4583Z" fill="currentColor" stroke="currentColor"/>
+              </svg>
+            </button>
+            {%- if settings.predictive_search_enabled -%}
+              <predictive-search
+                class="header-search--box search-modal__form d-md-none"
+                data-loading-text="{{ 'accessibility.loading' | t }}"
+              >
+            {%- endif -%}
+            <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+              <div class="search__input_field input__field_form">
+                <label class="visually-hidden" for="Search-In-Modal">{{ 'general.search.search' | t }}</label>
+                <input
+                  class="search__input input__field"
+                  id="Search-In-Modal"
+                  type="search"
+                  name="q"
+                  value=""
+                  placeholder="{{ 'general.search.search' | t }}"
+                  {%- if settings.predictive_search_enabled -%}
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-owns="predictive-search-results-list"
+                    aria-controls="predictive-search-results-list"
+                    aria-haspopup="listbox"
+                    aria-autocomplete="list"
+                    autocorrect="off"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                  {%- endif -%}
+                >
+                <input type="hidden" name="options[prefix]" value="last">
+                <button class="search__button input__field_form_button" aria-label="{{ 'general.search.search' | t }}">
+                  <svg
+                    class="icon icon-search"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833313 9.16659C0.833313 4.56421 4.56427 0.833252 9.16665 0.833252C13.769 0.833252 17.5 4.56421 17.5 9.16659C17.5 11.1677 16.7946 13.004 15.6191 14.4405L19.1666 17.9881L17.9881 19.1666L14.4406 15.619C13.0041 16.7946 11.1677 17.4999 9.16665 17.4999C4.56427 17.4999 0.833313 13.7689 0.833313 9.16659ZM9.16665 2.49992C5.48475 2.49992 2.49998 5.48469 2.49998 9.16659C2.49998 12.8485 5.48475 15.8333 9.16665 15.8333C12.8486 15.8333 15.8333 12.8485 15.8333 9.16659C15.8333 5.48469 12.8486 2.49992 9.16665 2.49992Z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+
+              {%- if settings.predictive_search_enabled -%}
+                <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                  <div class="predictive-search__loading-state">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="spinner"
+                      viewBox="0 0 66 66"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </div>
+
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+              {%- endif -%}
+            </form>
+            {%- if settings.predictive_search_enabled -%}
+              </predictive-search>
+            {%- endif -%}
+          {%- endif -%}
+          {% if section.settings.show_compare == true %}
+            <a href="/pages/compare" class="header__actions_btn header__actions_btn--wishlist d-md-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M0 128v-8c0-6.6 5.4-12 12-12h105.8c3.3 0 6.5 1.4 8.8 3.9l89.7 97-21.8 23.6L109 140H12c-6.6 0-12-5.4-12-12zm502.6 278.6l-64 64c-20.1 20.1-54.6 5.8-54.6-22.6v-44h-25.7c-3.3 0-6.5-1.4-8.8-3.9l-89.7-97 21.8-23.6L367 372h17v-52c0-28.5 34.5-42.7 54.6-22.6l64 64c12.5 12.5 12.5 32.7 0 45.2zm-19.8-25.4l-64-64c-2.5-2.5-6.8-.7-6.8 2.8v128c0 3.6 4.3 5.4 6.8 2.8l64-64c1.6-1.5 1.6-4.1 0-5.6zm19.8-230.6l-64 64c-20.1 20.1-54.6 5.8-54.6-22.6v-52h-17L126.6 400.1c-2.3 2.5-5.5 3.9-8.8 3.9H12c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h97l240.4-260.1c2.3-2.5 5.5-3.9 8.8-3.9H384V64c0-28.5 34.5-42.7 54.6-22.6l64 64c12.5 12.5 12.5 32.7 0 45.2zm-19.8-25.4l-64-64c-2.5-2.5-6.8-.7-6.8 2.8v128c0 3.6 4.3 5.4 6.8 2.8l64-64c1.6-1.5 1.6-4.1 0-5.6z" />
+              </svg>
+              <span class="header__actions_btn_cart_num compare__count"></span>
+            </a>
+          {% endif %}
+          {% if section.settings.show_wishlist == true %}
+            <a href="/pages/wishlist" class="header__actions_btn header__actions_btn--wishlist d-md-none">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.22172 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+
+              <span class="header__actions_btn_cart_num wishlist__count"></span>
+            </a>
+          {% endif %}
+
+          {%- unless template contains 'cart' or cart_icon != true -%}
+            {%- if settings.cart_type == 'drawer' -%}
+              <open-minicart>
+                <a class="header__actions_btn header__actions_btn--cart" href="{{ routes.cart_url }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+
+                  <div class="cart-count-bubble header__actions_btn_cart_num">
+                    {%- if cart.item_count < 100 -%}
+                      <span id="cart-notification-count" aria-hidden="true">{{ cart.item_count }}</span>
+                    {%- endif -%}
+                    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                </a>
+              </open-minicart>
+            {%- else -%}
+              <a href="{{ routes.cart_url }}" class="header__actions_btn header__actions_btn--cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+
+                <div class="cart-count-bubble header__actions_btn_cart_num">
+                  {%- if cart.item_count < 100 -%}
+                    <span id="cart-notification-count" aria-hidden="true">{{ cart.item_count }}</span>
+                  {%- endif -%}
+                  <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endunless -%}
+
+          {%- if shop.customer_accounts_enabled and section.settings.user_icon -%}
+            {%- if shop.customer_accounts_enabled -%}
+              <a
+                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                class="header__actions_btn header__actions_btn--user d-md-none"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.31243 9.46264C6.50624 8.73086 6 7.67455 6 6.5C6 4.29086 7.79086 2.5 10 2.5C12.2091 2.5 14 4.29086 14 6.5C14 7.67455 13.4938 8.73086 12.6876 9.46264C15.7838 10.5667 18 13.5246 18 17H16.5C16.5 13.4101 13.5899 10.5 10 10.5C6.41015 10.5 3.5 13.4101 3.5 17H2C2 13.5246 4.21618 10.5667 7.31243 9.46264ZM10 9C11.3807 9 12.5 7.88071 12.5 6.5C12.5 5.11929 11.3807 4 10 4C8.61929 4 7.5 5.11929 7.5 6.5C7.5 7.88071 8.61929 9 10 9Z" fill="currentColor"/>
+                </svg>
+
+                <span class="visually-hidden">
+                  {%- liquid
+                    if customer
+                      echo 'customer.account_fallback' | t
+                    else
+                      echo 'customer.log_in' | t
+                    endif
+                  -%}
+                </span>
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if section.settings.quick_drawer_button -%}
+            {% if section.settings.show_search or cart_icon or section.settings.user_icon %}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- unless section.settings.quick_drawer_button -%}
+            {%- if section.settings.drawer_menu -%}
+              <button class="header__actions_btn information--drawer__trigger d-md-none">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="currentColor" d="M8.25763 2.34393H8.33257H26.4828C28.4328 2.26899 28.4328 5.23147 26.4828 5.15647H8.33257C6.42005 5.23141 6.34505 2.34393 8.25763 2.34393ZM26.4828 13.5941C28.3579 13.5941 28.3579 16.4066 26.4828 16.4066H16.2077C14.2952 16.4066 14.2952 13.5941 16.2077 13.5941H26.4828ZM26.4828 24.8442C28.3579 24.8442 28.3579 27.6567 26.4828 27.6567H3.45756C1.58254 27.6567 1.58254 24.8442 3.45756 24.8442H26.4828Z"/>
+                </svg>
+              </button>
+            {%- endif -%}
+          {%- endunless -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{%- if section.settings.drawer_menu -%}
+  {%- render 'quick-information' -%}
+{%- endif -%}
+<search-modal>
+  {%- render 'predictive-search-modal' -%}
+</search-modal>
+
+{%- render 'mobile-offcanvas-menu' -%}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append: 'x' %}
+      "logo": {{ section.settings.logo | image_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: '?q={search_term_string}' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "blocks": [
+     {
+      "type": "mega-menu-with-banner",
+      "name": "Mega menu (Banner)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Menu item",
+          "info": "Enter the name of the menu item to which you want to add a mega menu. [Learn more](https://themeadora.com/doc)"
+        },
+        {
+          "type": "header",
+          "content": "Promotion1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "height",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.image-with-text.settings.height.options__1.label"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            },
+          {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            },
+            {
+              "value": "16-9",
+              "label": "Wide"
+            }
+          ],
+            "default": "adapt",
+            "label": "t:sections.image-with-text.settings.height.label"
+        },
+        {
+          "type": "text",
+          "id": "promo1_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "promo1_text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "promo1_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Promotion2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "height_2",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.image-with-text.settings.height.options__1.label"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            },
+          {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            },
+            {
+              "value": "16-9",
+              "label": "Wide"
+            }
+          ],
+            "default": "adapt",
+            "label": "t:sections.image-with-text.settings.height.label"
+        },
+        {
+          "type": "text",
+          "id": "promo2_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "promo2_text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "promo2_link",
+          "label": "Link"
+        }
+      ]
+     },
+     {
+      "type": "mega-menu-with-collection",
+      "name": "Mega menu (Collection)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Menu item",
+          "info": "Enter the name of the menu item to which you want to add a mega menu. [Learn more](https://themeadora.com/doc)"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+            },
+            {
+              "value": "square",
+              "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+            }
+          ],
+          "default": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.label",
+          "info": "t:sections.collection-list.settings.image_ratio.info"
+        },
+    	{
+          "type": "select",
+          "id": "title_position",
+          "options": [
+    		{
+              "value": "top--left",
+              "label": "Top left"
+            },
+            {
+              "value": "top--right",
+              "label": "Top right"
+            },
+            {
+              "value": "bottom--left",
+              "label": "Bottom letf"
+            },
+    		{
+              "value": "bottom--right",
+              "label": "Bottom right"
+            },
+    		{
+              "value": "full--center",
+              "label": "Center"
+            }
+          ],
+          "default": "bottom--left",
+          "label": "Title position"
+        },
+        {
+          "type": "header",
+          "content": "Collection 1"
+        },
+        {
+          "type": "collection",
+          "id": "collection_1",
+          "label": "Collection 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image_1",
+          "label": "Collection image 1"
+        },
+        {
+          "type": "header",
+          "content": "Collection 2"
+        },
+        {
+          "type": "collection",
+          "id": "collection_2",
+          "label": "Collection 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image_2",
+          "label": "Collection image 2"
+        }
+      ]
+    }
+  ],
+  "settings": [
+	  {
+        "type": "header",
+        "content": "General settings"
+      },
+      {
+        "type": "select",
+        "id": "section_inner_container",
+        "label": "Container type",
+        "default": "container",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container box"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+	  {
+        "type": "image_picker",
+        "id": "logo_inner",
+        "label": "Home page logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+        "unit": "t:sections.header.settings.logo_width.unit",
+        "label": "t:sections.header.settings.logo_width.label"
+      },
+	  {
+        "type": "select",
+        "id": "logo_position",
+        "label": "Desktop logo position",
+        "default": "middle_left",
+        "options": [
+          {
+            "value": "middle_left",
+            "label": "Middle left"
+          },
+          {
+            "value": "middle_center",
+            "label": "Middle center"
+          },
+          {
+            "value": "top_left",
+            "label": "Top left"
+          },
+          {
+            "value": "top_center",
+            "label": "Top center"
+          },
+          {
+            "value": "middle_left_search_inline_expend",
+            "label": "Middle left with search box"
+          },
+        ]
+      },
+	  {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "t:sections.header.settings.menu.label"
+      },
+      {
+        "type": "select",
+        "id": "menu_position",
+        "label": "Menu alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "start",
+            "label": "Left"
+          },
+          {
+            "value": "end",
+            "label": "Right"
+          }
+        ]
+     },
+      {
+        "type": "checkbox",
+        "id": "header_sticky",
+        "default": true,
+        "label": "Enable sticky  header"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart",
+        "default": true,
+        "label": "Show cart icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "default": true,
+        "label": "Show search icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist",
+        "default": true,
+        "label": "Show wishlist icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_compare",
+        "default": true,
+        "label": "Show compare icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "user_icon",
+        "default": true,
+        "label": "Show user icon"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "accent-1"
+      },
+      {
+        "type": "header",
+        "content": "Transparent header"
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_header",
+        "default": false,
+        "label": "Enable on homepage"
+      },
+      {
+        "type": "image_picker",
+        "id": "transparent_logo",
+        "label": "Logo"
+      },
+      {
+        "type": "color",
+        "id": "transparent_color_foreground",
+        "default": "#fff",
+        "label": "Text color",
+         "info": "It works only when the transparent header is enabled"
+      },
+      {
+        "type": "header",
+        "content": "Drawer menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "drawer_menu",
+        "default": false,
+        "label": "Enable"
+      },
+      {
+        "type": "link_list",
+        "id": "drawer-menu",
+        "default": "main-menu",
+        "label": "Menu"
+      },
+      {
+        "type": "color",
+        "id": "color_foreground",
+        "default": "#121212",
+        "label": "Text color"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "default": "#FFFFFF",
+        "label": "Background color"
+      },
+       {
+        "type": "header",
+        "content": "Submenu"
+      },
+      {
+        "type": "color_scheme",
+        "id": "submenu_color_scheme",
+        "label": "t:sections.header.settings.color_scheme.label",
+        "default": "accent-1"
+      },
+      {
+        "type": "header",
+        "content": "Mobile Settings"
+      },
+       {
+        "type": "image_picker",
+        "id": "logo_2",
+        "label": "Logo"
+      }
+   ]
+}
+{% endschema %}
+{% comment %}
+  <script src="https://ravenkit.helloshopowner.com/theme_license?theme_id=23483748&shop={{shop.permanent_domain}}&license={{settings.adora_license}}" async></script>
+{% endcomment %}

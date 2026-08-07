@@ -1,0 +1,62 @@
+.marqueee {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+}
+.scrolling--item {
+  display: flex;
+  align-items: center;
+}
+.scrolling--item.scrolling--animated {
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: var(--speed, 30s);
+  animation-play-state: running;
+  width: max-content;
+  will-change: transform, width;
+  animation-name: var(--scroll-direction);
+}
+.announcement_content {
+  display: flex;
+  align-items: center;
+}
+.announcement-bar__link.link--text {
+  display: flex;
+  align-items: center;
+}
+@supports (-webkit-text-stroke: 0.1rem rgba(var(--color-foreground))) {
+  .announcement__text_stroke {
+    color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke-color: rgba(var(--color-foreground));
+    -webkit-text-stroke-width: 0.1rem;
+  }
+}
+@keyframes scrolling-left {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes scrolling-right {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+span.announcement__text_inner.text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (hover: hover) {
+  .announcement_area:hover .scrolling--animated {
+    animation-play-state: paused;
+  }
+}

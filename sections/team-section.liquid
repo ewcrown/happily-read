@@ -1,0 +1,618 @@
+{{ 'section-slider-button-controls.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+   .team-member-card {
+     position: relative;
+     display: block;
+   }
+   .single-team-member {
+     overflow: hidden;
+     border-radius: {{ section.settings.team_card_corner_radius }}px;
+     box-shadow: 0 4px 5px rgba(var(--color-foreground), .08);
+     transition: all .3s ease-in-out;
+   }
+   li.social-list__item svg {
+     width: auto;
+     height: 1.4rem;
+   }
+  team-member,.member-image  {
+     position: relative;
+   }
+   .single-team-member:hover .social-inside ul,.single-team-member:hover .member-caption,.single-team-member:hover .member-image::after {
+     visibility: visible;
+     opacity: 1;
+   }
+   .team-member-caption {
+     padding: 15px 20px 20px;
+   }
+   .team-member-caption .name{
+     margin-bottom: 5px;
+   }
+
+   .member-image::after {
+   	position: absolute;
+   	display: block;
+   	content: "";
+   	top: 0;
+   	left: 0;
+   	border-radius: 0;
+   	width: 100%;
+   	height: 100%;
+   	background: rgba(51,51,51,.5);
+   	opacity: 0;
+   	visibility: hidden;
+   	-webkit-transition: all .3s ease;
+   	-o-transition: all .3s ease;
+   	transition: all .3s ease;
+   }
+   .member-image img {
+   	-webkit-transition: .3s;
+   	-o-transition: .3s;
+   	transition: .3s;
+   }
+   .single-team-member:hover .member-image img {
+   	-webkit-transform: scale(1.1);
+   	-ms-transform: scale(1.1);
+   	transform: scale(1.1);
+   }
+
+   .section-{{ section.id }}-padding {
+     padding-top: {{ section.settings.mobile_padding_top }}px;
+     padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+   }
+   @media screen and (min-width: 750px) {
+     .section-{{ section.id }}-padding {
+       padding-top: {{ section.settings.padding_top }}px;
+       padding-bottom: {{ section.settings.padding_bottom }}px;
+     }
+   }
+   #section__{{ section.id }}.collection__list--slider.slider--controls--button{
+    --slider-button-background: {{ section.settings.button_background }};
+    --slider-button-color: {{ section.settings.button_text_color }};
+   }
+   .instagram-list--item a:hover .instagram-overlay-card svg {
+     height: 3rem !important;
+   }
+   .instagram--item svg.placeholder {
+     transform: none;
+     height: 100% !important;
+   }
+   .single-team-member .social-inside {
+     position: absolute;
+     bottom: 20px;
+     left: 31px;
+     z-index: 9;
+   }
+   .member-image.main-media--circle::after {
+     border-radius: 100%;
+   }
+   .single-team-member.main-media--circle.card--media .member-caption {
+     position: relative;
+     text-align: center;
+     width: auto;
+   }
+   .single-team-member.main-media--circle.card--media .member-caption h2.name,.single-team-member.main-media--circle.card--media .member-caption .subtext   {
+     color: #000;
+   }
+   .single-team-member.main-media--circle.card--media .member-caption {
+     position: relative;
+     text-align: center;
+     width: auto;
+     visibility: visible;
+     opacity: 1;
+     -webkit-transform: translateY(0);
+     -ms-transform: translateY(0);
+     transform: translateY(0);
+     padding: 2rem 0;
+     padding-bottom: 0;
+   }
+  .instagram-wrapper {
+    position: relative;
+  }
+  .team__control_nav {
+    width: 4rem;
+    background: transparent;
+    color: rgba(var(--color-foreground), 0.9);
+    height: 4rem;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(var(--color-foreground), 0.15);
+    transition: var(--transition);
+    position: absolute;
+    left: 0;
+    right: auto;
+    margin: 0;
+    border: 1px solid rgba(var(--color-foreground), 0.15);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .team__control_nav .slider--controls--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .team__control_nav:after {
+    font-size: 1.6rem;
+  }
+  .team__control_nav.swiper-button-next {
+    right: 0;
+    left: auto;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  if section.settings.layout == 'masonry'
+    assign columns = section.blocks.size
+    if columns > 3
+      assign columns = 3
+    endif
+  else
+    assign columns = section.settings.column
+  endif
+
+  if section.settings.layout == 'standard'
+    assign column_set = section.settings.column
+    case column_set
+      when '1'
+        assign column_class_standard = 'col-12'
+      when '2'
+        assign column_class_standard = 'col-md-6 col-sm-6 col-12'
+      when '3'
+        assign column_class_standard = 'col-md-4 col-sm-6 col-12'
+      when '4'
+        assign column_class_standard = 'col-md-3 col-sm-6 col-12'
+      else
+        assign column_class_standard = 'col'
+    endcase
+  endif
+
+  if section.settings.layout == 'slider'
+    assign slider_enable = true
+  endif
+
+  if slider_enable
+    assign showPagination = section.settings.show_pagination
+    assign showNavigation = section.settings.show_navigation
+
+    assign productShowXl = section.settings.column
+    assign productShowSm = section.settings.products_show_on_sm
+    assign slideAutoplay = section.settings.auto_rotate
+    assign autoplay_time = section.settings.autoplay_time
+
+    assign max_proudct_show_first_view = section.settings.column | plus: 0
+  endif
+-%}
+
+{%- capture slider_wrapper -%}
+{%- if slider_enable -%}
+productSlider swiper
+{%- else -%}
+row {% if section.settings.column == "5" %} row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 {% endif %}
+{%- endif -%}
+{%- endcapture -%}
+
+<div
+  class="instagram-wrapper section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+  data-section-type="product-slider"
+  data-slider-enable="{{ slider_enable }}"
+  {% if slider_enable %}
+    data-show-mobile="{{ productShowSm }}"
+    data-show-extra-large="{{ productShowXl }}"
+    data-autoplay="{{ slideAutoplay }}"
+    data-autoplay-time="{{ autoplay_time }}000"
+    data-slider-loop="{%- if section.blocks.size > max_proudct_show_first_view -%}true {%- else -%} false {%- endif -%}"
+  {% endif %}
+>
+  <div class="container">
+    {%- if slider_enable -%}
+      <div class="slider__heading--wrapper d-flex align-items-end mb-50">
+    {% endif %}
+    <div class="section-heading text-{{ section.settings.alignment }} mobile-text-{{ section.settings.mobile_alignment }} {% if slider_enable  %} flex-grow-1 {% else %} mb-50 {% endif %}">
+      <span class="section-heading__sub_title">{{- section.settings.subtitle -}}</span>
+      <h2 class="section-heading__title {{ section.settings.heading_size }} rte">
+        {{- section.settings.heading -}}
+      </h2>
+    </div>
+
+    {%- if slider_enable -%}
+      </div>
+    {% endif %}
+
+    <div class="collection-list {{ slider_wrapper }}">
+      {%- if section.settings.show_navigation -%}
+        <div class="team__control_nav swiper-button-prev">
+          {%- if showNavigation -%}
+            <div class="swiper__slider--button"></div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if slider_enable -%}<div class="swiper-wrapper">{% endif %}
+
+      {%- for block in section.blocks -%}
+        {%- liquid
+          if section.settings.layout == 'masonry'
+            if forloop.index > 2
+              assign column_class = 'col-md-4 col-sm-6 col-12'
+            else
+              assign column_class = 'col-md-6 col-sm-6 col-12'
+            endif
+          endif
+        -%}
+
+        <div
+          class="grid__item {% if slider_enable %} swiper-slide mb-10 {% else %} {{ column_class }} {{ column_class_standard }} mb-30{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="single-team-member">
+            <a
+              target="_blank"
+              href="{{ block.settings.img_link }}"
+              class="main-media--{{ section.settings.image_ratio }} team-member-card"
+            >
+              <div
+                class="media media--{{ section.settings.image_ratio }} member-image media--hover-effect overflow-hidden"
+                {% if section.settings.image_ratio == 'adapt' %}
+                  style="{% if block.settings.image != blank %} padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%; {% else %} padding-bottom: 100%; {% endif %}"
+                {% endif %}
+              >
+                {%- if block.settings.image != blank -%}
+                  <img
+                    srcset="
+                      {%- if block.settings.image.width >= 375 -%}{{ block.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                      {%- if settings.settings.image.width >= 550 -%}{{ settings.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                      {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                      {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+                      {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+                      {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                      {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+                      {{ block.settings.image | image_url: width: 550 }} {{ block.settings.image.width }}w
+                    "
+                    sizes="(min-width: 990px) 100vw, 100vw"
+                    src="{{ block.settings.image | image_url: width: 1500  }}"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'collection-2' | placeholder_svg_tag: 'placeholder' }}
+                {%- endif -%}
+              </div>
+            </a>
+            <div class="team-member-caption">
+              {% if block.settings.member_title != blank %}
+                <h2 class="name h5">{{ block.settings.member_title }}</h2>
+              {% endif %}
+              {% if block.settings.member_designation != blank %}
+                <span class="subtext">{{ block.settings.member_designation }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {%- if slider_enable -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_navigation -%}
+        <div class="team__control_nav swiper-button-next">
+          {%- if showNavigation -%}
+            <div class="swiper__slider--button"></div>
+          {%- endif -%}
+
+          {%- if showPagination -%}
+            <div class="swiper-pagination product__slider--pagination"></div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Team Section",
+  "tag": "section",
+  "class": "spaced-section Team-section",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Creative team",
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+	{
+    "type": "select",
+    "id": "heading_size",
+    "options": [
+       {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h2",
+          "label": "Small"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "default": "Follow our team",
+      "label": "Subheading"
+    },
+	{
+      "type": "select",
+      "id": "alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Heading alignment"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "round",
+          "label": "Round corner"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.collection-list.settings.image_ratio.label",
+      "info": "t:sections.collection-list.settings.image_ratio.info"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Grid"
+        },
+        {
+          "value": "slider",
+          "label": "Slider"
+        }
+      ],
+      "default": "slider",
+      "label": "Layout"
+    },
+	{
+      "type": "select",
+      "id": "column",
+      "options": [
+		{
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+		{
+          "value": "4",
+          "label": "4"
+        },
+		{
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "4",
+      "label": "Number of columns on desktop",
+	  "info": "Works on the grid layout"
+    },
+    {
+      "type": "range",
+      "id": "team_card_corner_radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Card corner radius",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+	{
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_time",
+      "min": 2,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 3
+    },
+    {
+        "type": "checkbox",
+        "id": "show_navigation",
+        "label": "Show navigation",
+        "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+        "type": "select",
+        "id": "products_show_on_sm",
+        "label": "Number of columns on mobile",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          }
+        ],
+        "default": "2"
+      },
+	{
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+          "type": "paragraph",
+          "content": "Desktop"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding bottom",
+          "default": 0
+        },
+		{
+          "type": "paragraph",
+          "content": "Mobile"
+        },
+		{
+          "type": "range",
+          "id": "mobile_padding_top",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mobile_padding_bottom",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding bottom",
+          "default": 0
+        }
+  ],
+  "blocks": [
+    {
+      "type": "instagram_item",
+      "name": "Upload team member image",
+      "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Upload image"
+         },
+        {
+          "type": "text",
+          "id": "member_title",
+          "label": "Member title",
+          "default": "Name"
+        },
+        {
+          "type": "text",
+          "id": "member_designation",
+          "label": "Member designation",
+          "default": "Designation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Section",
+      "blocks": [
+        {
+          "type": "instagram_item"
+        },
+        {
+          "type": "instagram_item"
+        },
+        {
+          "type": "instagram_item"
+        },
+		{
+          "type": "instagram_item"
+        },
+		{
+          "type": "instagram_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

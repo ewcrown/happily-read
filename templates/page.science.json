@@ -1,0 +1,302 @@
+{
+  "sections": {
+    "hr10_opening": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Before we wrote a single page, we spent over a year in academic research.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Seven psychological frameworks. Peer-reviewed sources. The same foundations therapists train in for years. Here is what we built on — and why it matters.</p><p>The guided journal market is full of content that was never designed to help anyone. It was designed to sell. AI-generated affirmations dressed up in pretty covers. Sound bites that feel good and change nothing.</p><p>We took a different approach. One year of academic research before a single prompt was written. Seven evidence-based frameworks. Citations that trace back to Bowlby, Beck, Seligman, Jung, and Neff — not to Instagram.</p><p>This page is the proof. Read it. Then decide.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "show_filter_box": false,
+        "corner_radius": 0,
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "fw_cbt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 1: Cognitive Behavioural Therapy (CBT)",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> CBT is the most extensively studied psychotherapeutic approach in existence. Developed by Aaron Beck in the 1960s and refined across decades of clinical research, it is built on a foundational insight: our emotional responses are not caused by events themselves, but by the thoughts and interpretations we attach to those events. Change the thought pattern, and you change the emotional response.</p><p><strong>How Happily Read uses it:</strong> The Breakup Recovery and Never Get Played Again journals use CBT-structured prompts to help women identify the narratives they are running about themselves and their relationships — and replace them with interpretations grounded in reality rather than pain or fear.</p><p><strong>Key citations:</strong> Beck, A.T. (1979). Cognitive Therapy of Depression. Clark, D.A. &amp; Beck, A.T. (2010). Cognitive Therapy of Anxiety Disorders.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 50,
+        "padding_bottom": 30,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_neuro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 2: Neuroplasticity",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> Neuroplasticity is the brain's capacity to reorganise itself by forming new neural connections throughout life. For decades, science assumed the adult brain was fixed. The research of the last thirty years has overturned that assumption entirely. The brain changes in response to experience — and directed, repeated experience produces directed, measurable change.</p><p><strong>How Happily Read uses it:</strong> The That Girl Frequency and Reclaiming Her journals are structured around the principle that 30 to 45 days of deliberate daily practice produces real change at the neural level. The sequencing of prompts is intentional: it mirrors the stages of habit formation and pattern disruption that neuroplasticity research identifies as most effective.</p><p><strong>Key citations:</strong> Merzenich, M. (2013). Soft-Wired. Doidge, N. (2007). The Brain That Changes Itself.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_attachment": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 3: Attachment Theory",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> Attachment Theory — founded by John Bowlby and extended by Mary Ainsworth, Mary Main, and decades of subsequent research — explains how our earliest relationships with caregivers create internal working models of connection. These models shape every relationship we form as adults: who we choose, how we behave in conflict, what we tolerate, and what we fear. They are not destiny. But they are powerful — and largely invisible until examined.</p><p><strong>How Happily Read uses it:</strong> The Breakup Recovery and Never Get Played Again journals use attachment-informed prompts to help women understand why specific relationships felt the way they did — and what their attachment patterns are doing in the background of every romantic choice they make.</p><p><strong>Key citations:</strong> Bowlby, J. (1969). Attachment and Loss. Ainsworth, M.D.S. (1978). Patterns of Attachment. Levine, A. &amp; Heller, R. (2010). Attached.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_shadow": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 4: Jungian Shadow Work",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> Carl Jung proposed that the human psyche contains not only the conscious self we identify with, but a shadow — the collection of traits, impulses, and aspects of self that we have repressed, hidden, or disowned because they felt unacceptable. The shadow is not evil. It is simply everything that did not make it into the curated self we present to the world. When the shadow is unexamined, it operates unconsciously, driving patterns and behaviours we cannot explain. When it is integrated, its energy becomes available — and the sense of being fractured or not quite ourselves dissolves.</p><p><strong>How Happily Read uses it:</strong> The Reclaiming Her journal is a structured 45-day shadow work process. It draws on Jungian methodology to guide women through the excavation, examination, and integration of the disowned self — not as a vague spiritual exercise, but as a directed psychological process with a clear arc.</p><p><strong>Key citations:</strong> Jung, C.G. (1963). Memories, Dreams, Reflections. Johnson, R.A. (1991). Owning Your Own Shadow.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_positive": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 5: Positive Psychology",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> Positive Psychology — founded by Martin Seligman at the University of Pennsylvania — shifted the field of psychology from a primary focus on pathology to the systematic study of what makes human beings flourish. It introduced evidence-based practices for building wellbeing, identifying and deploying personal strengths, cultivating meaning, and developing resilience. It is not positive thinking. It is the science of what actually works to increase human flourishing.</p><p><strong>How Happily Read uses it:</strong> The That Girl Frequency journal draws heavily on Positive Psychology frameworks — particularly strength identification, values clarification, and intentional behaviour design. These are not feel-good exercises. They are evidence-based interventions for building the identity you want to inhabit.</p><p><strong>Key citations:</strong> Seligman, M. (2011). Flourish. Peterson, C. &amp; Seligman, M. (2004). Character Strengths and Virtues.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_habit": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 6: Habit Formation",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> The science of habit formation — drawn from the work of BJ Fogg, Charles Duhigg, and the broader behavioural psychology field — explains how behaviours become automatic and how that automaticity can be deliberately engineered. A habit consists of a cue, a routine, and a reward. Understanding this loop is how you stop trying to change through willpower and start changing through design.</p><p><strong>How Happily Read uses it:</strong> Every journal is structured around the habit loop. The daily prompt is the cue. The writing practice is the routine. The accumulating sense of clarity, growth, and self-knowledge is the reward. Over 30 or 45 days, the practice becomes self-sustaining — and the identity shift it produces becomes the new default.</p><p><strong>Key citations:</strong> Duhigg, C. (2012). The Power of Habit. Fogg, B.J. (2019). Tiny Habits.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "fw_boundary": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Framework 7: Boundary Psychology",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>What it is:</strong> Boundary psychology — drawn from the work of Nedra Tawwab, Henry Cloud, John Townsend, and the broader field of relational psychology — examines how the ability to establish and maintain healthy limits in relationships is foundational to self-respect, relational health, and wellbeing. Boundaries are not walls. They are the structure that allows genuine intimacy to exist. Women who struggle with boundaries are not failing at relationships. They were typically never taught what healthy ones look like.</p><p><strong>How Happily Read uses it:</strong> The Never Get Played Again journal is built substantially on boundary psychology. The prompts help women identify where their limits have been violated, where they have not enforced them, what that pattern is rooted in, and how to build and hold boundaries that reflect their actual values — not their fear of conflict.</p><p><strong>Key citations:</strong> Tawwab, N.G. (2021). Set Boundaries, Find Peace. Cloud, H. &amp; Townsend, J. (1992). Boundaries.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 40,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "hr12_closing": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "This is what it means to do the work before the work.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Over a year of academic research. Seven psychological frameworks. Peer-reviewed sources that trace back to the foundational thinkers in each field.</p><p>We did not build these journals to sell something. We built them because the self-help space had become a landfill of content that was never designed to actually help anyone — and women deserve better than that.</p><p>You deserve a journal that was built with the same rigour and intention that you bring to your own transformation.</p><p>That is what this is.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 50,
+        "padding_bottom": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "hr13_lead_magnet": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Want the full research brief?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>We compiled the complete academic foundation behind all seven journals — frameworks, key studies, and citations — into a single downloadable document. It is free.</p>"
+          }
+        },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "background-1",
+        "height": "small",
+        "form_position": "bottom",
+        "content_wrapper_width": "medium",
+        "content_alignment": "center",
+        "border_bottom_enabel": false,
+        "show_first_name": true,
+        "require_first_name": false,
+        "form_tags": "newsletter, science_leadmagnet_downloaded",
+        "submit_label": "Download the Research Brief",
+        "privacy_text": "<p>We will email it to you immediately. No spam. Just the research.</p>",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "hr10_opening",
+    "fw_cbt",
+    "fw_neuro",
+    "fw_attachment",
+    "fw_shadow",
+    "fw_positive",
+    "fw_habit",
+    "fw_boundary",
+    "hr12_closing",
+    "hr13_lead_magnet"
+  ]
+}

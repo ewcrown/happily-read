@@ -1,0 +1,326 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Find your journal.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each one is a structured transformation system built on peer-reviewed psychological research. Not a gratitude journal. A process.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "listing_pov": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 30-Day POV Never Get Played Again Journal — $24.95",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For women ready to break the cycle of choosing the wrong person and mistaking chaos for chemistry.</p><p><strong>Built on:</strong> Attachment Theory + Boundary Psychology</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy Now",
+            "button_link": "/pages/never-get-played-again",
+            "button_style": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "product_pov": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "small",
+        "enable_sticky_info": false,
+        "padding_top": 10,
+        "padding_bottom": 40,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "listing_tgf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 30-Day That Girl Frequency Journal — $24.95",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For women ready to stop shrinking and rewrite the neural default that's been keeping them small.</p><p><strong>Built on:</strong> Neuroplasticity + Positive Psychology</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy Now",
+            "button_link": "/pages/that-girl-frequency",
+            "button_style": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "product_tgf": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "small",
+        "enable_sticky_info": false,
+        "padding_top": 10,
+        "padding_bottom": 40,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "listing_reclaiming": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 45-Day Reclaiming Her Journal — $29.95",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For women who are ready to excavate, examine, and integrate the parts of themselves they have been hiding.</p><p><strong>Built on:</strong> Jungian Shadow Work + Neuroplasticity</p><p><a href=\"#\">Also on Amazon →</a></p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy Now",
+            "button_link": "/pages/reclaiming-her",
+            "button_style": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "product_reclaiming": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "small",
+        "enable_sticky_info": false,
+        "padding_top": 10,
+        "padding_bottom": 50,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "bundles_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Better together.",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": ["heading"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "bundles": {
+      "type": "multicolumn",
+      "blocks": {
+        "bundle_1": {
+          "type": "column",
+          "settings": {
+            "title": "POV Never Get Played Again + Reclaiming Her — $45",
+            "text": "<p>The journals that break the pattern and heal what is driving it.</p>",
+            "link_label": "Get the Bundle",
+            "link": "",
+            "button_type": "primary",
+            "button_size": "medium"
+          }
+        },
+        "bundle_2": {
+          "type": "column",
+          "settings": {
+            "title": "That Girl Frequency + Reclaiming Her — $45",
+            "text": "<p>The journals that clear what is blocking you and build who you are becoming.</p>",
+            "link_label": "Get the Bundle",
+            "link": "",
+            "button_type": "primary",
+            "button_size": "medium"
+          }
+        },
+        "bundle_3": {
+          "type": "column",
+          "settings": {
+            "title": "All Three Journals — $60",
+            "text": "<p>The complete Phase 1 transformation library.</p>",
+            "link_label": "Get the Bundle",
+            "link": "",
+            "button_type": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["bundle_1", "bundle_2", "bundle_3"],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "column_padding": "medium",
+        "button_label": "",
+        "columns_mobile": "1",
+        "padding_top": 20,
+        "padding_bottom": 50,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "finder_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not sure which journal is right for you?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell us what you're working through and we'll point you in the right direction.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Find My Journal →",
+            "button_link": "/#sticking-points",
+            "button_style": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "listing_pov",
+    "product_pov",
+    "listing_tgf",
+    "product_tgf",
+    "listing_reclaiming",
+    "product_reclaiming",
+    "bundles_intro",
+    "bundles",
+    "finder_cta"
+  ]
+}

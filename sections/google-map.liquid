@@ -1,0 +1,221 @@
+{%- style -%}
+    .google__map--wrapper iframe{
+      width: 100% !important;
+      height: 50rem !important;
+    }
+   .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- if section.settings.image != blank -%}
+    @media screen and (max-width: 767px) {
+      .google__map--media--large {
+        min-height: 39rem;
+      }
+      .google__map--media--medium {
+        min-height: 34rem;
+      }
+      .google__map--media--small {
+        min-height: 28rem;
+      }
+    }
+
+    @media screen and (min-width: 768px){
+      .google__map--media--large {
+        min-height: 72rem;
+      }
+      .google__map--media--medium {
+        min-height: 56rem;
+      }
+      .google__map--media--small {
+        min-height: 42rem;
+      }
+    }
+  {%- endif -%}
+  h2.google__map--placeholder-heading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+  }
+{%- endstyle -%}
+
+<div class="google__map--wrapper section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="{{ section.settings.container_type }}">
+    {%- if section.settings.image != blank -%}
+      <div
+        class="google__map--media--{{ section.settings.image_height }} media"
+        {% if section.settings.image_height == 'adapt' and section.settings.image != blank %}
+          style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+        {% endif %}
+      >
+        <img
+          srcset="
+            {%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+            {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+          "
+          sizes="100vw"
+          src="{{ section.settings.image | image_url: width: 1500 }}"
+          loading="lazy"
+          alt="{{ section.settings.image.alt | escape }}"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio | round }}"
+        >
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.map == blank and section.settings.image == blank -%}
+      <div class="google__map--media placeholder">
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-2' }}
+        <h2 class="google__map--placeholder-heading h1 text-center">Add Map iframe code or placholder</h2>
+      </div>
+    {%- endif -%}
+
+    {{ section.settings.map }}
+  </div>
+</div>
+
+{% schema %}
+ {
+   "name": "Google map",
+   "settings": [
+       {
+        "type": "select",
+        "id": "container_type",
+        "options": [
+          {
+            "value": "container",
+            "label": "Default"
+          },
+          {
+            "value": "container-fluid px-0",
+            "label": "Full Width"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container box"
+          }
+        ],
+        "default": "container",
+        "label": "Container type"
+     },
+     {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "background-1"
+     },
+     {
+       "type": "image_picker",
+       "id": "image",
+       "label": "Map placeholder image"
+     },
+     {
+       "type": "select",
+       "id": "image_height",
+       "options": [
+         {
+           "value": "adapt",
+           "label": "Adapt to image"
+         },
+         {
+           "value": "small",
+           "label": "Small"
+         },
+         {
+           "value": "medium",
+           "label": "Medium"
+         },
+         {
+           "value": "large",
+           "label": "Large"
+         }
+       ],
+       "default": "adapt",
+       "label": "Image height"
+     },
+     {
+       "type": "textarea",
+       "id": "map",
+       "label": "Map iframe code"
+     },
+     {
+       "type": "header",
+       "content": "Get iframe code",
+       "info": "[Click here](https:\/\/www.maps.ie\/create-google-map)"
+     },
+     {
+       "type": "header",
+       "content": "Section padding"
+     },
+     {
+       "type": "paragraph",
+       "content": "Desktop"
+     },
+     {
+       "type": "range",
+       "id": "padding_top",
+       "min": 0,
+       "max": 150,
+       "step": 5,
+       "unit": "px",
+       "label": "Padding top",
+       "default": 0
+     },
+     {
+       "type": "range",
+       "id": "padding_bottom",
+       "min": 0,
+       "max": 150,
+       "step": 5,
+       "unit": "px",
+       "label": "Padding bottom",
+       "default": 0
+     },
+     {
+       "type": "paragraph",
+       "content": "Mobile"
+     },
+     {
+       "type": "range",
+       "id": "mobile_padding_top",
+       "min": 0,
+       "max": 150,
+       "step": 5,
+       "unit": "px",
+       "label": "Padding top",
+       "default": 0
+     },
+     {
+       "type": "range",
+       "id": "mobile_padding_bottom",
+       "min": 0,
+       "max": 150,
+       "step": 5,
+       "unit": "px",
+       "label": "Padding bottom",
+       "default": 0
+     }
+],
+"presets": [
+     {
+     	"name": "Google map"
+     }
+   ]
+ }
+{% endschema %}

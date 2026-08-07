@@ -1,0 +1,18 @@
+.breadcrumbs__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.breadcrumbs__item + .breadcrumbs__item {
+  margin-inline-start: 15px;
+  padding-inline-start: 15px;
+  position: relative;
+}
+.breadcrumbs__item + .breadcrumbs__item::before {
+  position: absolute;
+  content: "/";
+  left: -4px;
+}
+.breadcrumbs__item {
+  font-size: 1.4rem;
+}

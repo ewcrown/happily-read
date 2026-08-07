@@ -1,0 +1,67 @@
+{%- if logo_inner != blank and request.page_type == 'index' -%}
+  <a href="{{ routes.root_url }}" class="{{ className }} {{ none }}">
+    {%- if section.settings.logo != blank -%}
+      {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+      {%- assign logo_alt = section.settings.logo_inner.alt | default: shop.name | escape -%}
+      {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo_inner.aspect_ratio -%}
+      {% capture sizes %}(max-width: {{ section.settings.logo_width | times: 2 }}px) 50vw, {{ section.settings.logo_width }}px{% endcapture %}
+      {% capture widths %}{{ section.settings.logo_width }}, {{ section.settings.logo_width | times: 1.5 | round }}, {{ section.settings.logo_width | times: 2 }}{% endcapture %}
+      {{
+        section.settings.logo_inner
+        | image_url: width: 600
+        | image_tag:
+          class: 'header__heading-logo motion-reduce',
+          widths: widths,
+          height: logo_height,
+          width: settings.logo_width,
+          alt: logo_alt,
+          sizes: sizes,
+          preload: true
+      }}
+    {%- else -%}
+      <span class="h2">{{ shop.name }}</span>
+    {%- endif -%}
+  </a>
+{%- else -%}
+  <a href="{{ routes.root_url }}" class="{{ className }} {{ none }}">
+    {%- if section.settings.transparent_logo != blank -%}
+      {%- assign logo_alt = section.settings.transparent_logo.alt | default: shop.name | escape -%}
+      {%- assign logo_height = section.settings.logo_width
+        | divided_by: section.settings.transparent_logo.aspect_ratio
+      -%}
+      {% capture sizes %}(max-width: {{ section.settings.logo_width | times: 2 }}px) 50vw, {{ section.settings.logo_width }}px{% endcapture %}
+      {% capture widths %}{{ section.settings.logo_width }}, {{ section.settings.logo_width | times: 1.5 | round }}, {{ section.settings.logo_width | times: 2 }}{% endcapture %}
+      {{
+        section.settings.transparent_logo
+        | image_url: width: 600
+        | image_tag:
+          class: 'header__heading-logo transparent__header--logo',
+          widths: widths,
+          height: logo_height,
+          width: settings.logo_width,
+          alt: logo_alt,
+          sizes: sizes,
+          preload: true
+      }}
+
+      {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+      {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+      {% capture sizes %}(max-width: {{ section.settings.logo_width | times: 2 }}px) 50vw, {{ section.settings.logo_width }}px{% endcapture %}
+      {% capture widths %}{{ section.settings.logo_width }}, {{ section.settings.logo_width | times: 1.5 | round }}, {{ section.settings.logo_width | times: 2 }}{% endcapture %}
+      {{
+        section.settings.logo
+        | image_url: width: 600
+        | image_tag:
+          class: 'header__heading-logo transparent__header--sticky-logo',
+          widths: widths,
+          height: logo_height,
+          width: settings.logo_width,
+          alt: logo_alt,
+          sizes: sizes,
+          preload: true
+      }}
+    {%- else -%}
+      <span class="h2">{{ shop.name }}</span>
+    {%- endif -%}
+  </a>
+{%- endif -%}

@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header.name",
+  "sections": {
+    "announcement_bar_496qhM": {
+      "type": "announcement-bar",
+      "blocks": {
+        "information_txt_GnUxMH": {
+          "type": "information_txt",
+          "settings": {
+            "info_txt": "Free Delivery on <b>orders</b> over $260"
+          }
+        }
+      },
+      "block_order": [
+        "information_txt_GnUxMH"
+      ],
+      "settings": {
+        "header_top_enable": true,
+        "color_scheme": "background-1",
+        "section_inner_container": "container",
+        "show_separator_line": false,
+        "show_social": true,
+        "icon": "phone",
+        "header_linklist_title_1": "+0123456789",
+        "header_linklist_url_1": "#",
+        "icon_2": "email",
+        "header_linklist_title_2": "Digizen@domain.com",
+        "header_linklist_url_2": "#",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "content_position_reverse": true,
+        "section_padding_top": 18,
+        "section_padding_bottom": 18
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_with_banner_G4kDFJ": {
+          "type": "mega-menu-with-banner",
+          "settings": {
+            "heading": "Shop",
+            "height": "square",
+            "promo1_heading": "Featured",
+            "promo1_text": "",
+            "promo1_link": "shopify://collections/accessories",
+            "height_2": "square",
+            "promo2_heading": "New Arrivals",
+            "promo2_text": "",
+            "promo2_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_with_banner_G4kDFJ"
+      ],
+      "settings": {
+        "section_inner_container": "container",
+        "logo": "shopify://shop_images/tmp87wt3ayw.webp",
+        "logo_width": 180,
+        "logo_position": "middle_left",
+        "menu": "main-menu",
+        "menu_position": "center",
+        "header_sticky": true,
+        "show_cart": true,
+        "show_search": true,
+        "show_wishlist": true,
+        "show_compare": false,
+        "user_icon": false,
+        "color_scheme": "accent-1",
+        "transparent_header": false,
+        "transparent_color_foreground": "#ffffff",
+        "drawer_menu": false,
+        "drawer-menu": "main-menu",
+        "color_foreground": "#121212",
+        "color_background": "#ffffff",
+        "submenu_color_scheme": "background-1"
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_496qhM",
+    "header"
+  ]
+}

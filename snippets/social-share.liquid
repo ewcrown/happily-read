@@ -1,0 +1,45 @@
+{{ 'share-button.css' | asset_url | stylesheet_tag }}
+
+<!-- Share -->
+<div class="share-icons">
+
+  {% if template contains 'article' or template contains 'blog' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+  {% capture shareTitle %}{{ article.title | url_param_escape }}{% endcapture %}
+
+  {% elsif template contains 'product' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture shareTitle %}{{ product.title | url_param_escape }}{% endcapture %}
+
+  {% elsif template == 'password' %}
+  {% capture permalinkURL %}{{ shop.url }}{% endcapture %}
+  {% capture shareTitle %}{% unless shop.description == blank %}{{ shop.description | url_param_escape }}{% else %}{{ shop.name | url_param_escape }}{% endunless %}{% endcapture %}
+
+  {% endif %}
+  
+ 
+  <span class="social-links">
+
+    {%- if block.settings.facebook_share -%}
+    <a class="facebook" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" title="{{ 'general.share.facebook_follow' | t }}" target="_blank">
+     {%- render 'icon-facebook' -%} <span class="social__share--text"> {{ 'general.share.facebook' | t }} </span>
+    </a>
+    {%- endif -%}
+
+    {%- if block.settings.twitter_share -%}
+    <a class="twitter" href="//twitter.com/share?text={{ shareTitle }}&amp;url={{ permalinkURL }};source=webclient" title="{{ 'general.share.twitter_follow' | t }}" target="_blank"> 
+      {%- render 'icon-twitter' -%} <span class="social__share--text">{{ 'general.share.twitter' | t }}</span>
+    </a>  
+    {%- endif -%}
+
+    {%- if block.settings.pinterest_share -%}
+    {% if product.featured_image or article.image  %}
+    <a class="pinterest" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{% if template contains 'product' %}{{ product | img_url: '1024x1024' }}{% else %}{{ article | img_url: '1024x1024' }}{% endif %}&amp;description={{ shareTitle }}" title="{{ 'general.share.pinterest_follow' | t }}" target="_blank">
+      {%- render 'icon-pinterest' -%} <span class="social__share--text">{{ 'general.share.pinterest' | t }}</span>
+    </a>
+    {% endif %}
+    {% endif %}
+
+  </span>
+
+</div>

@@ -1,0 +1,60 @@
+.collection__card {
+  position: relative;
+  display: block;
+}
+.collection_placeholder_card .collection-placeholder-svg {
+  width: 100%;
+  height: 100%;
+}
+.collection__card_relative {
+  position: relative;
+  padding-top: 15px;
+  padding-block-end: 10px;
+  gap: 5px;
+}
+.collection-list__item:not(.collection-card-padding__none)
+  .collection__card
+  .media:not(.media--circle) {
+  border-radius: var(--border-radius);
+}
+.card.collection-list__item .collection__card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.card.collection-list__item .collection__card.gradient {
+  background-attachment: unset;
+}
+
+.collection-card-padding__small {
+  padding-inline-end: 15px;
+  padding-inline-start: 15px;
+  padding-block-start: 15px;
+  padding-block-end: 15px;
+}
+.collection-card-padding__medium {
+  padding-inline-end: 25px;
+  padding-inline-start: 25px;
+  padding-block-start: 25px;
+  padding-block-end: 25px;
+}
+.collection-card-padding__large {
+  padding-inline-end: 30px;
+  padding-inline-start: 30px;
+  padding-block-start: 30px;
+  padding-block-end: 30px;
+}
+
+@media only screen and (max-width: 480px) {
+  .collection-card-padding__medium {
+    padding-inline-end: 15px;
+    padding-inline-start: 15px;
+    padding-block-start: 25px;
+    padding-block-end: 10px;
+  }
+  .collection-card-padding__large {
+    padding-inline-end: 10px;
+    padding-inline-start: 10px;
+    padding-block-start: 30px;
+    padding-block-end: 15px;
+  }
+}

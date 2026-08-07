@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": false,
+        "show_breadcrumb_navigation": true,
+        "text_center": "left",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "cf236129-3fd6-4b07-9136-1f7711d24b19": {
+          "type": "search",
+          "settings": {
+            "wedget_title": "Search"
+          }
+        },
+        "e76ff653-7b68-40ab-bac0-a27e63ea1fd9": {
+          "type": "archive",
+          "disabled": true,
+          "settings": {
+            "wedget_title": "Archive"
+          }
+        },
+        "378ee4d2-d006-40b9-8f2b-886e0e1a95ae": {
+          "type": "recent_post",
+          "settings": {
+            "wedget_title": "Recent Post",
+            "recent_post_limit_handle": 2,
+            "post_title_len": 3
+          }
+        },
+        "7a779d94-26b0-45c9-8c3e-9d6cdbfc1107": {
+          "type": "tag",
+          "settings": {
+            "wedget_title": "Tags",
+            "blog_tags_list_limit_handle": 10
+          }
+        },
+        "8301d77c-a794-42a3-919b-ddc948a5dcc5": {
+          "type": "banner",
+          "settings": {
+            "wedget_title": "Banner",
+            "banner_image": "shopify://shop_images/blog-banner-1.png",
+            "banner_image_url": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "cf236129-3fd6-4b07-9136-1f7711d24b19",
+        "e76ff653-7b68-40ab-bac0-a27e63ea1fd9",
+        "378ee4d2-d006-40b9-8f2b-886e0e1a95ae",
+        "7a779d94-26b0-45c9-8c3e-9d6cdbfc1107",
+        "8301d77c-a794-42a3-919b-ddc948a5dcc5"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "layout": "standard",
+        "article_to_show": 6,
+        "show_image": true,
+        "image_ratio": "medium",
+        "show_title": true,
+        "show_content": true,
+        "show_date": true,
+        "show_author": true,
+        "show_read_btn": true,
+        "sidebar_handle": "left_sidebar_handle",
+        "padding_top": 100,
+        "padding_bottom": 105,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 65
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main"
+  ]
+}

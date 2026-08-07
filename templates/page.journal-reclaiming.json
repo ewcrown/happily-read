@@ -1,0 +1,319 @@
+{
+  "sections": {
+    "opening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You have spent so long being who everyone needed you to be that you are not entirely sure who you are anymore.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Not in a dramatic way. In the quiet way. The way you agree to things you do not want. The way you feel vaguely unlike yourself in certain rooms. The way you have needs you have never said out loud. The way you wonder sometimes if the version of you that existed before all the accommodating is still in there somewhere.</p><p>She is. This journal is how you find her.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "whats_happening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "What you're carrying has a name. Shadow work brings it into the light.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Carl Jung identified what he called the shadow — the parts of ourselves we have disowned, repressed, or hidden because they felt unsafe to express. These are not the dark parts. They are simply the parts that did not fit the role we were expected to play.</p><p>When the shadow is unexamined, it runs the show from underneath. It shapes decisions without your awareness. It drives patterns you cannot explain. It creates a persistent sense of not quite being yourself.</p><p>Shadow work is the structured process of bringing those parts into conscious awareness — not to judge them, but to integrate them. When the hidden parts of you become visible, they stop driving from the back seat.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "framework": {
+      "type": "multicolumn",
+      "blocks": {
+        "fw_jung": {
+          "type": "column",
+          "settings": {
+            "title": "Jungian Shadow Work",
+            "text": "<p>Drawn from the foundational work of Carl Jung and extended by contemporary depth psychologists — provides a structured methodology for identifying, examining, and integrating the disowned self. This is not free-form writing. It is directed inquiry with a clear destination.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "fw_neuro": {
+          "type": "column",
+          "settings": {
+            "title": "Neuroplasticity",
+            "text": "<p>Provides the mechanism for why this works at the brain level. Bringing unconscious patterns into conscious awareness — and repeating new, intentional responses — literally changes neural architecture. The journal is structured to use this mechanism deliberately.</p><p>45 days. Because this work takes longer than 30. And it is worth it.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["fw_jung", "fw_neuro"],
+      "settings": {
+        "title": "Built on Jungian shadow work and neuroplasticity. Not journaling for its own sake.",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "column_padding": "medium",
+        "button_label": "",
+        "columns_mobile": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "system": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "45 days. Structured inquiry. A self you recognise at the end of it.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The journal moves through four phases. The first is excavation — identifying what has been buried and where it came from. The second is examination — looking at it clearly, without judgment. The third is integration — bringing those parts back into your sense of self. The fourth is expression — living as the whole version of you, not the curated one.</p><p>One prompt per day. 10 to 20 minutes. A process that does not require you to have it figured out before you begin.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "accountability": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You do not do this alone.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A signed commitment. An accountability partner who knows you are doing this work. Because the parts of yourself you are reclaiming have been hidden for a reason — and having someone witness the process is part of what makes it real.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "social_proof": {
+      "type": "testimonial-section",
+      "blocks": {
+        "story": {
+          "type": "testimonial_item",
+          "settings": {
+            "client_review_icon": "5",
+            "testimonial_review_title": "Representative journey",
+            "client_review_text": "\"I did not expect to cry as much as I did. I also did not expect to feel as free as I did by the end. Reclaiming Her asked me questions I had been avoiding for years. By Day 45 I had answered them. That felt like something.\"",
+            "client_name": "Representative journey",
+            "client_designation": "Reclaiming Her Journal"
+          }
+        }
+      },
+      "block_order": ["story"],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Real stories",
+        "heading_size": "h1",
+        "subtitle": "",
+        "alignment": "center",
+        "container_type": "container",
+        "layout": "grid",
+        "column": "1",
+        "card_style": "card",
+        "card_color_scheme": "background-2",
+        "testimonial_alignment": "left",
+        "testimonial_author_card_style": "bottom",
+        "quotes_icon": true,
+        "card_corner": 10,
+        "auto_rotate": false,
+        "show_navigation": false,
+        "products_show_on_sm": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "purchase": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "medium",
+        "enable_sticky_info": true,
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "purchase_extras": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 45-Day Reclaiming Her Journal — $29.95",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"#\">Also available on Amazon →</a></p><p>Pair it with That Girl Frequency — the journal that takes the woman you've reclaimed and puts her fully into the world.<br>Bundle: Reclaiming Her + That Girl Frequency — $45</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop bundles",
+            "button_link": "/pages/shop",
+            "button_style": "secondary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 10,
+        "padding_bottom": 40,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "genesis_thread": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more →</a></p>"
+          }
+        }
+      },
+      "block_order": ["text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "optin": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not ready yet?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get the science behind shadow work and what it actually does delivered to your inbox. No pitch. Just the research.</p>"
+          }
+        },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "background-1",
+        "height": "small",
+        "form_position": "bottom",
+        "content_wrapper_width": "medium",
+        "content_alignment": "center",
+        "border_bottom_enabel": false,
+        "show_first_name": true,
+        "require_first_name": false,
+        "form_tags": "newsletter, sp_shadow_work",
+        "submit_label": "Send me the science",
+        "privacy_text": "",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "opening",
+    "whats_happening",
+    "framework",
+    "system",
+    "accountability",
+    "social_proof",
+    "purchase",
+    "purchase_extras",
+    "genesis_thread",
+    "optin"
+  ]
+}

@@ -1,0 +1,23 @@
+{% comment %}
+  Shopify Compare
+  Usage:
+    - Replace the snippet name ('product-card') with your existing product card snippet
+    - Pass the product object as a snippet variable named 'product'
+{% endcomment %}
+{%- layout none -%}
+{%- render 'compare-product-card', 
+    product_card_product: product,
+    media_size: settings.image_ratio,
+    show_secondary_image: settings.show_secondary_image,
+    show_vendor: settings.show_vendor,
+    show_badge: settings.show_badges,
+    show_cart_button: settings.show_cart_button,
+    show_quick_view: settings.show_quick_view_button,
+    show_quick_compare: settings.show_compare_view_button,
+    show_wishlist: settings.show_wishlist_button,
+    show_countdown: settings.show_countdown,
+    show_title: settings.show_title,
+    show_price: settings.show_price,
+    show_product_description: settings.show_product_description,
+    show_rating: settings.show_product_rating
+-%}

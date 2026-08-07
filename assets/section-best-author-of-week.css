@@ -1,0 +1,257 @@
+/* Best Author of Week Section Styles */
+
+.best-author-section {
+  position: relative;
+}
+
+/* Author Image Card (Left Side) */
+.author-image-card {
+  position: relative;
+}
+
+.author-image-card__wrapper {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--author-card-radius, 12px);
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+.author-image-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.author-image-card:hover .author-image-card__image {
+  transform: scale(1.05);
+}
+
+.author-image-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--color-foreground), 0.05);
+  border-radius: var(--author-card-radius, 12px);
+}
+
+.author-placeholder-svg {
+  width: 60%;
+  height: auto;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+/* Author Info Content (Center) */
+.author-info-content {
+  padding: 0 20px;
+}
+
+.author-info-content__badge {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+.author-info-content__name {
+  margin: 0 0 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.author-info-content__name a {
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author-info-content__name a:hover {
+  color: rgb(var(--color-button));
+}
+
+.author-info-content__title {
+  display: block;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.7);
+  margin-bottom: 15px;
+}
+
+.author-info-content__description {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: rgba(var(--color-foreground), 0.75);
+  margin: 0 0 20px;
+}
+
+.author-info-content__button {
+  margin-top: 10px;
+}
+
+/* Products Section (Right Side) */
+.author-products-section {
+  padding-inline-start: 20px;
+  border-inline-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.author-products-section__heading {
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+
+.author-products-grid {
+  margin-bottom: -20px;
+}
+
+/* Mobile Grid Options */
+@media screen and (max-width: 749px) {
+  .author-products-grid--mobile-1 > .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .author-products-grid--mobile-2 > .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* Media Ratios */
+.media {
+  position: relative;
+  overflow: hidden;
+}
+
+.media > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media--square {
+  padding-bottom: 100%;
+}
+
+.media--portrait {
+  padding-bottom: 125%;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 991px) {
+  .author-info-content {
+    padding: 0 15px;
+  }
+
+  .author-info-content__description {
+    font-size: 1.3rem;
+  }
+
+  .author-products-section {
+    padding-left: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .author-info-content {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .author-info-content__title {
+    font-size: 1.3rem;
+  }
+
+  .author-info-content__description {
+    font-size: 1.3rem;
+  }
+
+  .author-products-section {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    padding-top: 20px;
+  }
+
+  .author-products-section__heading {
+    text-align: center;
+  }
+}
+
+/* Author Products Header */
+.author-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.author-products-header .author-products-section__heading {
+  margin: 0;
+}
+
+/* Author Slider Controls */
+.author-products-section .productSlider {
+  overflow: hidden;
+}
+
+.author-slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-slider-controls .swiper-button-prev,
+.author-slider-controls .swiper-button-next {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  background: rgba(var(--color-foreground), 0.1);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.5);
+  transition: all 0.3s ease;
+}
+
+.author-slider-controls .swiper-button-prev:hover,
+.author-slider-controls .swiper-button-next:hover {
+  background:  rgba(var(--color-background), 0.5);
+  transform: scale(1.1);
+}
+
+.author-slider-controls .swiper-button-prev::after,
+.author-slider-controls .swiper-button-next::after {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.author-slider-controls .swiper-pagination {
+  position: relative;
+  bottom: auto;
+  width: auto;
+}
+
+.author-slider-controls .swiper-pagination-fraction {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+/* Mobile header adjustments */
+@media screen and (max-width: 767px) {
+  .author-products-header {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,363 @@
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  if section.settings.collection_type == 'all'
+    case section.settings.sort
+      when 'products_high', 'products_low'
+        assign collections = collections | sort: 'all_products_count'
+      when 'date', 'date_reversed'
+        assign collections = collections | sort: 'published_at'
+    endcase
+
+    if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+      assign collections = collections | reverse
+    endif
+  endif
+-%}
+
+<div class="page__wrapper section--padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="page__header text-center mb-50">
+          {%- if section.settings.heading_tag == 'h1' -%}
+            <h1 class="title title--primary">{{ section.settings.title | escape }}</h1>
+          {%- else -%}
+            <h2 class="title title--primary h1">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          <p class="mb-0">{{ section.settings.page_description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row  {% if section.settings.column == "5" %} row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 {% endif %}">
+      {%- liquid
+        if section.settings.layout == 'masonry'
+          assign columns = section.blocks.size
+          if columns > 3
+            assign columns = 3
+          endif
+        else
+          assign columns = section.settings.column
+        endif
+
+        if section.settings.layout == 'standard'
+          assign column_set = section.settings.column
+          case column_set
+            when '1'
+              assign column_class_standard = 'col-12'
+            when '2'
+              assign column_class_standard = 'col-md-6 col-sm-6 col-12'
+            when '3'
+              assign column_class_standard = 'col-md-4 col-sm-6 col-12'
+            when '4'
+              assign column_class_standard = 'col-md-3 col-sm-6 col-12'
+            else
+              assign column_class_standard = 'col'
+          endcase
+        endif
+      -%}
+
+      {%- if section.settings.collection_type == 'all' -%}
+        {%- for collection in collections -%}
+          {%- liquid
+            if section.settings.layout == 'masonry'
+              if forloop.index > 2
+                assign column_class = 'col-md-4 col-sm-6 col-12'
+              else
+                assign column_class = 'col-md-6 col-sm-6 col-12'
+              endif
+            endif
+          -%}
+          <div class="collection-list__item {{ column_class }} {{ column_class_standard }}">
+            {%- render 'collection-card',
+              collection: collection,
+              product_count: section.settings.product_count,
+              columns: columns,
+              title_position: section.settings.title_position,
+              collection_show_content_below: section.settings.collection_show_content_below,
+              content_position_without_image_below: section.settings.content_position_without_image_below
+            -%}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+          {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+          {%- liquid
+            if section.settings.layout == 'masonry'
+              if forloop.index > 2
+                assign column_class = 'col-md-4 col-sm-6 col-12'
+              else
+                assign column_class = 'col-md-6 col-sm-6 col-12'
+              endif
+            endif
+          -%}
+          {%- case block.type -%}
+            {%- when 'collection_item' -%}
+              {% assign collection = collections[block.settings.collection] %}
+              <div class="collection-list__item {{ column_class }} {{ column_class_standard }}">
+                {%- render 'collection-card',
+                  collection: collection,
+                  product_count: section.settings.product_count,
+                  columns: columns,
+                  title_position: section.settings.title_position,
+                  placeholder_image: placeholder_image,
+                  collection_show_content_below: section.settings.collection_show_content_below,
+                  content_position_without_image_below: section.settings.content_position_without_image_below,
+                  custom_image: block.settings.collection_image
+                -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:sections.main-list-collections.name",
+  "class": "spaced-section",
+  "settings": [
+	{
+      "type": "radio",
+      "id": "collection_type",
+      "label": "Show collections",
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "All"
+        },
+        {
+          "value": "selected",
+          "label": "Selected"
+        }
+      ]
+    },
+	{
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Grid"
+        },
+        {
+          "value": "masonry",
+          "label": "Collage"
+        }
+      ],
+      "default": "masonry",
+      "label": "Layout"
+    },
+	{
+      "type": "select",
+      "id": "column",
+      "label": "Number of columns on desktop",
+      "info": "Works on the grid layout",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_count",
+      "default": true,
+      "label": "Show product count"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.collection-list.settings.image_ratio.label",
+      "info": "t:sections.collection-list.settings.image_ratio.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+	{
+      "type": "select",
+      "id": "title_position",
+      "options": [
+		{
+          "value": "top--left",
+          "label": "Top left"
+        },
+        {
+          "value": "top--right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom--left",
+          "label": "Bottom letf"
+        },
+		{
+          "value": "bottom--right",
+          "label": "Bottom right"
+        },
+		{
+          "value": "full--center",
+          "label": "Center"
+        }
+      ],
+      "default": "bottom--left",
+      "label": "Title position"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_show_content_below",
+      "label": "Show content below on images",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_position_without_image_below",
+      "options": [
+		{
+          "value": "space-between",
+          "label": "Space between"
+        },
+		{
+          "value": "flex-start",
+          "label": "Start"
+        },
+		{
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        }
+      ],
+      "default": "space-between",
+      "label": "Content position",
+      "info": "It's not works for content above on image"
+    },
+	{
+      "type": "header",
+      "content": "Show all collections"
+    },
+	{
+      "type": "select",
+      "id": "sort",
+      "options": [
+        {
+          "value": "alphabetical",
+          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
+        },
+        {
+          "value": "date_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
+        },
+        {
+          "value": "date",
+          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
+        },
+        {
+          "value": "products_high",
+          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
+        },
+        {
+          "value": "products_low",
+          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
+        }
+      ],
+      "default": "alphabetical",
+      "label": "t:sections.main-list-collections.settings.sort.label"
+    },
+	{
+      "type": "header",
+      "content": "Page header"
+    },
+	{
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.main-list-collections.settings.title.label",
+      "default": "Collections"
+    },
+	 {
+      "type": "select",
+      "id": "heading_tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading tag",
+      "info": "Used for accessibility and SEO"
+    },
+	{
+      "type": "richtext",
+      "id": "page_description",
+      "label": "Description",
+	  "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,161 @@
+.instagram--item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card_corner);
+}
+.instagram-list--item {
+  overflow: hidden;
+}
+.instagram-list--item,
+.instagram-list--item .instagram--gallery-card .media svg,
+.instagram-list--item .instagram--gallery-card .media img {
+  transition: all 0.3s ease-in-out;
+}
+.instagram-list--item .instagram--gallery-card:hover .media svg,
+.instagram-list--item .instagram--gallery-card:hover .media img {
+  transform: scale(1.05);
+}
+
+.instagram-overlay-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  text-align: center;
+  transition: 0.3s;
+}
+.instagram--item .instagram-icon svg {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* fill: #fff; */
+}
+
+.instagram-icon {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  background: rgb(var(--color-button));
+  color: #fff;
+  z-index: 3;
+  border-radius: 100%;
+  fill: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media screen and (max-width: 780px) {
+  .instagram-icon {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+  }
+  .instagram--item .instagram-icon svg {
+    width: 40px;
+  }
+}
+
+.instagram-gallery-wrap.gx-0 .instagram-list--item.mb-30 {
+  margin-bottom: 0;
+}
+.instagram-list--item a:hover .instagram-overlay-card {
+  opacity: 0.8;
+}
+.instagram-list--item a:hover .instagram-icon {
+  visibility: visible;
+  opacity: 1;
+}
+.main-media--circle .instagram-overlay-card {
+  border-radius: 50%;
+}
+
+.main-media--round .instagram-overlay-card {
+  border-radius: 45%;
+}
+
+.instagram__control_nav {
+  background: 0 0;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  position: absolute;
+  top: 52.5%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.instagram__control_nav:after {
+  font-size: 30px;
+}
+.instagram__control_nav.swiper-button-next {
+  right: -16px;
+}
+.instagram__control_nav.swiper-button-prev {
+  left: -16px;
+}
+.collection-list.productSlider:hover
+  .instagram__control_nav.swiper-button-prev {
+  left: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+.collection-list.productSlider:hover
+  .instagram__control_nav.swiper-button-next {
+  right: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.collection-list-title {
+  margin: 0;
+}
+.collection-list__item:only-child .media {
+  height: 35rem;
+}
+/* @media screen and (max-width: 600px) {
+  .collection-list.gallery-list .collection-list__item {
+    width: 100%;
+  }
+}
+ */
+.instagram--gallery-card {
+  position: relative;
+  display: block;
+}
+.collection-overlay-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+span.link__hover_arrow_inner {
+  background: rgba(var(--color-background));
+  color: rgba(var(--color-foreground));
+  display: inline-flex;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+.collection__card:hover .collection-overlay-card {
+  opacity: 1;
+  visibility: visible;
+}

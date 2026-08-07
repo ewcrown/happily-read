@@ -1,0 +1,41 @@
+
+@media only screen and (min-width: 750px) {
+  .logo__list--bar {
+    justify-content: center;
+  }
+}
+.logo__list--media > img {
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--transition);
+  opacity: 1;
+}
+.logo_placeholder-svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.logo__list--media:hover > img {
+  opacity: 1;
+}
+.logo__list--placeholder {
+  padding-top: 100%;
+}
+.logo__list--media {
+  aspect-ratio: var(--aspect-ratio);
+  /* padding-top: 100%; */
+  /* padding-bottom: 40%; */
+  position: relative;
+}
+
+
+[style*="--aspect-ratio"]:before {
+    content: "";
+    height: 0;
+    display: block;
+    padding-top: calc(100% /(0 + var(--aspect-ratio, 16 / 9)));
+}

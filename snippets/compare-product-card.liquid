@@ -1,0 +1,216 @@
+{% style %}
+  .product-grid-item:hover h3.product-grid-item__title {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+  }
+  .product-grid-item__price {
+    justify-content: center;
+    font-weight: 700;
+  }
+  .product__details {
+    /* padding-left: 20px;
+    padding-right:20px;
+    padding-bottom: 20px; */
+  }
+  .compare_exists .product-grid-item__price {
+    justify-content: flex-start;
+  }
+  .compare_exists .product-grid-item__content {
+    padding-bottom: 5px;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign variant = product_card_product.selected_or_first_available_variant
+  assign productCountdown = product_card_product.metafields.meta.product_countdown.value
+  assign todayDate = 'now' | date: '%s'
+  assign countDownDate = productCountdown | date: '%s'
+-%}
+<div class="col">
+  <div class="product-grid-item mb-30">
+    <div class="product-grid-item__thumbnail {{ second_image_class }}">
+      {%- if show_badge -%}
+        {%- render 'product-badge', product: product_card_product -%}
+      {%- endif -%}
+
+      {%- if product_card_product.featured_media -%}
+        {%- liquid
+          assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+
+          if product_card_product.featured_media.aspect_ratio == null
+            assign featured_media_aspect_ratio = 1
+          endif
+        -%}
+        <a href="{{ product_card_product.url | default: '#' }}" class="d-block product__media_thumbnail">
+          {%- render 'product-card-media',
+            product_card_product: product_card_product,
+            variant: variant,
+            media_size: media_size,
+            featured_media_aspect_ratio: featured_media_aspect_ratio,
+            second_img_position: second_img_position,
+            show_secondary_image: show_secondary_image,
+            first_variant_featured_media_check: first_variant_featured_media_check
+          -%}
+        </a>
+
+      {%- else -%}
+        <div class="card__content">
+          <a href="{{ product_card_product.url | default: '#' }}" class="d-block">
+            <div class="placeholder placeholder_svg_parent" style="padding-bottom: 100%">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          </a>
+        </div>
+      {%- endif -%}
+
+      {%- if show_cart_button -%}
+        <ul class="product-grid-item__actions {{ cart_button_style }} {{ button_alignment }} justify-content-end top_position">
+          {%- if show_cart_button -%}
+            <li>
+              {% if product_card_product.has_only_default_variant %}
+                <product-form>
+                  <form action="/cart/add" method="post" enctype="multipart/form-data" data-type="add-to-cart-form">
+                    <input type="hidden" name="id" value="{{ variant.id }}">
+
+                    {%- if cart_button_style == 'style1' -%}
+                      <button
+                        type="submit"
+                        name="add"
+                        class="product-grid-item__actions__btn h6 mb-0"
+                        {% if product_card_product.selected_or_first_available_variant.available == false %}
+                          disabled
+                        {% endif %}
+                      >
+                        {%- if product_card_product.selected_or_first_available_variant.available -%}
+                          <span class="action__btn--text">
+                            {%- render 'cart-icon' -%}
+                            <span class="action__btn--text--label">
+                              {{ 'products.product.add_to_cart' | t }}
+                            </span>
+                          </span>
+                        {%- else -%}
+                          <span class="action__btn--text">
+                            <span class="action__btn--text--label">
+                              {{ 'products.product.sold_out' | t }}
+                            </span>
+                            {%- render 'cart-icon' -%}
+                          </span>
+                        {%- endif -%}
+                      </button>
+                    {%- else -%}
+                      <button
+                        type="submit"
+                        name="add"
+                        class="cart--icon-button button--icon h6 mb-0"
+                        {% if product_card_product.selected_or_first_available_variant.available == false %}
+                          disabled
+                        {% endif %}
+                        aria-label="{%- if product_card_product.selected_or_first_available_variant.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}"
+                      >
+                        {%- if product_card_product.selected_or_first_available_variant.available -%}
+                          {%- render 'cart-icon' -%}
+                        {%- else -%}
+                          {%- render 'cart-icon' -%}
+                        {%- endif -%}
+                      </button>
+                    {%- endif -%}
+                  </form>
+                </product-form>
+              {%- else -%}
+                {%- render 'quick-view',
+                  product_card_product: product_card_product,
+                  variant: variant,
+                  car_icon_mobile: car_icon_mobile,
+                  cart_button_style: cart_button_style
+                -%}
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+
+          <li>
+            {%- render 'button-compare',
+              product: product_card_product,
+              className: 'product-grid-item__actions__btn product-grid-item__actions__btn--compare'
+            -%}
+          </li>
+
+          <li>
+            {%- render 'button-wishlist', product: product_card_product, className: 'product-grid-item__wishlist' -%}
+          </li>
+        </ul>
+      {%- endif -%}
+
+      {%- if show_countdown and show_countdown_on_image -%}
+        {%- if todayDate < countDownDate -%}
+          <countdown-timer class="product__grid_timer timer_placed--on-image">
+            <div
+              class="product--card__countdown color-{{ section.settings.timer_color_scheme }}"
+              data-countdown="{{ productCountdown }}"
+            ></div>
+          </countdown-timer>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="product-grid-item__content">
+      <h3 class="product-grid-item__title">
+        <a href="{{ product_card_product.url | default: '#' }}">{{ product_card_product.title }}</a>
+      </h3>
+      {% render 'price', product: product_card_product, price_class: 'product-grid-item__price' %}
+    </div>
+    <div class="product__details">
+      <div class="product__details_single_info">
+        <div class="product__details_info_head">
+          {{ 'availability' }}
+        </div>
+        <div class="product__details_info_container">
+          {% if product_card_product.available %}
+            <span class="ml-1">{{ 'in stock' }}</span>
+          {% else %}
+            <span class="ml-1">{{ 'unavailable' }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if product_card_product.vendor %}
+        <div class="product__details_single_info">
+          <div class="product__details_info_head">
+            {{ 'brand' }}
+          </div>
+          <div class="product__details_info_container">
+            {{ product.vendor }}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="product__details_single_info">
+        <div class="product__details_info_head">
+          {{ 'Type' }}
+        </div>
+        <div class="product__details_info_container">
+          <p>{{ product.type }}</p>
+        </div>
+      </div>
+
+      {% unless product.has_only_default_variant %}
+        {%- for option in product_card_product.options_with_values -%}
+          <div class="product__details_single_info">
+            <div class="product__details_info_head">
+              {{ option.name }}
+            </div>
+            <div class="product__details_info_container">
+              {% for value in option.values %}
+                {%- if forloop.last == true -%}
+                  {{ value }}
+                {%- else -%}
+                  {{ value | append: ',' }}
+                {%- endif -%}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {%- endunless -%}
+    </div>
+  </div>
+</div>

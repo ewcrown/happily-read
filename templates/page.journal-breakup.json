@@ -1,0 +1,319 @@
+{
+  "sections": {
+    "opening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You're not dramatic.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You're not weak for how much this hurts. You're not embarrassed that you're still thinking about it. You're not crazy for checking their Instagram at 2 AM even though you told yourself you wouldn't.</p><p>What you're going through is real. And there's a reason it feels like this.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "whats_happening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your brain is going through withdrawal. Literally.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When you were in that relationship, your brain was producing dopamine and oxytocin at elevated levels — the same chemicals associated with reward, bonding, and safety. When the relationship ended, those levels crashed.</p><p>Your brain is responding the way it would to any withdrawal. The intrusive thoughts. The compulsive checking. The physical ache. The inability to concentrate. These are not signs that you loved too much or that something is wrong with you. They are neurological responses to chemical loss.</p><p>That's the science. And the science also tells us exactly how the brain heals from this — and how to speed up that process.</p><p>This is what the 30-Day Breakup Recovery Journal was built to do.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "framework": {
+      "type": "multicolumn",
+      "blocks": {
+        "fw_cbt": {
+          "type": "column",
+          "settings": {
+            "title": "Cognitive Behavioural Therapy (CBT)",
+            "text": "<p>The most studied approach in psychology for changing thought patterns — helps you identify the narratives your brain is running about the breakup and about yourself, and systematically replace them with ones grounded in reality rather than pain.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "fw_attachment": {
+          "type": "column",
+          "settings": {
+            "title": "Attachment Theory",
+            "text": "<p>Developed by John Bowlby and extended by decades of peer-reviewed research — helps you understand why this relationship felt the way it did, what your attachment patterns are, and how they have shaped every relationship you have been in.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["fw_cbt", "fw_attachment"],
+      "settings": {
+        "title": "Built on CBT and attachment theory. Not advice.",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "column_padding": "medium",
+        "button_label": "",
+        "columns_mobile": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "system": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "30 days. One prompt per day. A process that actually works.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This is not a journal you write in when you feel inspired. It is a structured 30-day system. One prompt per day, sequenced intentionally. The first week is about processing. The second is about pattern recognition. The third is about rebuilding. The fourth is about becoming.</p><p>Each prompt takes 10 to 20 minutes. That is all. But done consistently, the cumulative effect is the shift you have been trying to create with willpower alone.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "accountability": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "This journal comes with a commitment.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When you open your Breakup Recovery Journal, you will find a contract. You sign it. You name an accountability partner — someone who knows you are doing this work and will check in with you.</p><p>No other journal does this at the product level. Because real transformation requires real commitment. Not motivation. Commitment.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "social_proof": {
+      "type": "testimonial-section",
+      "blocks": {
+        "story": {
+          "type": "testimonial_item",
+          "settings": {
+            "client_review_icon": "5",
+            "testimonial_review_title": "Representative journey",
+            "client_review_text": "\"I didn't think a journal could do what therapy hadn't. I was wrong. By Day 21 I stopped feeling like the relationship ending was something that happened to me. By Day 30 I understood why it happened and what I was going to do differently.\"",
+            "client_name": "Representative journey",
+            "client_designation": "Breakup Recovery Journal"
+          }
+        }
+      },
+      "block_order": ["story"],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Real stories",
+        "heading_size": "h1",
+        "subtitle": "",
+        "alignment": "center",
+        "container_type": "container",
+        "layout": "grid",
+        "column": "1",
+        "card_style": "card",
+        "card_color_scheme": "background-2",
+        "testimonial_alignment": "left",
+        "testimonial_author_card_style": "bottom",
+        "quotes_icon": true,
+        "card_corner": 10,
+        "auto_rotate": false,
+        "show_navigation": false,
+        "products_show_on_sm": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "purchase": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "medium",
+        "enable_sticky_info": true,
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "purchase_extras": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 30-Day Breakup Recovery Journal — $24.95",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"#\">Also available on Amazon →</a></p><p>Women who work through Breakup Recovery often pair it with Never Get Played Again — the journal that addresses the patterns that led to the relationship in the first place.<br>Bundle: Breakup Recovery + Never Get Played Again — $60.00</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop bundles",
+            "button_link": "/pages/shop",
+            "button_style": "secondary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 10,
+        "padding_bottom": 40,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "genesis_thread": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more →</a></p>"
+          }
+        }
+      },
+      "block_order": ["text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "optin": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not ready yet?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get the science behind breakup recovery delivered to your inbox. No pitch. Just the research.</p>"
+          }
+        },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "background-1",
+        "height": "small",
+        "form_position": "bottom",
+        "content_wrapper_width": "medium",
+        "content_alignment": "center",
+        "border_bottom_enabel": false,
+        "show_first_name": true,
+        "require_first_name": false,
+        "form_tags": "newsletter, sp_breakup",
+        "submit_label": "Send me the science",
+        "privacy_text": "",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "opening",
+    "whats_happening",
+    "framework",
+    "system",
+    "accountability",
+    "social_proof",
+    "purchase",
+    "purchase_extras",
+    "genesis_thread",
+    "optin"
+  ]
+}

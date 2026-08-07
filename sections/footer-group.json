@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "contact_info_KkTVfr": {
+          "type": "contact_info",
+          "settings": {
+            "heading": "Contact Info",
+            "contact_address": "<p>Happily Read Books: Stories That Empower, Inspire, and Delight Your Soul.</p><p>Call: <a href=\"tel: (123) 456-7890\" target=\"_self\">(123) 456-7890</a></p><p><a href=\"https://happilyread.com/hello@happilyread.com\" target=\"_self\">hello@happilyread.com</a></p>",
+            "social_media": false
+          }
+        },
+        "link_list_gkiy6j": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Helpful Links",
+            "menu": ""
+          }
+        },
+        "link_list_PDkTHN": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Pages",
+            "menu": ""
+          }
+        },
+        "newsletter_r3yPFn": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_information": "Subscribe to our newsletter to receive news on update.",
+            "heading": "Sign Up for Email"
+          }
+        }
+      },
+      "block_order": [
+        "contact_info_KkTVfr",
+        "link_list_gkiy6j",
+        "link_list_PDkTHN",
+        "newsletter_r3yPFn"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "show_divider": true,
+        "show_divider_home": false,
+        "copy_right_color_scheme": "accent-1",
+        "copyright_custom_enable": true,
+        "copyright_custom_text": "<p>BookZan Shopify Theme</p>",
+        "payment_enable": true,
+        "content_alignment": "left",
+        "padding_top": 90,
+        "padding_bottom": 80,
+        "mobile_padding_top": 45,
+        "mobile_padding_bottom": 45
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

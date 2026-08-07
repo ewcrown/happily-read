@@ -1,0 +1,113 @@
+<variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-origin="{{ request.origin }}" data-url="{{ product.url }}"  data-update-url="false" {{ block.shopify_attributes }}>
+  {%- assign choose_option = block.settings.choose_options_name | downcase -%}
+
+  {%- for option in product.options_with_values -%}
+  {%- liquid 
+
+                    assign option_name = option.name | downcase
+                    assign only_option = ''
+                    assign option_collapse_values = 0
+
+
+                    assign variant_featured_image = false
+                    if option_name == choose_option
+                        assign variant_featured_image = true
+                    endif
+
+                    if option.values.size > pcard_option_values_limit
+                        assign option_collapse_values = option.values.size | minus: pcard_option_values_limit
+                    endif
+
+                    assign index = forloop.index0
+                    assign colorlist = ''
+                    assign color = '' 
+
+                    if product_card_option == "image"
+                        assign option_class  = "pcard_option__image"
+                    endif
+                    
+                    if option_name == choose_option
+                    	if block.settings.color_option_style == 'image'
+                        	assign variant_swatch = "variant--swatch-image variant--swatch-custom"
+                        else
+                        	assign variant_swatch = "variant--swatch-color variant--swatch-custom"
+                        endif
+                    endif
+                    
+                -%}
+
+  <fieldset class="js product-form__input radio--swatch">
+    <legend class="form__label"><strong>{{ option.name }}:</strong> <span>{{option.selected_value}}</span> </legend>
+
+    {%- for variant in product.variants -%}
+
+    {%- capture color -%}
+    {{ variant.options[index] }}
+    {%- endcapture -%} 
+
+
+    {%- unless colorlist contains color -%}
+    {%- assign text = color | handleize -%}
+    {%- assign value_name = color | strip -%}
+
+    <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+           name="{{ option.name }}"
+           value="{{ value_name }}"
+           form="product-form-{{ section.id }}"
+           {% if option.selected_value ==  value_name %}checked{% endif %}
+           >
+    {%- if block.settings.color_option_style == 'image' and variant_featured_image -%}
+
+    {%- if variant.featured_media != null -%}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" {% if option_name == choose_option %} class="variant--swatch-custom variant--swatch-image {% if block.settings.color_option_design == "round" %} border-radius-100 {%  endif %}" {% endif %}>
+      <img
+           src="{{ variant.featured_media | img_url: '50x50', crop: 'center' }}"
+           alt="{{ variant.featured_media.alt | escape }}"
+           width="50"
+           height="50"
+           loading="lazy"
+           >
+      <span class="swatch--variant-tooltip">{{ color }}</span>
+    </label>
+    {%- else -%}
+    <label {% if option_name == choose_option %} class="variant--swatch-custom variant--swatch-image no__image {% if block.settings.color_option_design == "round" %} border-radius-100 {%  endif %}" {% endif %}  for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" {%- if option_name == choose_option -%} style="background-color: {%- if variant.metafields.meta.variant_color.value != blank -%} {{ variant.metafields.meta.variant_color.value }} {%- else -%}{{ color | strip }}{%- endif -%}; {%- if text == "white" -%} border-color: rgba(var(--color-foreground),.30) {%- endif -%} {%- endif -%}">
+      <span class="swatch--variant-tooltip">{{ color }}</span>
+    </label>
+    {%- endif -%}
+
+    {%- else -%}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" {%- if option_name == choose_option -%} class="variant--swatch-custom variant--swatch-color {% if block.settings.color_option_design == "round" %} border-radius-100 {%  endif %}" style="background-color: {%- if variant.metafields.meta.variant_color.value != blank -%} {{ variant.metafields.meta.variant_color.value }} {%- else -%}{{ color | strip }}{%- endif -%}; {%- if text == "white" -%} border-color: rgba(var(--color-foreground),.30) {%- endif -%} {%- endif -%}">
+      {%- if option_name == choose_option -%}
+      <span class="swatch--variant-tooltip">{{ color }}</span>
+      {%- else -%}
+      {{ color }}
+      {%- endif -%}
+    </label>
+    {%- endif -%}
+
+    {%- capture tempList -%}
+    {{ colorlist | append: color | append: ' ' }}
+    {%- endcapture -%}
+    {%- assign colorlist = tempList -%}
+
+    {%- endunless -%}
+
+    {%- endfor -%}
+
+  </fieldset>
+  {%- endfor -%}
+
+
+  <script type="application/json" data-variant>
+                    {{ product.variants | json }}
+  </script>
+  <script type="application/json" data-preorder>
+                    {%- assign firstBrackets = '{'  -%}
+                    {%- assign seconrdBrackets = '}'  -%}
+                    {{ firstBrackets }}
+                    {%- for variant in product.variants -%}
+                    "{{variant.id}}": {"qty": {{variant.inventory_quantity}}, "inventory_policy": "{{variant.inventory_policy}}"}{% unless forloop.last == true %},{% endunless %}
+                      {%- endfor -%} 
+                      {{ seconrdBrackets }}
+  </script>
+</variant-radios>

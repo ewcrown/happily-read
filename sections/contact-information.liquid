@@ -1,0 +1,269 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% liquid
+  case section.settings.button_type
+    when 'primary'
+      assign button_class = 'button button--medium '
+    when 'secondary'
+      assign button_class = 'button button--secondary'
+    when 'icon'
+      assign button_class = 'link with--icon'
+    else
+      assign button_class = 'link'
+  endcase
+%}
+
+<div class="contact__section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient nrb_xx">
+  <div class="{{ section.settings.container_type }}">
+    <div class="row contact__form--container  full--width-section">
+      <div class="col-12">
+        <div class="section--title-area text-{{ section.settings.alignment }}">
+          {% if section.settings.subheading != blank %}
+            <p>{{ section.settings.subheading | escape }}</p>
+          {% endif %}
+          {%- if section.settings.heading_tag == 'h1' -%}
+            <h1 class="contact__heading {{ section.settings.heading_size }}">
+              {{ section.settings.heading | escape }}
+            </h1>
+          {%- else -%}
+            <h2 class="contact__heading {{ section.settings.heading_size }}">
+              {{ section.settings.heading | escape }}
+            </h2>
+          {%- endif -%}
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="contact__list--wrapper">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'contact_list' -%}
+                  <div class="contact__list--item" {{ block.shopify_attributes }}>
+                    <span class="h4 contact__list--item-heading">{{ block.settings.heading }}</span>
+                    <div class="contact__list--item-content">{{ block.settings.text }}</div>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact information",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+       "type": "select",
+       "id": "container_type",
+       "options": [
+         {
+           "value": "container",
+           "label": "Default"
+         },
+         {
+           "value": "container-fluid px-0",
+           "label": "Full Width"
+         },
+         {
+           "value": "container-fluid",
+           "label": "Container box"
+         }
+       ],
+       "default": "container",
+       "label": "Container type"
+    },
+    {
+       "type": "color_scheme",
+       "id": "color_scheme",
+       "label": "Color scheme",
+       "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Sub Heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "options": [
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h1",
+          "label": "h1"
+        }
+      ],
+      "default": "h2",
+      "label": "Heading tag",
+      "info": "Used for accessibility and SEO"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Heading alignment"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_list",
+      "name": "contact item",
+      "settings": [
+            {
+          "type": "text",
+          "id": "heading",
+          "default": "Phone:",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p> <strong> (372) 587-2335 </strong> </br> (372) 555-4665</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact information",
+      "blocks":[
+        {
+        	"type": "contact_list",
+			"settings": {
+            "heading": "CONTACT",
+            "text": "<p> Mobile: (+88) – 0123 – 4567<br> Mail: contact@lezadastore.com </p>"
+          }
+        },
+        {
+          "type": "contact_list",
+          "settings": {
+            "heading": "HOUR OF OPERATION:",
+            "text": "<p>Monday – Friday : 09:00 – 20:00 <br> Sunday &amp; Saturday: 10:30 – 22:00</p>"
+          }
+        },
+        {
+          "type": "contact_list",
+          "settings": {
+            "heading": "ADDRESS",
+            "text": "<p>1800 Abbot Kinney Blvd. Unit D &amp; E Venice<br>Frederick Nebraska 20620</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

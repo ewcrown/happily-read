@@ -1,0 +1,12 @@
+.product-recommendations {
+  display: block;
+}
+
+.product-recommendations__heading {
+  margin: 0;
+  margin-bottom: 3rem;
+}
+
+.product_slider_wrapper .swiper-pointer-events {
+  padding-bottom: 10px;
+}

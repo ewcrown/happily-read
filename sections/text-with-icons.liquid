@@ -1,0 +1,500 @@
+{{ 'text-with-icons.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .text__with--icons--list{
+    --text-with-icon-border-color: {{ section.settings.border_color }};
+    --card-corner: {{ section.settings.card_corner }}px;
+  }
+{%- endstyle -%}
+
+<div class="text__with--icons section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="container">
+    <div class="text__with--icons--list text__with--icons-grid-{{ section.settings.column }} text__icons--grid-{{ section.settings.desktop_position }}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'feature' -%}
+            {% liquid
+              assign vertical_content_alignment = ''
+              if section.settings.desktop_position == 'vertical'
+                if section.settings.content_alignment == 'center'
+                  assign vertical_content_alignment = 'align-items-center'
+                elsif section.settings.content_alignment == 'left'
+                  assign vertical_content_alignment = 'align-items-start'
+                else
+                  assign vertical_content_alignment = 'align-items-end'
+                endif
+              endif
+
+              assign icon_position = ''
+              if section.settings.icon_position == 'top'
+                assign icon_position = 'icon--top'
+              elsif section.settings.icon_position == 'left'
+                assign icon_position = 'icon--left'
+              elsif section.settings.icon_position == 'bottom'
+                assign icon_position = 'icon--bottom'
+              elsif section.settings.icon_position == 'right'
+                assign icon_position = 'icon--right'
+              endif
+            %}
+
+            <div
+              class="text__with--icons-single--item {% if section.settings.border_style == 'end' %} border__show {% elsif section.settings.border_style == 'box' %} border__box_show {% endif %} text__with--icons__position--{{ icon_position }} {{ vertical_content_alignment }}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.icon_enable -%}
+                {%- if block.settings.image != blank -%}
+                  <div class="text__with--image--box">
+                    <img
+                      srcset="
+                        {%- if block.settings.image.width >= 375 -%}{{ block.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                        {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                        {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+                        {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+                        {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                        {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+                      "
+                      sizes="(min-width: 990px) 100vw, 100vw"
+                      src="{{ block.settings.image | image_url: width: 375 }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  </div>
+                {% else %}
+                  <div class="text__with--icons--box">
+                    {% render 'icon-features', icon: block.settings.icon %}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+              <div class="text__with--icons-content {% if block.settings.image != blank %} text__with--icons-image {% endif %} text-{{ section.settings.content_alignment }}">
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="text__with--icons--heading h6 rte">
+                    {{- block.settings.heading | replace: 'p>', 'span>' -}}
+                  </h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <span class="text__with--icons--text">{{ block.settings.text }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text with icons",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Layout"
+      },
+    {
+      "type": "select",
+      "id": "column",
+      "label": "Number of columns on desktop",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "3"
+      },
+      {
+        "type": "select",
+        "id": "content_alignment",
+        "label": "Content alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "icon_position",
+        "label": "Icon position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "background-1"
+        },
+       {
+        "type": "header",
+        "content": "Border"
+      },
+      {
+        "type": "select",
+        "id": "border_style",
+        "label": "Border style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "box",
+            "label": "Box"
+          },
+          {
+            "value": "end",
+            "label": "End"
+          }
+        ],
+        "default": "none"
+       },
+       {
+        "type": "color",
+        "id": "border_color",
+        "default": "#e7e7e7",
+        "label": "Color"
+      },
+      {
+        "type": "range",
+        "id": "card_corner",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Border box card courner",
+        "info": "It's working on border box courner",
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "Section padding"
+      },
+      {
+        "type": "paragraph",
+        "content": "Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 70
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 70
+      },
+      {
+        "type": "paragraph",
+        "content": "Mobile"
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_top",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_bottom",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 60
+      }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "icon_enable",
+          "label": "Show icon",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "design",
+              "label": "Design"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "alarm",
+              "label": "Alarm"
+            },
+            {
+              "value": "camera",
+              "label": "Camera"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "compass",
+              "label": "Compass"
+            },
+            {
+              "value": "card",
+              "label": "Credit card"
+            },
+            {
+              "value": "dollar",
+              "label": "Dollar icon"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map",
+              "label": "Map"
+            },
+            {
+              "value": "mic",
+              "label": "Mic"
+            },
+            {
+              "value": "monitor",
+              "label": "Monitor"
+            },
+            {
+              "value": "moon",
+              "label": "Moon"
+            },
+            {
+              "value": "music",
+              "label": "Music"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "printer",
+              "label": "Printer"
+            },
+            {
+              "value": "compare",
+              "label": "Compare"
+            },
+            {
+              "value": "search",
+              "label": "Search"
+            },
+            {
+              "value": "cart",
+              "label": "Cart"
+            },
+            {
+              "value": "bag",
+              "label": "Bag"
+            },
+            {
+              "value": "smart_phone",
+              "label": "Smart phone"
+            },
+            {
+              "value": "smile",
+              "label": "Smile"
+            },
+            {
+              "value": "sun",
+              "label": "Sun"
+            },
+            {
+              "value": "thumbs_up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "thumbs_down",
+              "label": "Thumbs down"
+            },
+            {
+              "value": "trash",
+              "label": "Trash"
+            },
+            {
+              "value": "umbrella",
+              "label": "Umbrella"
+            },
+            {
+              "value": "user",
+              "label": "User"
+            },
+            {
+              "value": "users",
+              "label": "Users"
+            },
+            {
+              "value": "shipping",
+              "label": "Shipping"
+            },
+            {
+              "value": "payment",
+              "label": "Payment"
+            },
+            {
+              "value": "gift-2",
+              "label": "Gift 2"
+            },
+            {
+              "value": "watch",
+              "label": "Watch"
+            }
+          ],
+          "default": "check",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "You can upload a custom 70 x 70px image if none of the above icons are suitable for you."
+        },
+        {
+          "type": "header",
+          "content": "Content settings"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "default": "<p>FREE SHIPPING</p>",
+          "label": "t:sections.featured-collection.settings.title.label"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "On all orders over $75.00"
+        }
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "Text with icons",
+      	"blocks": [
+           {
+             "type": "feature",
+             "settings": {
+                "icon": "award",
+                "heading": "<p>FREE SHIPPING</p>",
+                "text": "On all orders over $75.00"
+              }
+           },
+           {
+             "type": "feature",
+             "settings": {
+                "icon": "gift",
+                "heading": "<p>MONEY BACK</p>",
+                "text": "30 days money back guarantee"
+              }
+           },
+          {
+             "type": "feature",
+             "settings": {
+                "icon": "map",
+                "heading": "<p>FRIENDLY SUPPORT</p>",
+                "text": "Team always ready for you"
+              }
+           }
+        ]
+      }
+   ]
+}
+{% endschema %}

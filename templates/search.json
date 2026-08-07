@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": true,
+        "show_breadcrumb_navigation": true,
+        "text_center": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "products_per_page": 16,
+        "product_column": "4",
+        "product_column_on_mobile": false,
+        "product_view_switcher": true,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_title": true,
+        "show_price": true,
+        "show_vendor": false,
+        "show_product_rating": false,
+        "show_badges": true,
+        "badge_position": "top-left",
+        "show_cart_button": true,
+        "cart_button_style": "style2",
+        "cart_button_positon": "bottom_right",
+        "show_countdown": false,
+        "timer_color_scheme": "accent-2",
+        "place_timer_on_image": false,
+        "show_date": true,
+        "show_author": true,
+        "show_comment": true,
+        "padding_top": 90,
+        "padding_bottom": 90,
+        "mobile_padding_top": 65,
+        "mobile_padding_bottom": 65
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main"
+  ]
+}

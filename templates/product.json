@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "9b934ba1-fe4e-46f6-b201-6680584b0fac": {
+          "type": "sku",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "6ca09fda-dfaa-4cce-bc9a-de4c2a935a71": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "cd140005-5187-4edb-a871-d38e77099a6d": {
+          "type": "inventory",
+          "settings": {
+            "colors_accent_1": "#cc2127",
+            "gradient_accent_1": ""
+          }
+        },
+        "f900597c-23f9-44fa-ac9b-986174a86857": {
+          "type": "countdown",
+          "settings": {
+            "countdown_label": "Hurry up! Sale ends in",
+            "icon_enable": true,
+            "timer_background": "#121212",
+            "timer_foreground": "#ffffff"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "show_color_swatch": true,
+            "color_option_style": "color",
+            "choose_options_name": "Color",
+            "color_option_design": "round"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "quantity__button": true,
+            "add_to_cart__button": "secondary",
+            "show_dynamic_checkout": true,
+            "guarantee_safe_checkout": true,
+            "safe_checkout_text": "Guaranteed safe checkout"
+          }
+        },
+        "popup_size_guide_qnNqG3": {
+          "type": "popup_size_guide",
+          "settings": {
+            "size_guide": "Size Guide",
+            "content": "",
+            "sizeguidhandle": ""
+          }
+        },
+        "f7302d8a-c3b2-48a3-ab1e-68e65db1f80c": {
+          "type": "description",
+          "settings": {
+            "heading": "Details",
+            "always_open": true,
+            "icon": "eye",
+            "productdesc": "fulldesc",
+            "truncatewords_count_handle": 200
+          }
+        },
+        "0a478e9c-d23b-4b8b-b309-62919d0eb667": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share more",
+            "share_link": true,
+            "facebook_share": true,
+            "twitter_share": true,
+            "pinterest_share": true
+          }
+        }
+      },
+      "block_order": [
+        "9b934ba1-fe4e-46f6-b201-6680584b0fac",
+        "title",
+        "price",
+        "6ca09fda-dfaa-4cce-bc9a-de4c2a935a71",
+        "cd140005-5187-4edb-a871-d38e77099a6d",
+        "f900597c-23f9-44fa-ac9b-986174a86857",
+        "variant_picker",
+        "buy_buttons",
+        "popup_size_guide_qnNqG3",
+        "f7302d8a-c3b2-48a3-ab1e-68e65db1f80c",
+        "0a478e9c-d23b-4b8b-b309-62919d0eb667"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "breadcrumb_enable": true,
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "medium",
+        "media_height": "large",
+        "mobile_thumbnails": "show",
+        "image_card_corner_radius": 10,
+        "hide_variants": true,
+        "enable_sticky_info": true,
+        "top_space_enable": false,
+        "sticky_enable": true,
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "custom_liquid_b6Jdey": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"margin-right:100px;\" id=\"judgeme_product_reviews\" class=\"jdgm-widget jdgm-review-widget\" data-product-title=\"{{ product.title }}\" data-id=\"{{ product.id }}\"> {{ product.metafields.judgeme.widget }} </div>",
+        "color_scheme": "scheme-09450903-8dfb-4f09-a02f-2590087a97b5",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Recommended products",
+        "heading_size": "h2",
+        "text_align": "center",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_title": true,
+        "show_price": true,
+        "show_vendor": false,
+        "show_product_rating": true,
+        "show_badges": true,
+        "badge_position": "top-left",
+        "show_cart_button": true,
+        "cart_button_style": "style2",
+        "cart_button_positon": "top_right",
+        "show_countdown": false,
+        "timer_color_scheme": "background-1",
+        "place_timer_on_image": false,
+        "products_to_show": 8,
+        "products_show_on_xl": "4",
+        "products_show_on_sm": "2",
+        "slider_enable": true,
+        "show_pagination": false,
+        "show_navigation": false,
+        "auto_rotate": false,
+        "autoplay_time": 3,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "recent-viewed-products": {
+      "type": "recently_viewed_product",
+      "settings": {
+        "color_scheme": "background-1",
+        "heading": "Recently viewed product",
+        "heading_size": "h2",
+        "text_align": "center",
+        "products_show_on_xl": "4",
+        "products_show_on_sm": "2",
+        "show_pagination": false,
+        "show_navigation": false,
+        "auto_rotate": true,
+        "autoplay_time": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_b6Jdey",
+    "product-recommendations",
+    "recent-viewed-products"
+  ]
+}

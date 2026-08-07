@@ -1,0 +1,14 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Usage:
+    {% render 'product-card-placeholder' %}
+{% endcomment %}
+
+<div class="{{ productItem }}">
+  <div class="mb-15 placeholder placeholder_svg_parent" style="padding-bottom: 100%">
+    {{ product_item | placeholder_svg_tag: 'placeholder-svg' }}
+  </div>
+  <span> Product Title </span> <br />
+  <span>$99.99</span>
+</div>

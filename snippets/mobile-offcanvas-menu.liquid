@@ -1,0 +1,213 @@
+<link rel="stylesheet" href="{{ 'mobile-offcanvas-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'mobile-offcanvas-menu.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+   .offcanvas-header {
+     position: fixed;
+     z-index: 9999;
+     top: 0;
+     right: auto;
+     left: 0;
+     width: 100%;
+     max-width: 320px;
+     height: 100%;
+     transition: var(--transition);
+     transform: translateX(-100%);
+     background-color: #fff;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+     visibility: collapse;
+     padding-bottom: 72px;
+  }
+   .offcanvas-overlay {
+     position: fixed;
+     z-index: 98;
+     top: 0;
+     left: 0;
+     visibility: hidden;
+     width: 100%;
+     height: 100%;
+     transition: var(--transition);
+     opacity: 0;
+     background-color: #000;
+     cursor: crosshair;
+     opacity: 0;
+   }
+   .offcanvas__inner {
+     position: relative;
+     height: 100%;
+   }
+
+   /* Offacnvas Logo */
+   .offcanvas__logo {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+     padding: 20px;
+     background-color: #f5f5f5;
+   }
+   .offcanvas__logo_link {
+     position: relative;
+     display: block;
+     max-width: 100%;
+     word-break: break-word;
+     padding-right: 10px;
+   }
+  [dir="rtl"]  .offcanvas__logo_link {
+    padding-inline-end: 10px;
+  }
+   .offcanvas__close_btn {
+     position: relative;
+     align-self: center;
+     width: 30px;
+     height: 24px;
+     padding: 0;
+     text-indent: -9999px;
+     border: none;
+     background-color: transparent;
+     flex-shrink: 0;
+   }
+   .offcanvas__close_btn::before, .offcanvas__close_btn::after {
+     position: absolute;
+     top: 50%;
+     left: 0;
+     width: 100%;
+     height: 2px;
+     margin-top: -1px;
+     content: "";
+     transform: rotate(45deg);
+     background-color: #000;
+   }
+   .offcanvas__close_btn::after {
+     transform: rotate(-45deg);
+   }
+
+   /* Mobile Menu */
+   .offcanvas__menu {
+     overflow-y: auto;
+     height: 100%;
+   }
+
+   .offcanvas__menu_ul {
+     overflow: auto;
+     margin: 0;
+     padding: 0;
+     list-style: none;
+   }
+
+   .offcanvas__menu_li {
+     position: relative;
+     border-bottom: 1px solid #ededed;
+   }
+   .offcanvas__menu_li:first-child {
+     border-top: 1px solid #ededed;
+   }
+   .offcanvas__menu_item {
+     line-height: 1;
+     display: block;
+     padding: 15px 20px;
+     word-break: break-word;
+   }
+   /* Mobile Sub Menu */
+   .offcanvas__sub_menu {
+     display: none;
+     margin: 0;
+     padding: 0;
+     list-style: none;
+   }
+   .offcanvas__sub_menu_toggle {
+     font-size: 20px;
+     position: absolute;
+     z-index: 9;
+     top: 0;
+     right: 0;
+     width: 40px;
+     height: 46px;
+     padding: 0;
+     border: none;
+     border-radius: 0;
+     background-color: transparent;
+   }
+   [dir="rtl"] .offcanvas__sub_menu_toggle {
+    left: 5px;
+    right: auto;
+   }
+   [dir="rtl"] .offcanvas__sub_menu_item {
+      padding-inline-start: 30px;
+   }
+   .offcanvas__sub_menu_toggle::before, .offcanvas__sub_menu_toggle::after {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 12px;
+     height: 2px;
+     content: "";
+     transition: var(--transition);
+     transform: translateX(-50%) translateY(-50%);
+     background-color: #2c2c2c;
+   }
+   .offcanvas__sub_menu_toggle:not(.active)::after {
+     transform: translateX(-50%) translateY(-50%) rotate(90deg);
+   }
+   .offcanvas__logo span.h2 {
+     margin: 0;
+   }
+   .offcanvas__inner .quick__links {
+     padding-top: 0;
+   }
+   .offcanvas__inner .quick__links {
+     padding-bottom: 1.5rem;
+   }
+</style>
+
+<div class="offcanvas-header" tabindex="-1">
+  <div class="offcanvas__inner">
+    <div class="offcanvas__logo">
+      {%- render 'header-logo-2', className: 'offcanvas__logo_link' -%}
+      <button class="offcanvas__close_btn">close</button>
+    </div>
+    <div class="quick__information--body">
+      <div class="quick__links flex-grow-1 y_scroll">
+        <nav class="offcanvas__menu">
+          {%- render 'mobile-menu-nav' -%}
+        </nav>
+      </div>
+      {%- if section.settings.social_media or section.settings.enable_currency or section.settings.enable_language -%}
+        <div class="menu__drawer--footer">
+          {%- if section.settings.social_media -%}
+            {%- render 'social-media', className: 'text-center' -%}
+          {%- endif -%}
+
+          <div class="localization__store d-flex justify-content-center">
+            <div class="localization-wrapper">
+              {%- if localization.available_countries.size > 1 -%}
+                <localization-form class="no-js-hidden">
+                  {%- form 'localization', id: 'AnnouncementBarCountryForm', class: 'localization-form' -%}
+                    <div>
+                      <h2 class="visually-hidden" id="AnnouncementBarCountryLabel">
+                        {{ 'localization.country_label' | t }}
+                      </h2>
+                      {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+                    </div>
+                  {%- endform -%}
+                </localization-form>
+              {% endif %}
+              {%- if localization.available_languages.size > 1 -%}
+                <localization-form class="no-js-hidden">
+                  {%- form 'localization', id: 'AnnouncementBarLanguageForm', class: 'localization-form' -%}
+                    <div>
+                      <h2 class="visually-hidden" id="AnnouncementBarLanguageLabel">
+                        {{ 'localization.language_label' | t }}
+                      </h2>
+                      {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+                    </div>
+                  {%- endform -%}
+                </localization-form>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+<div class="offcanvas-overlay"></div>

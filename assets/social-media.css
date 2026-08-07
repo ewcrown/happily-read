@@ -1,0 +1,16 @@
+.social-media-list {
+  display: flex;
+  column-gap: 1rem;
+}
+.list-social__item {
+    line-height: 1;
+}
+.social-media-list .list-social__item svg {
+  color: rgba(var(--color-foreground), .8);
+  width: 1.8rem;
+  margin-top: 4px;
+}
+
+.social-media-list .list-social__item a:hover svg{
+    color: rgba(var(--color-base-text-link-hover))!important
+}

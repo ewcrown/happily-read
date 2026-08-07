@@ -1,0 +1,141 @@
+{% comment %}
+  https://community.shopify.com/c/shopify-design/only-show-color-swatches-if-more-than-two-colors/m-p/1711730
+{% endcomment %}
+{%- liquid
+  assign variants_available_arr = product.variants | map: 'available'
+  assign variants_option1_arr = product.variants | map: 'option1'
+  assign variants_option2_arr = product.variants | map: 'option2'
+  assign variants_option3_arr = product.variants | map: 'option3'
+
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+{% liquid
+  assign color_variant_max_size = settings.color_swatches_number_of_item
+
+  assign product_content_align = 'justify-content-start'
+  if settings.product_content_alignment == 'center'
+    assign product_content_align = 'justify-content-center'
+  elsif settings.product_content_alignment == 'right'
+    assign product_content_align = 'justify-content-end'
+  endif
+%}
+<div class="product--color-swatch-wrapper d-flex {{ product_content_align }}">
+  {%- assign choose_option = settings.color_swatch_activation | downcase -%}
+  {% assign number = 0 %}
+  {%- for option in product.options_with_values -%}
+    {%- liquid
+      assign option_name = option.name | downcase
+      assign variant_featured_image = false
+      if option_name == choose_option
+        assign variant_featured_image = true
+      endif
+
+      assign index = forloop.index0
+      assign colorlist = ''
+      assign color = ''
+
+      if product_card_option == 'image'
+        assign option_class = 'pcard_option__image'
+      endif
+
+      if option_name == choose_option
+        if settings.color_option_style == 'image'
+          assign variant_swatch = 'variant--swatch-image variant--swatch-custom'
+        else
+          assign variant_swatch = 'variant--swatch-color variant--swatch-custom'
+        endif
+      endif
+    -%}
+
+    {% if option_name == choose_option %}
+      {%- for value in option.values -%}
+        {%- liquid
+          assign option_disabled = true
+
+          for option1_name in variants_option1_arr
+            case option.position
+              when 1
+                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 2
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 3
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+            endcase
+          endfor
+          assign swatch_focal_point = null
+          if value.swatch.image
+            assign image_url = value.swatch.image | image_url: width: 50
+            assign swatch_value = 'url(' | append: image_url | append: ')'
+            assign swatch_focal_point = value.swatch.image.presentation.focal_point
+          elsif value.swatch.color
+            assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+          else
+            assign swatch_value = null
+          endif
+        -%}
+
+        {% assign number = number | plus: 1 %}
+
+        {% if number <= color_variant_max_size %}
+          <color-swatch-variant
+            class="product--color-swatch {% if settings.color_option_style == 'image' %} product--color-swatch-image{% endif %} {% unless checked_color_added %}checked-color{% assign checked_color_added = true %}{% endunless %}"
+            data-variant-id="{{ value.variant.id }}"
+            data-product-handle="{{ product.handle }}"
+            title="{{ color }}"
+            style="--swatch--background: {% if settings.color_option_style == 'image' and value.variant.featured_media != null %} url({{ value.variant.featured_image | image_url: width: 50, crop: 'center' }}); {% else %} {% if value.swatch.color %}{{ swatch_value }} {% else %}{{ value | escape }}{% endif %};{% if swatch_focal_point %} --swatch-focal-point: {{ swatch_focal_point }};{% endif %}{% endif %}"
+          >
+            {%- if settings.color_option_style == 'image' and variant_featured_image -%}
+              {%- if value.variant.featured_media != null -%}
+                <span
+                  {% if option_name == choose_option %}
+                    class="variant--swatch-custom variant--swatch-image {% if settings.color_option_design == "round" %} border-radius-100 {%  endif %}"
+                  {% endif %}
+                >
+                  <span class="swatch--variant-tooltip visibility-hidden">{{ color }}</span>
+                </span>
+              {%- else -%}
+                <span
+                  {% if option_name == choose_option %}
+                    class="variant--swatch-custom variant--swatch-color {% if settings.color_option_design == "round" %} border-radius-100 {%  endif %}"
+                  {%- endif -%}
+                >
+                  {%- if option_name == choose_option -%}
+                    <span class="swatch--variant-tooltip visibility-hidden">{{ value | escape }}</span>
+                  {% else %}
+                    {{ value | escape }}
+                  {%- endif -%}
+                </span>
+              {%- endif -%}
+
+            {%- else -%}
+              <span
+                {% if option_name == choose_option %}
+                  class="variant--swatch-custom variant--swatch-color {% if settings.color_option_design == "round" %} border-radius-100 {%  endif %}"
+                {%- endif -%}
+              >
+                {%- if option_name == choose_option -%}
+                  <span class="swatch--variant-tooltip visibility-hidden">{{ value | escape }}</span>
+                {% else %}
+                  {{ value | escape }}
+                {%- endif -%}
+              </span>
+            {%- endif -%}
+          </color-swatch-variant>
+        {% endif %}
+      {% endfor %}
+
+      {% if number > color_variant_max_size %}
+        <a class="rest__of--color-variants" href="{{ product.url }}"> +{{ number | minus: color_variant_max_size }}</a>
+      {% endif %}
+
+    {% else %}
+      {% continue %}
+    {%- endif -%}
+  {%- endfor -%}
+</div>

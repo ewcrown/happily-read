@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": false,
+        "show_breadcrumb_navigation": true,
+        "text_center": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading": true,
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 35,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "5f8f0b45-b22f-4070-8dd0-30c7589aa42f": {
+      "type": "team-section",
+      "blocks": {
+        "instagram_item_ApiHkj": {
+          "type": "instagram_item",
+          "settings": {
+            "image": "shopify://shop_images/team-member-1.png",
+            "member_title": "Jovan",
+            "member_designation": "Designation"
+          }
+        },
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-1": {
+          "type": "instagram_item",
+          "settings": {
+            "image": "shopify://shop_images/team-member-2.png",
+            "member_title": "Cynthia Casey",
+            "member_designation": "Design"
+          }
+        },
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-0": {
+          "type": "instagram_item",
+          "settings": {
+            "image": "shopify://shop_images/team-member-3.png",
+            "member_title": "Phillip Butler",
+            "member_designation": "Director"
+          }
+        },
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-2": {
+          "type": "instagram_item",
+          "settings": {
+            "image": "shopify://shop_images/team-member-4.png",
+            "member_title": "Dollie Horton",
+            "member_designation": "Marketing"
+          }
+        },
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-3": {
+          "type": "instagram_item",
+          "settings": {
+            "image": "shopify://shop_images/team-member-5.png",
+            "member_title": "Ravi Tamada",
+            "member_designation": "Design"
+          }
+        }
+      },
+      "block_order": [
+        "instagram_item_ApiHkj",
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-1",
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-0",
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-2",
+        "template--14562272215143__5f8f0b45-b22f-4070-8dd0-30c7589aa42f-1672209555162030cd-3"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Creative team",
+        "heading_size": "h1",
+        "subtitle": "Follow our team",
+        "alignment": "center",
+        "image_ratio": "adapt",
+        "layout": "slider",
+        "column": "4",
+        "team_card_corner_radius": 10,
+        "auto_rotate": false,
+        "autoplay_time": 3,
+        "show_navigation": true,
+        "products_show_on_sm": "1",
+        "padding_top": 95,
+        "padding_bottom": 100,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "5f8f0b45-b22f-4070-8dd0-30c7589aa42f"
+  ]
+}

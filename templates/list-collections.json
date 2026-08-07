@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": true,
+        "show_breadcrumb_navigation": true,
+        "text_center": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "blocks": {
+        "collection_item_TCyeK7": {
+          "type": "collection_item",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "e3951533-bc33-4d84-8a0c-e5c455434077": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "home-appliances-1"
+          }
+        },
+        "collection_item_gkbzni": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "collection_item_txiQUb": {
+          "type": "collection_item",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_TCyeK7",
+        "e3951533-bc33-4d84-8a0c-e5c455434077",
+        "collection_item_gkbzni",
+        "collection_item_txiQUb"
+      ],
+      "settings": {
+        "collection_type": "all",
+        "layout": "masonry",
+        "column": "4",
+        "product_count": true,
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "title_position": "full--center",
+        "collection_show_content_below": true,
+        "content_position_without_image_below": "center",
+        "sort": "alphabetical_reversed",
+        "title": "",
+        "heading_tag": "h2",
+        "page_description": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main"
+  ]
+}

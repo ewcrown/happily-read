@@ -1,0 +1,279 @@
+{{ 'promotion-grid.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="promotion__grid section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+  data-section-type="promotion_grid"
+>
+  <div class="{{ section.settings.container_type }}">
+    <div class="row row-cols-lg-{{ section.settings.columns_desktop }} row-cols-md-{{ section.settings.columns_desktop }} row-cols-sm-{{ section.settings.columns_mobile }} row-cols-{{ section.settings.columns_mobile }} multicolumn-list contains-content-container">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'promo_banner' -%}
+            <style>
+              #block-{{ block.id }}.promotion__grid--banner {
+                --color-foreground: {{ block.settings.text_color.red }}, {{ block.settings.text_color.green }}, {{ block.settings.text_color.blue }};
+              }
+            </style>
+
+            <div id="promotion__grid--{{ section.id }}-{{ forloop.index }}" style="" {{ block.shopify_attributes }}>
+              <!-- ======= single banner ======= -->
+              <div
+                id="block-{{ block.id }}"
+                class="mb-30 promotion__grid--banner promotion__grid--hoverborder text-{{ block.settings.content_align }}"
+              >
+                <a href="{{ block.settings.bnr_link }}">
+                  <div
+                    class="promotion__media promotion__media--{{ block.settings.height }} {% if block.settings.image == blank %}placeholder{% endif %} media"
+                    {% if block.settings.height == 'adapt' and block.settings.image != blank %}
+                      style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                    {% endif %}
+                  >
+                    {%- if block.settings.image != blank -%}
+                      <img
+                        srcset="
+                          {%- if block.settings.image.width >= 375 -%}{{ block.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                          {%- if settings.settings.image.width >= 550 -%}{{ settings.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                          {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                          {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | image_url: width: 110 }} 1100w,{%- endif -%}
+                          {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 150 }} 1500w,{%- endif -%}
+                          {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | image_url: width: 178 }} 1780w,{%- endif -%}
+                          {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | image_url: width: 200 }} 2000w,{%- endif -%}
+                          {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 300 }} 3000w,{%- endif -%}
+                          {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | image_url: width: 384 }} 3840w,{%- endif -%}
+                          {{ block.settings.image | image_url: width: 500 }} {{ block.settings.image.width }}w
+                        "
+                        sizes="(min-width: 990px) 100vw, 100vw"
+                        src="{{ block.settings.image | image_url: width: 1500 }}"
+                        alt="{{ block.settings.image.alt | escape }}"
+                        loading="lazy"
+                        width="{{ block.settings.image.width }}"
+                        height="{{ block.settings.image.height }}"
+                      >
+                    {%- else -%}
+                      {{ 'collection-2' | placeholder_svg_tag: 'placeholder' }}
+                    {%- endif -%}
+                  </div>
+
+                  <div class="promotion__grid--info">
+                    <span class="h3">
+                      {{ block.settings.image_text_1 }}
+                    </span>
+                    <span class="banner__sub--text">
+                      {{ block.settings.image_text_2 | replace: 'p>', 'span>' }}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo grid",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+       "type": "select",
+       "id": "container_type",
+       "options": [
+         {
+           "value": "container",
+           "label": "Default"
+         },
+         {
+           "value": "container-fluid px-0",
+           "label": "Full Width"
+         },
+         {
+           "value": "container-fluid",
+           "label": "Container box"
+         }
+       ],
+       "default": "container",
+       "label": "Container type"
+    },
+    {
+       "type": "color_scheme",
+       "id": "color_scheme",
+       "label": "Color scheme",
+       "default": "background-1"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_banner",
+      "name": "Promo banner",
+      "settings": [
+          {
+            "type": "header",
+            "content": "Image settings"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "height",
+            "options": [
+              {
+                "value": "adapt",
+                "label": "t:sections.image-with-text.settings.height.options__1.label"
+              },
+              {
+                "value": "small",
+                "label": "t:sections.image-with-text.settings.height.options__2.label"
+              },
+              {
+                "value": "large",
+                "label": "t:sections.image-with-text.settings.height.options__3.label"
+              }
+            ],
+            "default": "adapt",
+            "label": "t:sections.image-with-text.settings.height.label"
+          },
+          {
+            "type": "richtext",
+            "id": "image_text_1",
+            "label": "Heading",
+            "default": "<p>Heading</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "image_text_2",
+            "label": "Subheading",
+            "default": "<p>Sub Text</p>"
+          },
+          {
+            "type": "url",
+            "id": "bnr_link",
+            "label": "Banner link"
+          },
+          {
+            "type": "select",
+            "id": "content_align",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              }
+            ],
+            "default": "left",
+            "label": "Content alignment"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "default": "#121212",
+            "label": "Text color"
+          }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo grid",
+      "blocks": [
+        {
+          "type": "promo_banner"
+        },
+        {
+          "type": "promo_banner"
+        },
+        {
+          "type": "promo_banner"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

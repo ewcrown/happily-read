@@ -1,0 +1,319 @@
+{
+  "sections": {
+    "opening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You know exactly who you want to be.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You can picture her. The way she carries herself. The way she speaks. The decisions she makes without second-guessing. The energy she walks into a room with.</p><p>And then there's the version of you that exists right now. The one who stays quiet when she should speak. Who shrinks in meetings. Who talks herself out of things before she's even tried. Who goes to bed knowing she left something on the table again today.</p><p>The gap between those two versions of you is not a character flaw. It is a neural pathway. And it can be rewritten.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "whats_happening": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Self-doubt is a learned pattern. Neuroplasticity means it can be unlearned.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every time you stayed quiet, your brain coded silence as the default response. Every time you looked away instead of holding someone's gaze, your brain reinforced that as how you move through the world. These patterns were not chosen. They were built — through years of small moments where shrinking felt safer than being seen.</p><p>Neuroplasticity is the brain's ability to form new neural pathways through repeated new behaviour. The research is clear: identity-level change happens not through motivation but through structured repetition over a sustained period.</p><p>That is the science behind the 30-Day That Girl Frequency Journal.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "framework": {
+      "type": "multicolumn",
+      "blocks": {
+        "fw_neuro": {
+          "type": "column",
+          "settings": {
+            "title": "Neuroplasticity",
+            "text": "<p>Including the work of Dr. Michael Merzenich and the broader field of experience-dependent plasticity — shows that the brain physically changes in response to consistent new behaviours. 30 days of deliberate practice rewires the default.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "fw_positive": {
+          "type": "column",
+          "settings": {
+            "title": "Positive Psychology",
+            "text": "<p>Developed by Martin Seligman and colleagues — moves beyond treating what is wrong to actively building what creates flourishing. Strength identification. Values clarification. Intentional behaviour design. These are not affirmations. They are evidence-based interventions.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["fw_neuro", "fw_positive"],
+      "settings": {
+        "title": "Built on neuroplasticity and positive psychology. Not inspiration.",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "column_padding": "medium",
+        "button_label": "",
+        "columns_mobile": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "system": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "30 days. One prompt per day. A new default at the end of it.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Thirty prompts. Sequenced to move from self-awareness to pattern disruption to new behaviour installation. The first week shows you where the shrinking is coming from. The second helps you identify who you actually are beneath the conditioning. The third puts her into action. The fourth makes her the default.</p><p>10 to 20 minutes per day. No inspiration required. Just consistency.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "accountability": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "A commitment you make to yourself. Out loud.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A signed contract. An accountability partner. The same structure that makes any serious commitment more likely to hold.</p><p>Because becoming that girl is not a feeling you wait for. It is a decision you make and keep making. This journal is built around that truth.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "social_proof": {
+      "type": "testimonial-section",
+      "blocks": {
+        "story": {
+          "type": "testimonial_item",
+          "settings": {
+            "client_review_icon": "5",
+            "testimonial_review_title": "Representative journey",
+            "client_review_text": "\"I have wanted to be a different version of myself for years. This journal was the first thing that actually gave me a process instead of a feeling. By Week 3 I took a leap I had been putting off for months. I didn't even recognise that I had done it until after.\"",
+            "client_name": "Representative journey",
+            "client_designation": "That Girl Frequency Journal"
+          }
+        }
+      },
+      "block_order": ["story"],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Real stories",
+        "heading_size": "h1",
+        "subtitle": "",
+        "alignment": "center",
+        "container_type": "container",
+        "layout": "grid",
+        "column": "1",
+        "card_style": "card",
+        "card_color_scheme": "background-2",
+        "testimonial_alignment": "left",
+        "testimonial_author_card_style": "bottom",
+        "quotes_icon": true,
+        "card_corner": 10,
+        "auto_rotate": false,
+        "show_navigation": false,
+        "products_show_on_sm": "1",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "purchase": {
+      "type": "featured-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} }
+      },
+      "block_order": ["title", "price", "buy_buttons"],
+      "settings": {
+        "color_scheme": "background-1",
+        "product": "",
+        "gallery_layout": "stacked",
+        "media_size": "medium",
+        "enable_sticky_info": true,
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "purchase_extras": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The 30-Day That Girl Frequency Journal — $24.95",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"#\">Also available on Amazon →</a></p><p>Pair it with Reclaiming Her — the shadow work journal that clears what's been blocking the woman you're becoming.<br>Bundle: That Girl Frequency + Reclaiming Her — $45</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop bundles",
+            "button_link": "/pages/shop",
+            "button_style": "secondary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 10,
+        "padding_bottom": 40,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "genesis_thread": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5% of your purchase goes directly to Genesis Women's Shelter &amp; Support in Dallas. When you invest in your transformation, you invest in hers. <a href=\"/pages/genesis\">Learn more →</a></p>"
+          }
+        }
+      },
+      "block_order": ["text"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "optin": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not ready yet?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get the science behind identity change and neuroplasticity delivered to your inbox. No pitch. Just the research.</p>"
+          }
+        },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "background-1",
+        "height": "small",
+        "form_position": "bottom",
+        "content_wrapper_width": "medium",
+        "content_alignment": "center",
+        "border_bottom_enabel": false,
+        "show_first_name": true,
+        "require_first_name": false,
+        "form_tags": "newsletter, sp_confidence",
+        "submit_label": "Send me the science",
+        "privacy_text": "",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "opening",
+    "whats_happening",
+    "framework",
+    "system",
+    "accountability",
+    "social_proof",
+    "purchase",
+    "purchase_extras",
+    "genesis_thread",
+    "optin"
+  ]
+}

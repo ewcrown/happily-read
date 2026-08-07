@@ -1,0 +1,176 @@
+/* Apply this CSS to elements with a right-to-left direction */
+[dir="rtl"] .text-left,
+[dir="rtl"] .left,
+[dir="rtl"] .slider--alignment__desktop--left {
+  text-align: start;
+}
+[dir="rtl"] .text-right,
+[dir="rtl"] .right,
+[dir="rtl"] .slider--alignment__desktop--right {
+  text-align: end;
+}
+[dir="rtl"] .footer__widget_title:before,
+[dir="rtl"] .footer__widget_title:after {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .footer__widget_title {
+  padding-inline-end: 20px;
+}
+
+[dir="rtl"] .input__field_form_button {
+  left: 8px !important;
+  right: auto !important;
+}
+[dir="rtl"] input[type="tel" i] {
+  direction: rtl;
+}
+[dir="rtl"]
+  .newsletter--signup__form
+  .newsletter-form__field-wrapper
+  input[type="email"] {
+  background-color: transparent;
+  padding: 10px 20px 10px 160px;
+}
+
+@media only screen and (min-width: 1200px) {
+  [dir="rtl"] .header__menu_li + .header__menu_li {
+    margin-inline-start: 2.5rem;
+    margin-left: 0;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  [dir="rtl"] .form__right .newsletter--signup__form.form__width {
+    padding-inline-start: 10rem;
+  }
+  [dir="rtl"] .form__left .newsletter--signup__form.form__width {
+    padding-inline-end: 10rem;
+  }
+}
+/* Submenu css */
+[dir="rtl"] .header__sub_menu {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] span.header__sub--has-children--icon {
+  transform: rotate(-180deg);
+  top: 0;
+  line-height: 0;
+}
+[dir="rtl"] ul.header__sub--children__menu {
+  right: 100%;
+  left: 0;
+}
+[dir="rtl"]
+  .header-localization:not(.menu-drawer__localization)
+  .disclosure__list-wrapper {
+  right: auto;
+  left: 0;
+}
+@media only screen and (min-width: 768px) {
+  [dir="rtl"] .product-grid-item__actions.justify-content-end {
+    padding-right: 0;
+  }
+}
+[dir="rtl"] .product--card__countdown .countdown-item::before {
+  width: 1px;
+  position: absolute;
+  content: "";
+  height: 80%;
+  left: 0;
+  background: rgba(var(--color-foreground));
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: -0.5px;
+}
+[dir="rtl"] .product--card__countdown .countdown-item:last-child::before,
+[dir="rtl"] .countdown--timer-banner > .countdown-item:last-child::before {
+  display: none;
+}
+[dir="rtl"] .countdown--timer-banner > .countdown-item:before {
+  position: absolute;
+  content: ":";
+  left: -2rem;
+  top: 50%;
+  font-size: 3rem;
+  -webkit-transform: translatey(-50%);
+  transform: translatey(-50%);
+  color: rgba(var(--color-foreground));
+}
+
+[dir="rtl"] .featured__collection--slider.slider--controls--button,
+[dir="rtl"] .testimonial__collection--slider.slider--controls--button {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] span.faq__button--icon {
+  left: 0;
+  right: auto;
+}
+[dir="rtl"] .team__control_nav.swiper-button-next {
+  right: auto;
+  left: 0;
+}
+[dir="rtl"] .product-form__buttons.sticky__form_button {
+  gap: 10px;
+}
+[dir="rtl"] summary .icon-caret {
+  left: 0.5rem;
+  right: auto !important;
+}
+[dir="rtl"] .social-links a {
+  margin: 0 0 10px 10px;
+}
+[dir="rtl"] .breadcrumbs__item + .breadcrumbs__item::before {
+  left: auto;
+  right: -4px;
+}
+[dir="rtl"] span.facet-checked-box {
+  right: 0.4rem;
+  left: auto;
+}
+[dir="rtl"] .facets__display {
+  background-color: rgb(var(--color-background));
+  right: 0;
+  left: auto;
+}
+[dir="rtl"] .single-sidebar-widget .search-widget button {
+  right: auto;
+  left: 0;
+}
+[dir="rtl"] .select .icon-caret,
+[dir="rtl"] .customer select + svg,
+[dir="rtl"] .select__field_form select + svg {
+  left: 0.8rem;
+  right: auto;
+}
+[dir="rtl"] .footer__list-social .list-social__link + .list-social__link {
+  margin-right: 15px;
+  margin-left: 0;
+}
+[dir="rtl"] .cart-notification-product__info {
+  padding-inline-start: 2rem;
+}
+[dir="rtl"] .product-grid-item__actions {
+  padding-inline-start: 0px;
+}
+[dir="rtl"] .facet-filters__sort {
+  padding: 10px 15px 10px 25px !important;
+}
+[dir="rtl"] .product-popup-modal__toggle {
+  margin: 0 auto 0 0;
+}
+@media screen and (min-width: 750px) {
+  [dir="rtl"] .product-popup-modal__content {
+    width: 50%;
+  }
+}
+[dir="rtl"] .product-popup-modal__content {
+  left: 0;
+}
+[dir="rtl"] .image-with-text__text--check-list ul li:before {
+  right: 0;
+  left: auto;
+}

@@ -1,0 +1,33 @@
+{% comment %}
+  <div class="cart-drawer-box">
+    {% render 'cart-notification' %}
+  </div>
+
+  {% schema %}
+  {
+    "name": "Cart drawer",
+    "tag": "section",
+    "class": "cart-drawer-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_drawer_enable",
+        "label": "Show top bar",
+        "default": true
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "accent-1"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+        {
+          "name": "Cart drawer"
+        }
+     ]
+  }
+  {% endschema %}
+{% endcomment %}

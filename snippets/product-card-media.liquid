@@ -1,0 +1,101 @@
+<div
+  class="media media--transparent media--{{ media_size }} media--hover-effect"
+  {% if media_size == 'adapt' and product_card_product.featured_media %}
+    style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
+  {% endif %}
+>
+  {%- liquid
+    assign second_img_position = product_card_product.featured_media.position
+    assign second_img_position = second_img_position | plus: 1
+  -%}
+
+  {% if is_ratio %}
+    <img
+      srcset="
+        {%- if product_card_product.featured_media.width >= 165 -%}{{ product_card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 360 -%}{{ product_card_product.featured_media| img_url: '360x' }} 360w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 533 -%}{{ product_card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 720 -%}{{ product_card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 940 -%}{{ product_card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1066 -%}{{ product_card_product.featured_media | img_url: '1066x' }} 1066w{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1266 -%}{{ product_card_product.featured_media | img_url: '1266x' }} 1266w{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1466 -%}{{ product_card_product.featured_media | img_url: '1466x' }} 1466w{%- endif -%}
+      "
+      src="{{ product_card_product.featured_media | img_url: '533x' }}"
+      sizes="(min-width: {{ settings.container_lg_width }}px) {{ settings.container_lg_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+      alt="{{ product_card_product.featured_media.alt | escape }}"
+      loading="lazy"
+      class="motion-reduce"
+      width="{{ product_card_product.featured_media.width }}"
+      height="{{ product_card_product.featured_media.height }}"
+      data-media-id="{{ section.id }}-{{ product_card_product.featured_media.id }}"
+    >
+
+    {%- if product_card_product.media[second_img_position] != null and show_secondary_image -%}
+      <img
+        srcset="
+          {%- if product_card_product.media[second_img_position].width >= 165 -%}{{ product_card_product.media[second_img_position] | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 360 -%}{{ product_card_product.media[second_img_position] | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 533 -%}{{ product_card_product.media[second_img_position] | img_url: '533x' }} 533w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 720 -%}{{ product_card_product.media[second_img_position] | img_url: '720x' }} 720w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 940 -%}{{ product_card_product.media[second_img_position] | img_url: '940x' }} 940w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1066 -%}{{ product_card_product.media[second_img_position] | img_url: '1066x' }} 1066w{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1266 -%}{{ product_card_product.media[second_img_position] | img_url: '1266x' }} 1266w{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1466 -%}{{ product_card_product.media[second_img_position] | img_url: '1466x' }} 1466w{%- endif -%}
+        "
+        src="{{ product_card_product.media[second_img_position] | img_url: '533x' }}"
+        sizes="(min-width: {{ settings.container_lg_width }}px) {{ settings.container_lg_width | minus: 130 | divided_by: 2 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+        alt="{{ product_card_product.media[second_img_position].alt | escape }}"
+        loading="lazy"
+        class="motion-reduce secondary__img"
+        width="{{ product_card_product.media[second_img_position].width }}"
+        height="{{ product_card_product.media[second_img_position].height }}"
+        data-media-id="{{ section.id }}-{{ product_card_product.media[second_img_position].id }}"
+      >
+    {%- endif -%}
+  {% else %}
+    <img
+      srcset="
+        {%- if product_card_product.featured_media.width >= 165 -%}{{ product_card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 360 -%}{{ product_card_product.featured_media| img_url: '360x' }} 360w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 533 -%}{{ product_card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 720 -%}{{ product_card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 940 -%}{{ product_card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1066 -%}{{ product_card_product.featured_media | img_url: '1066x' }} 1066w{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1266 -%}{{ product_card_product.featured_media | img_url: '1266x' }} 1266w{%- endif -%}
+        {%- if product_card_product.featured_media.width >= 1466 -%}{{ product_card_product.featured_media | img_url: '1466x' }} 1466w{%- endif -%}
+      "
+      src="{{ product_card_product.featured_media | img_url: '533x' }}"
+      sizes="(min-width: {{ settings.container_lg_width }}px) {{ settings.container_lg_width | minus: 130 | divided_by: 2 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+      alt="{{ product_card_product.featured_media.alt | escape }}"
+      loading="lazy"
+      class="motion-reduce"
+      width="{{ product_card_product.featured_media.width }}"
+      height="{{ product_card_product.featured_media.height }}"
+      data-media-id="{{ section.id }}-{{ product_card_product.featured_media.id }}"
+    >
+
+    {%- if product_card_product.media[second_img_position] != null and show_secondary_image -%}
+      <img
+        srcset="
+          {%- if product_card_product.media[second_img_position].width >= 165 -%}{{ product_card_product.media[second_img_position] | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 360 -%}{{ product_card_product.media[second_img_position] | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 533 -%}{{ product_card_product.media[second_img_position] | img_url: '533x' }} 533w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 720 -%}{{ product_card_product.media[second_img_position] | img_url: '720x' }} 720w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 940 -%}{{ product_card_product.media[second_img_position] | img_url: '940x' }} 940w,{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1066 -%}{{ product_card_product.media[second_img_position] | img_url: '1066x' }} 1066w{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1266 -%}{{ product_card_product.media[second_img_position] | img_url: '1266x' }} 1266w{%- endif -%}
+          {%- if product_card_product.media[second_img_position].width >= 1466 -%}{{ product_card_product.media[second_img_position] | img_url: '1466x' }} 1466w{%- endif -%}
+        "
+        src="{{ product_card_product.media[second_img_position] | img_url: '533x' }}"
+        sizes="(min-width: {{ settings.container_lg_width }}px) {{ settings.container_lg_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+        alt="{{ product_card_product.media[second_img_position].alt | escape }}"
+        loading="lazy"
+        class="motion-reduce secondary__img"
+        width="{{ product_card_product.media[second_img_position].width }}"
+        height="{{ product_card_product.media[second_img_position].height }}"
+        data-media-id="{{ section.id }}-{{ product_card_product.media[second_img_position].id }}"
+      >
+    {%- endif -%}
+  {% endif %}
+</div>

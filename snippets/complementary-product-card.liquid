@@ -1,0 +1,127 @@
+{%- comment -%}
+  Complementary Product Card
+
+  Usage:
+  {% render 'complementary-product-card',
+    product: product,
+    show_vendor: false,
+    show_price: true,
+    show_add_to_cart: true,
+    card_style: 'compact'
+  %}
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign product_url = product.url
+
+  unless show_vendor
+    assign show_vendor = false
+  endunless
+
+  unless show_price
+    assign show_price = true
+  endunless
+
+  unless show_add_to_cart
+    assign show_add_to_cart = true
+  endunless
+
+  unless card_style
+    assign card_style = 'compact'
+  endunless
+-%}
+
+<div class="complementary-product-card {% if card_style == 'horizontal' %}complementary-product-card--horizontal{% endif %}">
+  <div class="complementary-product-card__media">
+    {%- if product.featured_media -%}
+      <a href="{{ product_url }}" class="complementary-product-card__link">
+        <img
+          src="{{ product.featured_media | image_url: width: 200 }}"
+          alt="{{ product.featured_media.alt | escape | default: product.title }}"
+          loading="lazy"
+          width="100"
+          height="{{ 100 | divided_by: product.featured_media.aspect_ratio | round }}"
+          class="complementary-product-card__image"
+        >
+      </a>
+    {%- else -%}
+      <a href="{{ product_url }}" class="complementary-product-card__link">
+        <div class="complementary-product-card__placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="complementary-product-card__content">
+    {%- if show_vendor and product.vendor -%}
+      <span class="complementary-product-card__vendor">{{ product.vendor }}</span>
+    {%- endif -%}
+
+    <h4 class="complementary-product-card__title">
+      <a href="{{ product_url }}">{{ product.title }}</a>
+    </h4>
+
+    {%- if show_price -%}
+      <div class="complementary-product-card__price">
+        {%- if variant.compare_at_price > variant.price -%}
+          <span class="complementary-product-card__price--sale">
+            {{ variant.price | money }}
+          </span>
+          <span class="complementary-product-card__price--compare">
+            <s>{{ variant.compare_at_price | money }}</s>
+          </span>
+        {%- else -%}
+          <span class="complementary-product-card__price--regular">
+            {{ variant.price | money }}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if show_add_to_cart -%}
+      <div class="complementary-product-card__actions">
+        {%- if product.has_only_default_variant -%}
+          <product-form>
+            <form action="/cart/add" method="post" enctype="multipart/form-data" data-type="add-to-cart-form">
+              <input type="hidden" name="id" value="{{ variant.id }}">
+              <button
+                type="submit"
+                name="add"
+                class="complementary-product-card__add-btn button button--small"
+                {% unless variant.available %}disabled{% endunless %}
+              >
+                {%- if variant.available -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </button>
+            </form>
+          </product-form>
+        {%- else -%}
+          <a href="{{ product_url }}" class="complementary-product-card__add-btn button button--small">
+            {{ 'products.product.select_options' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if show_checkbox -%}
+    <div class="complementary-product-card__checkbox">
+      <input
+        type="checkbox"
+        id="complementary-{{ product.id }}"
+        name="complementary_products[]"
+        value="{{ variant.id }}"
+        class="complementary-product-card__input"
+        {% if variant.available %}checked{% else %}disabled{% endif %}
+      >
+      <label for="complementary-{{ product.id }}" class="visually-hidden">
+        {{ 'products.product.add_to_cart' | t }}: {{ product.title }}
+      </label>
+    </div>
+  {%- endif -%}
+</div>

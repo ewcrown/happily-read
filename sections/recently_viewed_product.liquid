@@ -1,0 +1,227 @@
+{{ 'product-card-item.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign productShowXl = section.settings.products_show_on_xl
+  assign productShowSm = section.settings.products_show_on_sm
+  assign slideAutoplay = section.settings.auto_rotate
+  assign autoplay_time = section.settings.autoplay_time
+
+  assign loadMoreButton = true
+  assign slider_enable = true
+  assign productItem = 'col mb-30'
+
+  if slider_enable
+    assign productItem = 'swiper-slide'
+    assign showPagination = section.settings.show_pagination
+    assign showNavigation = section.settings.show_navigation
+  endif
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- capture productWrapper -%}
+{%- if slider_enable -%}
+productSlider swiper
+{%- else -%}
+row row-cols-xl-{{ productShowXl }} row-cols-lg-{{ productShowLg }} row-cols-md-{{ productShowMd }} row-cols-{{ productShowSm }}
+{%- endif -%}
+{%- endcapture -%}
+
+<div
+  class="section featured-collection-sectoin section-{{ section.id }} recently_viewed_proudct no-js-inline pb-80 color-{{ section.settings.color_scheme }} gradient"
+  data-product-handle="{{ product.handle }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product-slider"
+  data-slider-enable="true"
+  data-row-space="{{ 30 }}"
+  {% if slider_enable %}
+    data-show-mobile="{{ productShowSm }}"
+    data-show-extra-large="{{ productShowXl }}"
+    data-autoplay="{{ slideAutoplay }}"
+    data-autoplay-time="{{ autoplay_time }}000"
+    data-pagination="{{ 'dots' }}"
+  {% endif %}
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-heading text-{{ section.settings.text_align }} mb-30">
+          <h2 class="section-heading__title {{ section.settings.heading_size }}">
+            {{- section.settings.heading | escape -}}
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="relative product_slider_wrapper">
+      <div
+        class="{{ productWrapper }}"
+        {% unless slider_enable %}
+          grid-recentViewProduct
+        {% endunless %}
+      >
+        {%- if slider_enable -%}<div class="swiper-wrapper" grid-recentViewProduct>{%- endif -%}
+
+        {%- if slider_enable -%}</div>{%- endif -%}
+      </div>
+    </div>
+    {%- if slider_enable -%}
+      <div class="featured__collection--slider slider--controls--button mt-50">
+        {%- if showNavigation -%}
+          <div class="swiper-button-prev product__slider--buton"></div>
+        {%- endif -%}
+        {%- if showPagination -%}
+          <div class="swiper-pagination product__slider--pagination"></div>
+        {%- endif -%}
+        {%- if showNavigation -%}
+          <div class="swiper-button-next product__slider--buton"></div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script src="{{ 'recently_viewed_product.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Recently viewed product",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "accent-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Recently viewed product",
+      "label": "Heading"
+    },
+ {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+ {
+        "type": "select",
+        "id": "text_align",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+    {
+      "type": "header",
+      "content": "Grid settings"
+    },
+    {
+      "type": "select",
+      "id": "products_show_on_xl",
+      "label": "Number of columns on desktop",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "4"
+    },
+   {
+      "type": "select",
+      "id": "products_show_on_sm",
+      "label": "Number of columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "show_pagination",
+        "label": "Show pagination",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "show_navigation",
+        "label": "Show navigation",
+        "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_time",
+      "min": 2,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 3
+    }
+  ]
+}
+{% endschema %}

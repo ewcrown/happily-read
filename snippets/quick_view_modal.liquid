@@ -1,0 +1,53 @@
+<style>
+  div#quickViewWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.5);
+    visibility: hidden;
+    opacity: 0;
+  }
+    .quick__view__content {
+      width: 50%;
+      padding: 30px;
+      flex-grow: 1;
+    }
+    .quick__View_img_wrapper {
+      width: 50%;
+    }
+    div#quickViewWrapper > div {
+      max-width: 1150px;
+      margin: 150px auto;
+      position: relative;
+      transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+      background: #fff;
+      max-height: calc(100% - 5rem);
+      overflow: auto;
+    }
+    @media only screen and (min-width: 1199px){
+      div#quickViewWrapper > div {
+        max-height: calc(100% - 30rem);
+      }
+    }
+    @media only screen and (min-width: 992px){
+      div#quickViewWrapper > div {
+        max-height: calc(100% - 10rem);
+      }
+    }
+    div#quickViewWrapper.show__modal {
+      visibility: visible;
+      overflow-y: auto;
+      opacity: 1;
+  }
+</style>
+
+<div
+  role="dialog"
+  clas="quick__view"
+  id="quickViewWrapper"
+  aria-modal="true"
+  tabindex="-1"
+></div>

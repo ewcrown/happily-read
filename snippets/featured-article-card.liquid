@@ -1,0 +1,179 @@
+{% comment %}
+  Renders an article card for a given blog with settings to either show the image or not.
+
+  Accepts:
+  - blog: {Object} Blog object
+  - article: {Object} Article object
+  - show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+  - show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+  - show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+  Usage:
+  {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+
+{%- if article and article != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if media_aspect_ratio != null
+      assign ratio = media_aspect_ratio
+    endif
+  -%}
+
+  <article
+    class="article-card{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}"
+    aria-labelledby="Article-{{ article.id }}"
+  >
+    <a href="{{ article.url }}" class="article-content motion-reduce">
+      {%- if show_image == true and article.image -%}
+        {%- if card_style == 'masonry' -%}
+          <div class="article-card__image media media--landscape">
+            <img
+              srcset="
+                {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+              "
+              src="{{ article.image.src | image_url: width: 533 }}"
+              sizes="(min-width: 992px) 50vw, 100vw"
+              alt="{{ article.image.src.alt | escape }}"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+              loading="lazy"
+              class="motion-reduce"
+            >
+          </div>
+        {%- else -%}
+          <div
+            class="
+              card__meida--inner {% if media_height != 'adapt' %} article-media--position article-card__image--{{ media_height }}{% endif %}
+              {% if article.image and show_image %} ratio{% endif %}
+            "
+          >
+            {%- if show_image == true and article.image -%}
+              <div
+                class="article-card__image media"
+                {% if media_height == 'adapt' %}
+                  style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                <img
+                  srcset="
+                    {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                    {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  "
+                  src="{{ article.image.src | image_url: width: 533 }}"
+                  sizes="(min-width: 992px) 50vw, 100vw"
+                  alt="{{ article.image.src.alt | escape }}"
+                  width="{{ article.image.width }}"
+                  height="{{ article.image.height }}"
+                  loading="lazy"
+                  class="motion-reduce"
+                >
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      <div class="article-card__info">
+        {%- if show_date or show_author or show_comment -%}
+          <div class="article__meta">
+            {%- if show_author -%}
+              <span class="meta__info--item">
+                <span class="person_svg">
+                  <svg height="512" viewBox="0 0 32 32" width="512" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Layer_2" data-name="Layer 2"><path d="m16 15a7 7 0 1 0 -7-7 7.008 7.008 0 0 0 7 7zm0-12a5 5 0 1 1 -5 5 5.006 5.006 0 0 1 5-5z"/><path d="m22 17h-12a7 7 0 0 0 0 14h12a7 7 0 0 0 0-14zm0 12h-12a5 5 0 0 1 0-10h12a5 5 0 0 1 0 10z"/></g>
+                  </svg>
+                </span>
+                {{ article.author -}}
+              </span>
+            {%- endif -%}
+
+            {%- if show_date -%}
+              <span class="meta__info--item circle-divider">
+                <span class="person_svg">
+                  <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 512 512"
+                    style="enable-background:new 0 0 512 512;"
+                    xml:space="preserve"
+                  >
+                    <g>
+                    	<g>
+                    		<g>
+                    			<circle cx="386" cy="210" r="20"/>
+                    			<path d="M432,40h-26V20c0-11.046-8.954-20-20-20c-11.046,0-20,8.954-20,20v20h-91V20c0-11.046-8.954-20-20-20
+                    				c-11.046,0-20,8.954-20,20v20h-90V20c0-11.046-8.954-20-20-20s-20,8.954-20,20v20H80C35.888,40,0,75.888,0,120v312
+                    				c0,44.112,35.888,80,80,80h153c11.046,0,20-8.954,20-20c0-11.046-8.954-20-20-20H80c-22.056,0-40-17.944-40-40V120
+                    				c0-22.056,17.944-40,40-40h25v20c0,11.046,8.954,20,20,20s20-8.954,20-20V80h90v20c0,11.046,8.954,20,20,20s20-8.954,20-20V80h91
+                    				v20c0,11.046,8.954,20,20,20c11.046,0,20-8.954,20-20V80h26c22.056,0,40,17.944,40,40v114c0,11.046,8.954,20,20,20
+                    				c11.046,0,20-8.954,20-20V120C512,75.888,476.112,40,432,40z"/>
+                    			<path d="M391,270c-66.72,0-121,54.28-121,121s54.28,121,121,121s121-54.28,121-121S457.72,270,391,270z M391,472
+                    				c-44.663,0-81-36.336-81-81s36.337-81,81-81c44.663,0,81,36.336,81,81S435.663,472,391,472z"/>
+                    			<path d="M420,371h-9v-21c0-11.046-8.954-20-20-20c-11.046,0-20,8.954-20,20v41c0,11.046,8.954,20,20,20h29
+                    				c11.046,0,20-8.954,20-20C440,379.954,431.046,371,420,371z"/>
+                    			<circle cx="299" cy="210" r="20"/>
+                    			<circle cx="212" cy="297" r="20"/>
+                    			<circle cx="125" cy="210" r="20"/>
+                    			<circle cx="125" cy="297" r="20"/>
+                    			<circle cx="125" cy="384" r="20"/>
+                    			<circle cx="212" cy="384" r="20"/>
+                    			<circle cx="212" cy="210" r="20"/>
+                    		</g>
+                    	</g>
+                    </g>
+                  </svg>
+                </span>
+                {{ article.published_at | date: '%b %d, %Y' }}
+              </span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_title -%}
+          <h3 class="post-title h4">
+            <a href="{{ article.url }}">{{ article.title }}</a>
+          </h3>
+        {% endif %}
+
+        {%- if show_content -%}
+          {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+            <p class="article-card__excerpt">
+              {%- if article.excerpt.size > 0 -%}
+                {{ article.excerpt | strip_html | truncatewords: 18 }}
+              {%- else -%}
+                {{ article.content | strip_html | truncatewords: 18 }}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+        {%- endif -%}
+
+        {% if read_button_arrow %}
+          <div class="article__button">
+            <span class="article__button--title"
+              ><a class="blog-readmore-btn" href="{{ article.url }}">
+                {{- section.settings.read_more_button | default: 'Read more' -}}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.26965 7.67578C1.26964 7.26157 1.60543 6.92578 2.01965 6.92578L14.0405 6.92579C14.4547 6.92579 14.7904 7.26152 14.7904 7.67575C14.7904 8.08997 14.4546 8.42577 14.0404 8.42577L2.01965 8.42578C1.60543 8.42578 1.26964 8.09 1.26965 7.67578Z" fill="currentColor"/>
+                  <path d="M7.14627 0.781462C7.43916 0.488578 7.91403 0.488564 8.20693 0.781462L14.5709 7.14545C14.8638 7.43833 14.8638 7.91323 14.5709 8.20611L8.20693 14.5701C7.91403 14.863 7.43916 14.863 7.14627 14.5701C6.85332 14.2771 6.85337 13.8023 7.14627 13.5094L12.9799 7.67578L7.14627 1.84212C6.85337 1.54922 6.85332 1.07442 7.14627 0.781462Z" fill="currentColor"/>
+                </svg></a
+            ></span>
+          </div>
+        {% endif %}
+      </div>
+    </a>
+  </article>
+{%- endif -%}

@@ -1,0 +1,416 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.section_padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.section_padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.section_padding_top }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.header_top_enable -%}
+  {{ 'header-top-bar.css' | asset_url | stylesheet_tag }}
+
+  <div
+    class="header__topbar color-{{ section.settings.color_scheme }} gradient {% if section.settings.show_separator_line %} border-bottom-1 {% endif %}{%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%} header-localization{% endif %}"
+    data-section-id="{{ section.id }}"
+    data-section-type="header__topbar"
+  >
+    <div class="{{ section.settings.section_inner_container }}">
+      <div
+        class="
+          row align-items-center {% if section.settings.content_position_reverse %}row-reverse{% endif %} {% if section.settings.show_social and section.settings.enable_language_selector
+          or section.settings.enable_country_selector
+          or section.settings.header_linklist_title_1 != blank
+          or section.settings.header_linklist_title_2 != blank %} {% elsif section.settings.show_social  %} justify-content-between {% else %} justify-content-center {% endif %}
+        "
+      >
+        <div class="{% if section.settings.show_social or section.settings.enable_country_selector or section.settings.enable_language_selector %} col-lg-4 col-md-6 col-12 d-none d-md-block {% else %} d-none d-md-block {% endif %}">
+          <div class="d-flex {% if section.settings.content_position_reverse != false %} justify-content-end {% else %} justify-content-start {% endif %} align-items-center">
+            <div class="localization-wrapper">
+              {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+                <localization-form class="small-hide medium-hide no-js-hidden">
+                  {%- form 'localization', id: 'AnnouncementBarCountryForm', class: 'localization-form' -%}
+                    <div>
+                      <h2 class="visually-hidden" id="AnnouncementBarCountryLabel">
+                        {{ 'localization.country_label' | t }}
+                      </h2>
+                      {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+                    </div>
+                  {%- endform -%}
+                </localization-form>
+              {% endif %}
+              {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+                <localization-form class="small-hide medium-hide no-js-hidden">
+                  {%- form 'localization', id: 'AnnouncementBarLanguageForm', class: 'localization-form' -%}
+                    <div>
+                      <h2 class="visually-hidden" id="AnnouncementBarLanguageLabel">
+                        {{ 'localization.language_label' | t }}
+                      </h2>
+                      {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+                    </div>
+                  {%- endform -%}
+                </localization-form>
+              {%- endif -%}
+            </div>
+            {% if section.settings.show_social %}
+              {% render 'social-media-icons', className: 'header-top-social-media' %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="{% if section.settings.show_social or section.settings.enable_country_selector or section.settings.enable_language_selector  %}col-md-12 col-12 col-lg-4 {% else %} col-md-12 col-12 col-lg-6{% endif %}">
+          {%- for block in section.blocks -%}
+            {% if block.information_txt != block %}
+              <p
+                class="
+                  mb-0
+                  {% if section.settings.show_social != false
+                    or section.settings.enable_language_selector != false
+                    or section.settings.enable_country_selector != false
+                    and section.settings.header_linklist_title_1 != blank
+                    or section.settings.header_linklist_title_2 != blank %}
+                    text-center
+                  {% elsif section.settings.show_social != false
+                    or section.settings.enable_language_selector != false
+                    or section.settings.enable_country_selector != false %}
+                    text-center
+                  {% elsif  section.settings.show_social == false
+                    and section.settings.enable_language_selector == false
+                    and section.settings.enable_country_selector == false
+                    and section.settings.header_linklist_title_1 != blank
+                    and section.settings.header_linklist_title_2 != blank
+                    and section.settings.content_position_reverse != false %}
+                    text-right
+                  {% elsif
+                    section.settings.show_social == false
+                    and section.settings.enable_language_selector == false
+                    and section.settings.enable_country_selector == false
+                    and section.settings.header_linklist_title_1 == blank
+                    and section.settings.header_linklist_title_2 == blank
+                  %}
+                    text-center
+                  {% elsif section.settings.show_social
+                    and section.settings.enable_language_selector == false
+                    and section.settings.enable_country_selector == false
+                    and section.settings.header_linklist_title_1 == blank
+                    and section.settings.header_linklist_title_2 == blank
+                  %}
+                  text-right
+                  {% elsif section.settings.show_social == false
+                      and section.settings.enable_language_selector == false
+                      and section.settings.enable_country_selector == false
+                      and section.settings.header_linklist_title_1 != blank
+                      and section.settings.header_linklist_title_2 != blank
+                  %}
+                  text-left
+                  {% elsif section.settings.content_position_reverse == false
+                    and section.settings.show_social == false
+                    and section.settings.enable_language_selector == false
+                    and section.settings.enable_country_selector == false
+                    and section.settings.header_linklist_title_1 != blank
+                    or section.settings.header_linklist_title_2 != blank %}
+                    text-left
+                  {% elsif section.settings.header_linklist_title_1 != blank
+                    or section.settings.header_linklist_title_2 != blank
+                    and section.settings.enable_language_selector != false
+                    or section.settings.enable_country_selector != false
+                    or section.settings.show_social != false and
+                    section.settings.content_position_reverse != false
+                  %} text-right -- {% else %} text-left {% endif %}
+                "
+              >
+                {{ block.settings.info_txt }}
+              </p>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+
+        <div
+          class="
+            {% if section.settings.show_social or section.settings.enable_country_selector or section.settings.enable_language_selector %}
+              {% if section.settings.header_linklist_title_1 != blank
+                 or section.settings.header_linklist_title_2 != blank
+                 or section.settings.enable_country_selector
+                 or section.settings.enable_language_selector
+              %}
+                col-lg-4
+              {% else %}
+                col-lg-4
+              {% endif %}
+                col-md-6 col-12 d-none d-md-block
+            {% else %}
+              {% if  section.settings.header_linklist_title_1 != blank
+                or section.settings.header_linklist_title_2 != blank
+                or section.settings.enable_country_selector
+                or section.settings.enable_language_selector
+              %}
+                col-md-12 col-12 col-lg-6
+              {% endif %}
+                d-none d-md-block
+            {% endif %}
+          "
+        >
+          <div class="d-flex{% if section.settings.content_position_reverse != false %} justify-content-start {% else %} justify-content-end {% endif %} align-items-center header-linklist">
+            {% if section.settings.header_linklist_title_1 != blank
+              or section.settings.header_linklist_title_2 != blank
+            %}
+              {% if section.settings.header_linklist_title_1 != blank %}
+                <a href="{{ section.settings.header_linklist_url_1 }}">
+                  {% render 'icons-list', icon: section.settings.icon %}
+                  {{ section.settings.header_linklist_title_1 }}
+                </a>
+              {% endif %}
+              {% if section.settings.header_linklist_title_2 != blank %}
+                <a href="{{ section.settings.header_linklist_url_2 }}">
+                  {% render 'icons-list', icon: section.settings.icon_2 %}
+                  {{ section.settings.header_linklist_title_2 }}
+                </a>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "header_top_enable",
+      "label": "Show top bar",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "accent-1"
+    },
+    {
+      "type": "select",
+      "id": "section_inner_container",
+      "label": "Container type",
+      "default": "container",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "container",
+          "label": "Container"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container box"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator_line",
+      "label": "Show separator line",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__1.content",
+      "info": "t:sections.announcement-bar.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "Link list"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+        },
+        {
+          "value": "phone",
+          "label": "Phone"
+        },
+        {
+          "value": "email",
+          "label": "Email"
+        },
+        {
+          "value": "track",
+          "label": "Track"
+        },
+        {
+          "value": "map-pin",
+          "label": "Map pin"
+        },
+        {
+          "value": "box",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__2.label"
+        },
+        {
+          "value": "chat_bubble",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__3.label"
+        }
+      ],
+      "default": "track",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+    },
+    {
+      "type": "text",
+      "id": "header_linklist_title_1",
+      "label": "Heading",
+      "default": "Find a Store"
+    },
+    {
+      "type": "url",
+      "id": "header_linklist_url_1",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Link list 2"
+    },
+    {
+      "type": "select",
+      "id": "icon_2",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+        },
+        {
+          "value": "phone",
+          "label": "Phone"
+        },
+        {
+          "value": "email",
+          "label": "Email"
+        },
+        {
+          "value": "track",
+          "label": "Track"
+        },
+        {
+          "value": "map-pin",
+          "label": "Map pin"
+        },
+        {
+          "value": "box",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__2.label"
+        },
+        {
+          "value": "chat_bubble",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__3.label"
+        }
+      ],
+      "default": "map-pin",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+    },
+    {
+      "type": "text",
+      "id": "header_linklist_title_2",
+      "label": "Heading",
+      "default": "Track your Order"
+    },
+    {
+      "type": "url",
+      "id": "header_linklist_url_2",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "content_position_reverse",
+      "default": false,
+      "label": "Content reverse"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.section-padding-top.label",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.section-padding-bottom.label",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "information_txt",
+      "name": "Information text",
+      "limit": 1,
+      "settings": [
+          {
+            "type": "textarea",
+            "id": "info_txt",
+            "label": "Information text",
+            "default": "Order Online Call Us (0123) 456789"
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "announcement-bar",
+      "blocks": [
+        {
+          "type": "information_txt"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

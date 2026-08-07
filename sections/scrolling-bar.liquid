@@ -1,0 +1,342 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.section_padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.section_padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.section_padding_top }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .announcement_area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .scrolling-text-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  button.close__announcement--bar {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+  }
+  button.close__announcement--bar.modal__close-button.link {
+    width: 60px;
+    height: 42px;
+  }
+  .announcement__image {
+    line-height: 1;
+  }
+  #shopify-section-announcement-bar {
+    z-index: 4;
+  }
+  .announcement__icon--arrow{
+    width: 3.5rem;
+  }
+  .button__icon--arrow_svg{
+    max-width: 2.5rem;
+  }
+  .scrolling-text-bar {
+    color: rgb(var(--color-foreground));
+  }
+  .announcement-bar__message {
+    text-align: center;
+    padding: 0 10px;
+    margin: 0;
+  }
+  @media only screen and (min-width: 750px){
+    .announcement-bar__message {
+      padding: 0 30px;
+    }
+  }
+</style>
+<script src="{{ 'scrolling-bar.js' | asset_url }}" defer="defer"></script>
+
+{%- if section.settings.announcement_enable -%}
+  {{ 'scrolling-bar.css' | asset_url | stylesheet_tag }}
+  <div
+    class="scrolling__wrapper"
+    data-section-id="{{ section.id }}"
+    data-section-type="scrolling_bar"
+  >
+    {%- liquid
+      assign page = false
+      unless request.page_type == 'index'
+        assign page = section.settings.index
+      endunless
+      if request.page_type == 'index'
+        assign page = section.settings.no_index
+      endif
+    -%}
+    {%- unless page == true -%}
+      <div
+        class="section-{{ section.id }}-padding position-relative d-sm-block scrolling-text-bar color-{{ section.settings.color_scheme }} gradient {% if section.settings.show_separator_line != "none" %} {{ section.settings.show_separator_line }} {% endif %}"
+        role="region"
+        aria-label="{{ 'sections.header.announcement' | t }}"
+        {{ section.shopify_attributes }}
+      >
+        <marquee-scroll-bar
+          class="announcement_area {% if section.settings.marquee_text %} marqueee {% endif %}"
+          style="--speed: {{ section.settings.scroll_speed }}s; --scroll-direction: {{ section.settings.scroll_direction }}"
+        >
+          <div class="scrolling--item">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'scrolling-bar' -%}
+                  <div class="announcement_content">
+                    {%- if block.settings.text != blank -%}
+                      {%- if block.settings.link != blank -%}
+                        <a
+                          href="{{ block.settings.link }}"
+                          class="announcement-bar__link link--text focus-inset"
+                        >
+                      {%- endif -%}
+                      <p class="announcement-bar__message {{ section.settings.heading_size }}">
+                        <span class="announcement__text_inner {% if block.settings.text_stroke %} announcement__text_stroke {% endif %} text">
+                          {{ block.settings.text | escape }}
+                        </span>
+                      </p>
+
+                      <span class="announcement__text_inner text">
+                        {% if section.settings.separetor_image != blank %}
+                          {%- assign img_alt = section.settings.separetor_image.alt | escape -%}
+                          {%- assign img_height = 30 | divided_by: section.settings.separetor_image.aspect_ratio %}
+                          {% capture widths %} {{ "30" }}, {{ "30" | times: 1.5 | round }}, {{ "30" | times: 2 }}{% endcapture %}
+                          {% capture sizes %}(max-width: {{ 30 | times: 2 }}px) 50vw, {{ 30 }}px{% endcapture %}
+                          {{
+                            section.settings.separetor_image
+                            | image_url: width: 100
+                            | image_tag:
+                              class: 'scrolling__image',
+                              alt: img_alt,
+                              widths: widths,
+                              sizes: sizes,
+                              height: img_height,
+                              width: '30'
+                          }}
+                        {% else %}
+                          <svg
+                            width="21"
+                            height="19"
+                            viewBox="0 0 21 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.5 0L12.7451 6.90983H20.0106L14.1327 11.1803L16.3779 18.0902L10.5 13.8197L4.62215 18.0902L6.86729 11.1803L0.989435 6.90983H8.25486L10.5 0Z" fill="currentColor"/>
+                          </svg>
+                        {% endif %}
+                      </span>
+                      {%- if block.settings.link != blank -%}
+                        </a>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </marquee-scroll-bar>
+      </div>
+    {%- endunless -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.scrolling-bar.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "announcement_enable",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "index",
+      "label": "Show on home page only",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "no_index",
+      "label": "Hide on home page only",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "accent-1"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+          {
+            "value": "h2",
+            "label": "Extra Large"
+          },
+          {
+            "value": "h3",
+            "label": "Large"
+          },
+          {
+            "value": "h4",
+            "label": "Medium"
+          },
+          {
+            "value": "h5",
+            "label": "Small"
+          },
+          {
+            "value": "p",
+            "label": "Extra small"
+          }
+       ],
+       "default": "h4",
+        "label": "Heading size"
+    },
+    {
+      "type": "image_picker",
+      "id": "separetor_image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "unit": "s",
+      "label": "Speed",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "scroll_direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "scrolling-right",
+          "label": "Right"
+        },
+        {
+          "value": "scrolling-left",
+          "label": "Left"
+        }
+      ],
+      "default": "scrolling-left"
+    },
+    {
+      "type": "select",
+      "id": "show_separator_line",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "border-top-1",
+          "label": "Top"
+        },
+        {
+          "value": "border-bottom-1",
+          "label": "Bottom"
+        },
+        {
+          "value": "border-top-and-bottom",
+          "label": "Top with bottom"
+        },
+      ],
+      "default": "none",
+      "label": "Show separator line"
+    },
+    {
+      "type": "checkbox",
+      "id": "marquee_text",
+      "label": "Active Slide Text",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.section-padding-top.label",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.section-padding-bottom.label",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scrolling-bar",
+      "name": "t:sections.scrolling-bar.blocks.scrolling-item.name",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.scrolling-bar.blocks.scrolling-item.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.scrolling-bar.blocks.scrolling-item.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_stroke",
+          "label": "Text stroke",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.scrolling-bar.name",
+      "blocks": [
+        {
+          "type": "scrolling-bar"
+        },
+        {
+          "type": "scrolling-bar"
+        },
+        {
+          "type": "scrolling-bar"
+        },
+        {
+          "type": "scrolling-bar"
+        },
+        {
+          "type": "scrolling-bar"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

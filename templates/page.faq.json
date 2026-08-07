@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": false,
+        "show_breadcrumb_navigation": true,
+        "text_center": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading": false,
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 35,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "1653381521aabb4233": {
+      "type": "faq",
+      "blocks": {
+        "1653381521b811e269-0": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Do we offer any warranties on our cars?",
+            "content": "<p>There is a limited warranty on the parts and components of the car. There are also warranties for the paint, tires, and other parts.</p><p>The limited warranty is what you are entitled to when the car is purchased. The warranty for the paint, tires, and other parts are only good for so long as the car is in use.</p>"
+          }
+        },
+        "1653381521b811e269-1": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Do you need to pay for your car in full before you get it?",
+            "content": "<p>It's a common misconception that you need to pay for your car in full before you get it. You can actually purchase a car with financing. This is an option that many people don't know about and should take advantage of.</p><p>The best way to finance your car is by getting a loan from the dealership or bank. This way, you will have the money upfront and won't have to worry about payments every month.</p>"
+          }
+        },
+        "5a453f18-91ac-470f-8896-6fa642ee2bf6": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What is the average cost of a new car these days?",
+            "content": "<p>The average cost of a new car these days is $36,000.</p><p>This number includes the price of the car and all the extras that come with it like the warranty, taxes, and title transfer.</p><p>The average cost of a new car is $36,000.</p><p>The average cost of a new car these days is $36,000. The number includes the price of the car and all the extras that come with it like the warranty, taxes, and title transfer.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "1653381521b811e269-0",
+        "1653381521b811e269-1",
+        "5a453f18-91ac-470f-8896-6fa642ee2bf6"
+      ],
+      "settings": {
+        "container_type": "container",
+        "heading": "Shipping information",
+        "heading_size": "h1",
+        "enable_image": true,
+        "image": "shopify://shop_images/faq.png",
+        "height": "adapt",
+        "image_position": "right",
+        "full_width": true,
+        "color_scheme": "background-1",
+        "mobile_image_position": "top",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "mobile_padding_top": 55,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "1653381521aabb4233"
+  ]
+}

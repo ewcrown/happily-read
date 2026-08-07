@@ -1,0 +1,375 @@
+{
+  "sections": {
+    "hr01_opening": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "You've tried the advice. You've read the threads. You've saved the posts. Nothing changed.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Happily Read builds science-backed journals for women who are done consuming and ready to actually transform. 30 and 45-day systems grounded in the same frameworks therapists use.</p>",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Find Your Journal",
+            "button_link_1": "/#sticking-points",
+            "button_style_secondary_1": false,
+            "button_label_2": "Not sure where to start? Enter your email and we'll guide you.",
+            "button_link_2": "/#email-optin",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "buttons"],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "show_filter_box": false,
+        "corner_radius": 0,
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "anchor_sticking": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"sticking-points\"></div>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "hr02_sticking_points": {
+      "type": "multicolumn",
+      "blocks": {
+        "card_breakup": {
+          "type": "column",
+          "settings": {
+            "title": "I'm getting over a breakup.",
+            "text": "<p>Your brain is going through withdrawal. There's a way through it that isn't just time.</p>",
+            "link_label": "Find my journal →",
+            "link": "/pages/breakup-recovery",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        },
+        "card_pattern": {
+          "type": "column",
+          "settings": {
+            "title": "I keep choosing the wrong person.",
+            "text": "<p>This isn't bad luck. It's a pattern. And patterns can be changed.</p>",
+            "link_label": "Find my journal →",
+            "link": "/pages/never-get-played-again",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        },
+        "card_growth": {
+          "type": "column",
+          "settings": {
+            "title": "I'm done playing small.",
+            "text": "<p>Self-doubt isn't a personality trait. It's a neural pathway. It can be rewritten.</p>",
+            "link_label": "Find my journal →",
+            "link": "/pages/that-girl-frequency",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        },
+        "card_reclaim": {
+          "type": "column",
+          "settings": {
+            "title": "I want to reclaim who I really am.",
+            "text": "<p>The version of you that got buried is still there. Shadow work brings her back.</p>",
+            "link_label": "Find my journal →",
+            "link": "/pages/reclaiming-her",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["card_breakup", "card_pattern", "card_growth", "card_reclaim"],
+      "settings": {
+        "title": "What are you working through right now?",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "column_padding": "medium",
+        "button_label": "",
+        "button_link": "",
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "hr03_difference": {
+      "type": "multicolumn",
+      "blocks": {
+        "diff_1": {
+          "type": "column",
+          "settings": {
+            "title": "Built on over a year of academic research.",
+            "text": "<p>Not affirmations. Not AI-generated content. Peer-reviewed sources. Real psychological frameworks.</p>",
+            "link_label": "See the science →",
+            "link": "/pages/science",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        },
+        "diff_2": {
+          "type": "column",
+          "settings": {
+            "title": "Structured 30 and 45-day transformation systems.",
+            "text": "<p>Not a journal you fill in when you feel like it. A system you work through. Day by day.</p>",
+            "link_label": "",
+            "link": "",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        },
+        "diff_3": {
+          "type": "column",
+          "settings": {
+            "title": "Grounded in the same frameworks therapists use.",
+            "text": "<p>CBT. Neuroplasticity. Attachment theory. Jungian shadow work. This is the methodology of real change, built into every page.</p>",
+            "link_label": "",
+            "link": "",
+            "button_type": "underline",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["diff_1", "diff_2", "diff_3"],
+      "settings": {
+        "title": "Why Happily Read is different.",
+        "heading_size": "h1",
+        "heading_align": "center",
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "column_padding": "medium",
+        "button_label": "",
+        "button_link": "",
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30
+      }
+    },
+    "hr04_mission": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>When you invest in your transformation, you invest in hers.</p>",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5% of every Happily Read journal sold goes directly to Genesis Women's Shelter &amp; Support in Dallas — providing safety, shelter, and healing for women and children escaping domestic violence since 1985.</p><p>We serve women before the crisis. They serve women in the crisis.</p>",
+            "nav_check_list": false
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn about our mission →",
+            "button_link": "/pages/genesis",
+            "button_style": "secondary",
+            "button_size": "medium",
+            "show_icon": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "container_type": "container",
+        "image_card_corner_radius": 10,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "full_width": false,
+        "make_section_full_width": true,
+        "container_box_corner_radius": 10,
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "hr05_social_proof": {
+      "type": "testimonial-section",
+      "blocks": {
+        "story_1": {
+          "type": "testimonial_item",
+          "settings": {
+            "client_review_icon": "5",
+            "testimonial_review_title": "Representative journey — Breakup Recovery",
+            "client_review_text": "\"I spent three months trying to get over my ex using every piece of advice the internet had to offer. Nothing stuck. I started the Breakup Recovery journal on a Sunday. By Day 14 I had stopped checking his Instagram. By Day 30 I had written myself a letter from my future self and I didn't cry. I smiled.\"",
+            "client_name": "Representative journey",
+            "client_designation": "Breakup Recovery"
+          }
+        },
+        "story_2": {
+          "type": "testimonial_item",
+          "settings": {
+            "client_review_icon": "5",
+            "testimonial_review_title": "Representative journey — That Girl Frequency",
+            "client_review_text": "\"I have always known I was playing small. I just didn't know how to stop. That Girl Frequency gave me the actual science behind why I was shrinking and a 30-day system to rewrite it. Halfway through I took an opportunity I would have talked myself out of a month before.\"",
+            "client_name": "Representative journey",
+            "client_designation": "That Girl Frequency"
+          }
+        }
+      },
+      "block_order": ["story_1", "story_2"],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Real women. Real work. Real change.",
+        "heading_size": "h1",
+        "subtitle": "",
+        "alignment": "center",
+        "container_type": "container",
+        "layout": "slider",
+        "column": "2",
+        "card_style": "card",
+        "card_color_scheme": "background-2",
+        "testimonial_alignment": "left",
+        "testimonial_author_card_style": "bottom",
+        "quotes_icon": true,
+        "card_corner": 10,
+        "auto_rotate": false,
+        "autoplay_time": 3,
+        "show_navigation": true,
+        "slider_navigatin_postion": "center",
+        "products_show_on_sm": "1",
+        "image_overlay_opacity": 0,
+        "review_star_color": "#ffce31",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "hr05_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Find your journal →",
+            "button_link": "/#sticking-points",
+            "button_style": "primary",
+            "button_size": "medium"
+          }
+        }
+      },
+      "block_order": ["button"],
+      "settings": {
+        "color_scheme": "background-1",
+        "container_type": "container",
+        "padding_top": 10,
+        "padding_bottom": 50,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "anchor_email": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"email-optin\"></div>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "hr06_email": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join women who are choosing real transformation over empty promises.",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Science-backed insights. No spam. Unsubscribe any time.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "background-1",
+        "height": "small",
+        "image_overlay_opacity": 0,
+        "form_position": "bottom",
+        "content_wrapper_width": "medium",
+        "content_alignment": "center",
+        "border_bottom_enabel": false,
+        "show_first_name": true,
+        "require_first_name": false,
+        "form_tags": "newsletter",
+        "submit_label": "I'm ready",
+        "privacy_text": "<p>We respect your inbox. You'll only hear from us when we have something worth saying.</p>",
+        "padding_top": 60,
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "hr01_opening",
+    "anchor_sticking",
+    "hr02_sticking_points",
+    "hr03_difference",
+    "hr04_mission",
+    "hr05_social_proof",
+    "hr05_cta",
+    "anchor_email",
+    "hr06_email"
+  ]
+}

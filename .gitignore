@@ -1,0 +1,29 @@
+# Shopify CLI
+.shopify/
+
+# OS / editor
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Node (if added later)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Misc
+*.log
+.cache/

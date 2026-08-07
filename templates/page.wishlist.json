@@ -1,0 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "color_scheme": "background-2",
+        "container_type": "container",
+        "show_page_title": true,
+        "show_breadcrumb_navigation": true,
+        "text_center": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    },
+    "main": {
+      "type": "wishlist",
+      "settings": {
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_title": true,
+        "show_price": true,
+        "show_vendor": true,
+        "show_product_rating": false,
+        "show_badges": true,
+        "badge_position": "top-left",
+        "show_cart_button": true,
+        "cart_button_positon": "top_right",
+        "show_countdown": true,
+        "timer_color_scheme": "background-1",
+        "place_timer_on_image": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main"
+  ]
+}
